@@ -1,0 +1,7 @@
+[InputMethod]
+UniqueName=skk
+_Name=Skk
+IconName=skk
+Priority=1
+LangCode=ja
+Parent=fcitx-skk
