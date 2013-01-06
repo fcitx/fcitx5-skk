@@ -1,0 +1,6 @@
+#ifndef ___CONFIG_H___
+#define ___CONFIG_H___
+
+#define LOCALEDIR "@LOCALEDIR@"
+
+#endif /* __CONFIG_H__ */
