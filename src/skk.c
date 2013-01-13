@@ -26,8 +26,6 @@
 #include <fcitx-config/xdg.h>
 #include <fcitx-config/hotkey.h>
 #include <fcitx-utils/log.h>
-#include <fcitx-utils/utils.h>
-#include <fcitx-utils/utf8.h>
 #include <fcitx/candidate.h>
 #include <fcitx/context.h>
 #include <fcitx/keys.h>
@@ -62,13 +60,39 @@ static const FcitxIMIFace skk_iface = {
     .DoReleaseInput = NULL,
 };
 
+static void
+ut_gobject_cpy(void *dst, const void *src)
+{
+    GObject *const *_src = (GObject *const*)src;
+    GObject **_dst = (GObject**)dst;
+    *_dst = g_object_ref(*_src);
+}
+
+static void
+ut_gobject_dtor(void *self)
+{
+    GObject **_self = (GObject**)self;
+    g_object_unref(*_self);
+}
+
+static const UT_icd gobject_icd = {
+    .sz = sizeof(GObject*),
+    .dtor = ut_gobject_dtor,
+    .copy = ut_gobject_cpy,
+};
+
 static void*
 FcitxSkkCreate(FcitxInstance *instance)
 {
     FcitxSkk *skk = fcitx_utils_new(FcitxSkk);
     bindtextdomain("fcitx-skk", LOCALEDIR);
 
+    skk_init();
+
     skk->owner = instance;
+    utarray_init(&skk->dicts, &gobject_icd);
+    skk->ctx = skk_context_new((SkkDict**)utarray_front(&skk->dicts),
+                               utarray_len(&skk->dicts));
 
     FcitxInstanceRegisterIMv2(instance, skk, "skk", _("Skk"), "skk",
                               skk_iface, 1, "ja");
@@ -81,6 +105,8 @@ FcitxSkkDestroy(void *arg)
     FcitxSkk *skk = (FcitxSkk*)arg;
     if (fcitx_unlikely(!arg))
         return;
+    g_object_unref(skk->ctx);
+    utarray_done(&skk->dicts);
     free(arg);
 }
 
@@ -90,7 +116,7 @@ FcitxSkkInit(void *arg)
     FcitxSkk *skk = (FcitxSkk*)arg;
     if (!arg)
         return false;
-    FcitxInstanceSetContext(skk->owner, CONTEXT_IM_KEYBOARD_LAYOUT, "us");
+    FcitxInstanceSetContext(skk->owner, CONTEXT_IM_KEYBOARD_LAYOUT, "ja");
     return true;
 }
 

@@ -24,11 +24,15 @@
 #include <fcitx/ime.h>
 #include <fcitx/instance.h>
 #include <libintl.h>
+#include <libskk/libskk.h>
+#include <fcitx-utils/utils.h>
 
 #define _(x) dgettext("fcitx-skk", x)
 
 typedef struct {
-    FcitxInstance* owner;
+    FcitxInstance *owner;
+    SkkContext *ctx;
+    UT_array dicts;
 } FcitxSkk;
 
 #endif
