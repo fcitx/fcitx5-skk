@@ -33,6 +33,8 @@ typedef struct {
     FcitxInstance *owner;
     SkkContext *ctx;
     UT_array dicts;
+    boolean selected;
+    boolean updatePreedit;
 } FcitxSkk;
 
 #endif
