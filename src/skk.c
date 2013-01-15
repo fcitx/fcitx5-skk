@@ -64,7 +64,7 @@ static const FcitxIMIFace skk_iface = {
     .PhraseTips = NULL,
     .Save = NULL,
     .ReloadConfig = NULL,
-    .KeyBlocker = FcitxSkkKeyBlocker,
+    .KeyBlocker = 0,
     .UpdateSurroundingText = NULL,
     .DoReleaseInput = FcitxSkkDoReleaseInput,
 };
@@ -107,6 +107,12 @@ void skk_candidate_list_selected_cb (SkkCandidateList* self, SkkCandidate* c, gp
     }
 
     g_free(output);
+}
+
+void skk_candidate_list_popuplated_cb (SkkCandidateList* self, gpointer user_data)
+{
+    FcitxSkk *skk = (FcitxSkk*) user_data;
+    skk->update_candidate = true;
 }
 
 static gboolean skk_context_retrieve_surrounding_text_cb (SkkContext* self, gchar** text, guint* cursor_pos, gpointer user_data) {
@@ -158,6 +164,7 @@ FcitxSkkCreate(FcitxInstance *instance)
                               skk_iface, 1, "ja");
 
     g_signal_connect(skk_context_get_candidates(skk->ctx), "selected", G_CALLBACK(skk_candidate_list_selected_cb), skk);
+    g_signal_connect(skk_context_get_candidates(skk->ctx), "populated", G_CALLBACK(skk_candidate_list_popuplated_cb), skk);
     g_signal_connect(skk->ctx, "notify::preedit", G_CALLBACK(skk_candidate_update_preedit_cb), skk);
     g_signal_connect(skk->ctx, "retrieve_surrounding_text", G_CALLBACK(skk_context_retrieve_surrounding_text_cb), skk);
     g_signal_connect(skk->ctx, "delete_surrounding_text", G_CALLBACK(skk_context_delete_surrounding_text_cb), skk);
@@ -173,7 +180,6 @@ FcitxSkkCreate(FcitxInstance *instance)
     skk_context_set_period_style(skk->ctx, SKK_PERIOD_STYLE_JA_JA);
     skk_context_set_input_mode(skk->ctx, SKK_INPUT_MODE_HIRAGANA);
     skk_context_set_egg_like_newline(skk->ctx, FALSE);
-
 
     skk_candidate_list_set_page_size(skk_context_get_candidates(skk->ctx), 7);
     skk_candidate_list_set_page_start(skk_context_get_candidates(skk->ctx), 4);
@@ -237,8 +243,9 @@ FcitxSkkDoInputReal(void *arg, FcitxKeySym sym, unsigned int state)
     // FIXME: should resolve virtual modifiers
 
     if (skk_candidate_list_get_page_visible(skk_context_get_candidates(skk->ctx))) {
-        FcitxSkkDoCandidate (skk, sym, state);
-        return IRV_DISPLAY_CANDWORDS;
+        INPUT_RETURN_VALUE result = FcitxSkkDoCandidate (skk, sym, state);
+        if (result == IRV_TO_PROCESS)
+            return result;
     }
 
     SkkModifierType modifiers = (SkkModifierType) state & (FcitxKeyState_SimpleMask | (1 << 30));
@@ -256,7 +263,7 @@ FcitxSkkDoInputReal(void *arg, FcitxKeySym sym, unsigned int state)
     }
 
     g_free(output);
-    return retval ? IRV_DISPLAY_CANDWORDS : IRV_TO_PROCESS;
+    return retval ? (skk->updatePreedit || skk->update_candidate ?  IRV_DISPLAY_CANDWORDS : IRV_DO_NOTHING) : IRV_TO_PROCESS;
 }
 
 static INPUT_RETURN_VALUE
@@ -274,10 +281,19 @@ INPUT_RETURN_VALUE FcitxSkkDoCandidate(void* arg, FcitxKeySym sym, unsigned int 
 {
     FcitxSkk *skk = (FcitxSkk*)arg;
     FcitxInputState* input = FcitxInstanceGetInputState(skk->owner);
+    FcitxGlobalConfig *fc = FcitxInstanceGetGlobalConfig(skk->owner);
     FcitxCandidateWordList* candList = FcitxInputStateGetCandidateList(input);
-    int pageCount = FcitxCandidateWordPageCount(candList);
 
-    return 0;
+    if (FcitxHotkeyIsHotKey(sym, state,
+                            FcitxConfigPrevPageKey(skk->owner, fc))) {
+        return IRV_TO_PROCESS;
+    } else if (FcitxHotkeyIsHotKey(sym, state,
+                                    FcitxConfigNextPageKey(skk->owner, fc))) {
+        return IRV_TO_PROCESS;
+    } else if (FcitxCandidateWordCheckChooseKey(candList, sym, state) >= 0) {
+        return IRV_TO_PROCESS;
+    }
+    return IRV_DO_NOTHING;
 }
 
 static INPUT_RETURN_VALUE
@@ -299,11 +315,11 @@ boolean FcitxSkkPaging(void* arg, boolean prev) {
     SkkCandidateList* skkCandList = skk_context_get_candidates(skk->ctx);
     boolean result;
     if (prev)
-        result = skk_candidate_list_previous(skkCandList);
+        skk_candidate_list_page_up(skkCandList);
     else
-        result = skk_candidate_list_next(skkCandList);
+        skk_candidate_list_page_down(skkCandList);
     FcitxSkkGetCandWords(skk);
-    return result;
+    return true;
 }
 
 static INPUT_RETURN_VALUE
@@ -318,18 +334,12 @@ FcitxSkkGetCandWords(void *arg)
 
     if (skk_candidate_list_get_page_visible(skkCandList)) {
         int i = 0;
-        FcitxLog(INFO, "%d", skk_candidate_list_get_size(skkCandList));
-        FcitxLog(INFO, "%d", skk_candidate_list_get_cursor_pos(skkCandList));
-        FcitxLog(INFO, "%d", skk_candidate_list_get_page_visible(skkCandList));
-        FcitxLog(INFO, "%d", skk_candidate_list_get_page_start_cursor_pos(skkCandList));
-        gint cursor_pos = skk_candidate_list_get_cursor_pos(skkCandList);
-        guint pageSize = skk_candidate_list_get_page_size(skkCandList);
-        gint pageEnd = cursor_pos / pageSize * pageSize + pageSize;
-        guint size = skk_candidate_list_get_size(skkCandList);
-        if (size > pageEnd)
-            size = pageEnd;
         int j = 0;
-        for (i = pageEnd - pageSize, j = 0; i < size; i ++, j++) {
+        guint size = skk_candidate_list_get_size(skkCandList);
+        gint cursor_pos = skk_candidate_list_get_cursor_pos(skkCandList);
+        guint page_start = skk_candidate_list_get_page_start(skkCandList);
+        guint page_size = skk_candidate_list_get_page_size(skkCandList);
+        for (i = skk_candidate_list_get_page_start(skkCandList), j = 0; i < size; i ++, j++) {
             FcitxCandidateWord word;
             word.callback = FcitxSkkGetCandWord;
             word.extraType = MSG_OTHER;
@@ -339,16 +349,17 @@ FcitxSkkGetCandWords(void *arg)
             word.priv = id;
             word.strExtra = NULL;
             word.strWord = strdup(skk_candidate_get_text(skk_candidate_list_get(skkCandList, i)));
-            if (i == skk_candidate_list_get_cursor_pos(skkCandList)) {
+            if (i == cursor_pos) {
                 word.wordType = MSG_CANDIATE_CURSOR;
             } else {
                 word.wordType = MSG_OTHER;
             }
             FcitxCandidateWordAppend(candList, &word);
         }
-
-        FcitxCandidateWordSetOverridePaging(candList, true, true, FcitxSkkPaging, skk, NULL);
+        FcitxCandidateWordSetFocus(candList, cursor_pos - page_start);
+        FcitxCandidateWordSetOverridePaging(candList, (cursor_pos - page_start) >= page_size, (size - cursor_pos) >= page_size, FcitxSkkPaging, skk, NULL);
     }
+    skk->update_candidate = false;
 
     FcitxMessages* clientPreedit = FcitxInputStateGetClientPreedit(input);
     FcitxMessages* preedit = FcitxInputStateGetClientPreedit(input);

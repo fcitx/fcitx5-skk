@@ -35,6 +35,7 @@ typedef struct {
     UT_array dicts;
     boolean selected;
     boolean updatePreedit;
+    boolean update_candidate;
 } FcitxSkk;
 
 #endif
