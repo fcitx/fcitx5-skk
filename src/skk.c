@@ -148,6 +148,7 @@ FcitxSkkCreate(FcitxInstance *instance)
 {
     FcitxSkk *skk = fcitx_utils_new(FcitxSkk);
     bindtextdomain("fcitx-skk", LOCALEDIR);
+    bind_textdomain_codeset("fcitx-skk", "UTF-8");
 
     g_type_init();
 
