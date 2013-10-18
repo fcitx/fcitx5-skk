@@ -110,10 +110,7 @@ void AddDictDialog::browseClicked()
             QDir dir(basePath);
             path = dir.filePath(path.mid(strlen(FCITX_CONFIG_DIR) + 1));
         }
-        qDebug() << path;
-        path = QFileDialog::getExistingDirectory(this,
-                                                _("Select Dictionary Directory"),
-                                                path);
+        path = QFileDialog::getOpenFileName(this, _("Select Dictionary File"), path);
         if (path.startsWith(basePath + "/" )) {
             path = FCITX_CONFIG_DIR + path.mid(basePath.length(), -1);
         }
