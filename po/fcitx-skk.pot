@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-18 03:13-0400\n"
+"POT-Creation-Date: 2013-10-18 06:00-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,12 +45,8 @@ msgstr ""
 msgid "Server"
 msgstr ""
 
-#: gui/adddictdialog.cpp:101
+#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
 msgid "Select Dictionary File"
-msgstr ""
-
-#: gui/adddictdialog.cpp:115
-msgid "Select Dictionary Directory"
 msgstr ""
 
 #: gui/dictwidget.cpp:34
