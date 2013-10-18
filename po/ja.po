@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# しろう, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-18 06:00-0400\n"
-"PO-Revision-Date: 2013-04-03 09:25+0000\n"
-"Last-Translator: いくや あわしろ <ikunya@gmail.com>\n"
+"POT-Creation-Date: 2013-10-18 12:10-0400\n"
+"PO-Revision-Date: 2013-10-18 14:03+0000\n"
+"Last-Translator: しろう\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
 "Language: ja\n"
@@ -24,7 +25,7 @@ msgstr ""
 
 #: gui/adddictdialog.cpp:36
 msgid "&Path:"
-msgstr ""
+msgstr "パス(&P):"
 
 #: gui/adddictdialog.cpp:38
 msgid "&Port:"
@@ -40,73 +41,73 @@ msgstr ""
 
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
-msgstr ""
+msgstr "候補リストのレイアウト"
 
 #: src/fcitx-skk.conf.in:9
 msgid "Dictionary"
-msgstr ""
+msgstr "辞書"
 
 #: gui/dictwidget.cpp:61
 msgid "Dictionary Manager"
-msgstr ""
+msgstr "辞書マネージャー"
 
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
-msgstr ""
+msgstr "直接入力"
 
 #: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
 #: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
 #: src/fcitx-skk.desc:50
 msgid "General"
-msgstr ""
+msgstr "全般"
 
 #: src/fcitx-skk.desc:38
 msgid "Global"
-msgstr ""
+msgstr "全体"
 
 #: src/skk.c:95 src/fcitx-skk.desc:18
 msgid "Half width Katakana"
-msgstr ""
+msgstr "半角カタカナ"
 
 #: src/skk.c:93 src/fcitx-skk.desc:16
 msgid "Hiragana"
-msgstr ""
+msgstr "ひらがな"
 
 #: src/fcitx-skk.desc:40
 msgid "Horizontal"
-msgstr ""
+msgstr "水平"
 
 #: src/fcitx-skk.desc:13
 msgid "Initial Input Mode"
-msgstr ""
+msgstr "初期入力モード"
 
 #: src/skk.c:464
 msgid "Input Mode"
-msgstr ""
+msgstr "入力モード"
 
 #: src/fcitx-skk.desc:6
 msgid "Japanese"
-msgstr ""
+msgstr "日本語"
 
 #: src/skk.c:94 src/fcitx-skk.desc:17
 msgid "Katakana"
-msgstr ""
+msgstr "カタカナ"
 
 #: src/skk.c:96 src/fcitx-skk.desc:7
 msgid "Latin"
-msgstr ""
+msgstr "英数"
 
 #: src/fcitx-skk.desc:45
 msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr ""
+msgstr "候補ウィンドウを表示するまでの候補数"
 
 #: src/fcitx-skk.desc:24
 msgid "Page size"
-msgstr ""
+msgstr "ページサイズ"
 
 #: src/fcitx-skk.desc:3
 msgid "Punctuation Style"
-msgstr ""
+msgstr "句読点スタイル"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
@@ -114,15 +115,15 @@ msgstr ""
 
 #: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
 msgid "Select Dictionary File"
-msgstr ""
+msgstr "辞書ファイルを選択"
 
 #: gui/adddictdialog.cpp:41
 msgid "Server"
-msgstr ""
+msgstr "サーバー"
 
 #: src/fcitx-skk.desc:52
 msgid "Show Annotation"
-msgstr ""
+msgstr "注釈を表示"
 
 #: src/skk.c:438 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
 msgid "Skk"
@@ -134,20 +135,20 @@ msgstr "Fcitx用のSKK入力メソッド"
 
 #: gui/adddictdialog.cpp:39
 msgid "System"
-msgstr ""
+msgstr "システム"
 
 #: gui/adddictdialog.cpp:40
 msgid "User"
-msgstr ""
+msgstr "ユーザー"
 
 #: src/fcitx-skk.desc:39
 msgid "Vertical"
-msgstr ""
+msgstr "垂直"
 
 #: src/skk.c:97 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
 msgid "Wide latin"
-msgstr ""
+msgstr "全角英数"
 
 #: src/fcitx-skk.desc:9
 msgid "Wide latin Japanese"
-msgstr ""
+msgstr "全角英字と日本語"
