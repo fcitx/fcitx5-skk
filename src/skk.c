@@ -30,13 +30,23 @@
 #include <fcitx/context.h>
 #include <fcitx/keys.h>
 #include <fcitx/ui.h>
+#include <fcitx/hook.h>
 #include <libskk/libskk.h>
 
 #include "skk.h"
 #include "config.h"
 
+UT_icd dict_icd = { sizeof(void*), 0, 0, 0};
+
 static void *FcitxSkkCreate(FcitxInstance *instance);
 static void FcitxSkkDestroy(void *arg);
+static void FcitxSkkReloadConfig(void *arg);
+static boolean FcitxSkkLoadDictionary(FcitxSkk* skk);
+static boolean FcitxSkkLoadRule(FcitxSkk* skk);
+static void FcitxSkkApplyConfig(FcitxSkk* skk);
+
+CONFIG_DEFINE_LOAD_AND_SAVE(Skk, FcitxSkkConfig, "fcitx-skk")
+
 static boolean FcitxSkkInit(void *arg);
 static INPUT_RETURN_VALUE FcitxSkkDoInputReal(void *arg, FcitxKeySym sym,
                                           unsigned int state);
@@ -46,14 +56,18 @@ static INPUT_RETURN_VALUE FcitxSkkDoReleaseInput(void *arg, FcitxKeySym sym,
                                           unsigned int state);
 static INPUT_RETURN_VALUE FcitxSkkDoCandidate(void *arg, FcitxKeySym sym,
                                              unsigned int state);
-static INPUT_RETURN_VALUE FcitxSkkKeyBlocker(void *arg, FcitxKeySym sym,
-                                             unsigned int state);
 static INPUT_RETURN_VALUE FcitxSkkGetCandWords(void *arg);
 static void FcitxSkkReset(void *arg);
 
-FCITX_DEFINE_PLUGIN(fcitx_skk, ime, FcitxIMClass) = {
-    .Create = FcitxSkkCreate,
-    .Destroy = FcitxSkkDestroy
+FCITX_DEFINE_PLUGIN(fcitx_skk, ime2, FcitxIMClass2) = {
+    FcitxSkkCreate,
+    FcitxSkkDestroy,
+    FcitxSkkReloadConfig,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
 };
 
 static const FcitxIMIFace skk_iface = {
@@ -67,6 +81,20 @@ static const FcitxIMIFace skk_iface = {
     .KeyBlocker = 0,
     .UpdateSurroundingText = NULL,
     .DoReleaseInput = FcitxSkkDoReleaseInput,
+};
+
+typedef struct _SkkStatus {
+    const char* icon;
+    const char* label;
+    const char* description;
+} SkkStatus;
+
+SkkStatus input_mode_status[] = {
+    {"",  "\xe3\x81\x82", N_("Hiragana") },
+    {"", "\xe3\x82\xa2", N_("Katakana") },
+    {"", "\xef\xbd\xb1", N_("Half width Katakana") },
+    {"", "A", N_("Latin") },
+    {"", "\xef\xbc\xa1", N_("Wide latin") },
 };
 
 static void
@@ -90,7 +118,7 @@ static const UT_icd gobject_icd = {
     .copy = ut_gobject_cpy,
 };
 
-void skk_candidate_update_preedit_cb (SkkContext* ctx, GParamSpec *pspec,  gpointer user_data)
+void skk_candidate_update_preedit_cb (SkkContext* context, GParamSpec *pspec,  gpointer user_data)
 {
     FcitxSkk *skk = (FcitxSkk*) user_data;
     skk->updatePreedit = true;
@@ -100,7 +128,7 @@ void skk_candidate_list_selected_cb (SkkCandidateList* self, SkkCandidate* c, gp
 {
     FcitxSkk *skk = (FcitxSkk*) user_data;
     skk->selected = true;
-    gchar* output = skk_context_poll_output(skk->ctx);
+    gchar* output = skk_context_poll_output(skk->context);
 
     if (output && strlen(output) > 0) {
         FcitxInstanceCommitString(skk->owner, FcitxInstanceGetCurrentIC(skk->owner), output);
@@ -143,52 +171,324 @@ static gboolean skk_context_delete_surrounding_text_cb (SkkContext* self, gint o
     return true;
 }
 
+typedef enum _FcitxSkkDictType {
+    FSDT_Invalid,
+    FSDT_File,
+    FSTD_Server
+} FcitxSkkDictType;
+
+
+void FcitxSkkResetHook(void *arg)
+{
+    FcitxSkk *skk = (FcitxSkk*)arg;
+    FcitxIM* im = FcitxInstanceGetCurrentIM(skk->owner);
+#define RESET_STATUS(STATUS_NAME) \
+    if (im && strcmp(im->uniqueName, "skk") == 0) \
+        FcitxUISetStatusVisable(skk->owner, STATUS_NAME, true); \
+    else \
+        FcitxUISetStatusVisable(skk->owner, STATUS_NAME, false);
+
+    RESET_STATUS("skk-input-mode")
+}
+
+boolean FcitxSkkLoadDictionary(FcitxSkk* skk)
+{
+    FILE* fp = FcitxXDGGetFileWithPrefix("skk", "dictionary_list", "r", NULL);
+    if (!fp) {
+        return false;
+    }
+
+    UT_array dictionaries;
+    utarray_init(&dictionaries, &dict_icd);
+
+    char *buf = NULL;
+    size_t len = 0;
+    char *trimmed = NULL;
+
+    while (getline(&buf, &len, fp) != -1) {
+        if (trimmed)
+            free(trimmed);
+        trimmed = fcitx_utils_trim(buf);
+
+        UT_array* list = fcitx_utils_split_string(trimmed, ',');
+        do {
+            if (utarray_len(list) < 3) {
+                break;
+            }
+
+            FcitxSkkDictType type = FSDT_Invalid;
+            int mode = 0;
+            char* path = NULL;
+            char* host = NULL;
+            char* port = NULL;
+            char* encoding = NULL;
+            utarray_foreach(item, list, char*) {
+                char* key = *item;
+                char* value = strchr(*item, '=');
+                if (!value)
+                    continue;
+                *value = '\0';
+                value++;
+
+                if (strcmp(key, "type") == 0) {
+                    if (strcmp(value, "file") == 0) {
+                        type = FSDT_File;
+                    } else if (strcmp(value, "server") == 0) {
+                        type = FSTD_Server;
+                    }
+                } else if (strcmp(key, "file") == 0) {
+                    path = value;
+                } else if (strcmp(key, "mode") == 0) {
+                    if (strcmp(value, "readonly") == 0) {
+                        mode = 1;
+                    } else if (strcmp(value, "readwrite") == 0) {
+                        mode = 2;
+                    }
+                } else if (strcmp(key, "host") == 0) {
+                    host = value;
+                } else if (strcmp(key, "port") == 0) {
+                    port = value;
+                } else if (strcmp(key, "encoding") == 0) {
+                    encoding = value;
+                }
+            }
+
+            encoding = encoding ? encoding : "EUC-JP";
+
+            if (type == FSDT_Invalid) {
+                break;
+            } else if (type == FSDT_File) {
+                if (path == NULL || mode == 0) {
+                    break;
+                }
+                if (mode == 1) {
+                    if(strlen(path) > 4 && !strcmp(path + strlen(path) - 4, ".cdb")) {
+                        SkkCdbDict* dict = skk_cdb_dict_new(path, encoding, NULL);
+                        if (dict) {
+                            utarray_push_back(&dictionaries, &dict);
+                        }
+                    } else {
+                        SkkFileDict* dict = skk_file_dict_new(path, encoding, NULL);
+                        if (dict) {
+                            utarray_push_back(&dictionaries, &dict);
+                        }
+                    }
+                } else {
+                    char* needfree = NULL;
+                    char* realpath = NULL;
+                    if (strncmp(path, "$FCITX_CONFIG_DIR/", strlen("$FCITX_CONFIG_DIR/")) == 0) {
+                        FcitxXDGGetFileUserWithPrefix("", path + strlen("$FCITX_CONFIG_DIR/"), NULL, &needfree);
+                        realpath = needfree;
+                    } else {
+                        realpath = path;
+                    }
+                    SkkUserDict* userdict = skk_user_dict_new(realpath, encoding, NULL);
+                    if (needfree) {
+                        free(needfree);
+                    }
+                    if (userdict) {
+                        utarray_push_back(&dictionaries, &userdict);
+                    }
+                }
+            } else if (type == FSTD_Server) {
+                host = host ? host : "localhost";
+                port = port ? port : "1178";
+
+                errno = 0;
+                int iPort = atoi(port);
+                if (iPort <= 0 || iPort > UINT16_MAX) {
+                    break;
+                }
+
+                SkkSkkServ* dict = skk_skk_serv_new(host, iPort, encoding, NULL);
+                if (dict) {
+                    utarray_push_back(&dictionaries, &dict);
+                }
+            }
+
+        } while(0);
+        fcitx_utils_free_string_list(list);
+    }
+
+    if (buf)
+        free(buf);
+    if (trimmed)
+        free(trimmed);
+
+    boolean result = false;
+    if (utarray_len(&dictionaries) != 0) {
+        result = true;
+        skk_context_set_dictionaries(skk->context,
+                                     (SkkDict**)utarray_front(&dictionaries),
+                                     utarray_len(&dictionaries));
+    }
+
+    utarray_done(&dictionaries);
+    return result;
+}
+
+boolean FcitxSkkLoadRule(FcitxSkk* skk)
+{
+    FILE* fp = FcitxXDGGetFileWithPrefix("skk", "rule", "r", NULL);
+    SkkRuleMetadata* meta = NULL;
+
+    do {
+        if (!fp) {
+            break;
+        }
+
+        char* line = NULL;
+        size_t bufsize = 0;
+        getline(&line, &bufsize, fp);
+        fclose(fp);
+
+        if (!line) {
+            break;
+        }
+
+        char* trimmed = fcitx_utils_trim(line);
+        meta = skk_rule_find_rule(trimmed);
+        free(trimmed);
+        free(line);
+    } while(0);
+
+    if (!meta) {
+        meta = skk_rule_find_rule("default");
+        if (!meta) {
+            return false;
+        }
+    }
+
+    SkkRule* rule = skk_rule_new(meta->name, NULL);
+    if (!rule) {
+        return false;
+    }
+
+    skk_context_set_typing_rule(skk->context, rule);
+    return true;
+}
+
+
+const char* FcitxSkkGetInputModeIconName(void* arg)
+{
+    FcitxSkk *skk = (FcitxSkk*)arg;
+    return input_mode_status[skk_context_get_input_mode(skk->context)].icon;
+}
+
+void FcitxSkkUpdateInputModeMenu(struct _FcitxUIMenu *menu)
+{
+    FcitxSkk *skk = (FcitxSkk*) menu->priv;
+    menu->mark = skk_context_get_input_mode(skk->context);
+}
+
+boolean FcitxSkkInputModeMenuAction(struct _FcitxUIMenu *menu, int index)
+{
+    FcitxSkk *skk = (FcitxSkk*) menu->priv;
+    skk_context_set_input_mode(skk->context, (SkkInputMode) index);
+    return true;
+}
+
+void FcitxSkkUpdateInputMode(FcitxSkk* skk)
+{
+    SkkInputMode mode = skk_context_get_input_mode(skk->context);
+    FcitxUISetStatusString(skk->owner,
+                           "skk-input-mode",
+                           _(input_mode_status[mode].label),
+                           _(input_mode_status[mode].description));
+}
+
+static void  _skk_input_mode_changed_cb                (GObject    *gobject,
+                                                        GParamSpec *pspec,
+                                                        gpointer    user_data)
+{
+    FcitxSkk *skk = (FcitxSkk*) user_data;
+    FcitxSkkUpdateInputMode(skk);
+}
+
 static void*
 FcitxSkkCreate(FcitxInstance *instance)
 {
     FcitxSkk *skk = fcitx_utils_new(FcitxSkk);
     bindtextdomain("fcitx-skk", LOCALEDIR);
     bind_textdomain_codeset("fcitx-skk", "UTF-8");
+    skk->owner = instance;
 
+    if (!SkkLoadConfig(&skk->config)) {
+        free(skk);
+        return NULL;
+    }
+
+#if !GLIB_CHECK_VERSION(2, 36, 0)
     g_type_init();
+#endif
 
     skk_init();
 
-    skk->owner = instance;
-    utarray_init(&skk->dicts, &gobject_icd);
-    SkkFileDict* dict = skk_file_dict_new("/usr/share/skk/SKK-JISYO.L", "EUC-JP", NULL);
-    utarray_push_back(&skk->dicts, &dict);
-    skk->ctx = skk_context_new((SkkDict**)utarray_front(&skk->dicts),
-                               utarray_len(&skk->dicts));
+    skk->context = skk_context_new(0, 0);
+
+    if (!FcitxSkkLoadDictionary(skk) || !FcitxSkkLoadRule(skk)) {
+        free(skk);
+        return NULL;
+    }
+    skk_context_set_period_style(skk->context, SKK_PERIOD_STYLE_JA_JA);
+    skk_context_set_input_mode(skk->context, SKK_INPUT_MODE_HIRAGANA);
+
+    FcitxSkkApplyConfig(skk);
 
     FcitxInstanceRegisterIMv2(instance, skk, "skk", _("Skk"), "skk",
                               skk_iface, 1, "ja");
 
-    g_signal_connect(skk_context_get_candidates(skk->ctx), "selected", G_CALLBACK(skk_candidate_list_selected_cb), skk);
-    g_signal_connect(skk_context_get_candidates(skk->ctx), "populated", G_CALLBACK(skk_candidate_list_popuplated_cb), skk);
-    g_signal_connect(skk->ctx, "notify::preedit", G_CALLBACK(skk_candidate_update_preedit_cb), skk);
-    g_signal_connect(skk->ctx, "retrieve_surrounding_text", G_CALLBACK(skk_context_retrieve_surrounding_text_cb), skk);
-    g_signal_connect(skk->ctx, "delete_surrounding_text", G_CALLBACK(skk_context_delete_surrounding_text_cb), skk);
+#define INIT_MENU(VARNAME, NAME, I18NNAME, STATUS_NAME, STATUS_ARRAY, SIZE) \
+    do { \
+        FcitxUIRegisterComplexStatus(instance, skk, \
+            STATUS_NAME, \
+            I18NNAME, \
+            I18NNAME, \
+            NULL, \
+            FcitxSkkGet##NAME##IconName \
+        ); \
+        FcitxMenuInit(&VARNAME); \
+        VARNAME.name = strdup(I18NNAME); \
+        VARNAME.candStatusBind = strdup(STATUS_NAME); \
+        VARNAME.UpdateMenu = FcitxSkkUpdate##NAME##Menu; \
+        VARNAME.MenuAction = FcitxSkk##NAME##MenuAction; \
+        VARNAME.priv = skk; \
+        VARNAME.isSubMenu = false; \
+        int i; \
+        for (i = 0; i < SIZE; i ++) \
+            FcitxMenuAddMenuItem(&VARNAME, _(STATUS_ARRAY[i].label), MENUTYPE_SIMPLE, NULL); \
+        FcitxUIRegisterMenu(instance, &VARNAME); \
+        FcitxUISetStatusVisable(instance, STATUS_NAME, false); \
+    } while(0)
+
+    INIT_MENU(skk->inputModeMenu, InputMode, _("Input Mode"), "skk-input-mode", input_mode_status, SKK_INPUT_MODE_LAST);
+
+    skk->handler = g_signal_connect(skk->context, "notify::input-mode", G_CALLBACK(_skk_input_mode_changed_cb), skk);
+    FcitxSkkUpdateInputMode(skk);
+    skk->candidate_selected_handler = g_signal_connect(skk_context_get_candidates(skk->context), "selected", G_CALLBACK(skk_candidate_list_selected_cb), skk);
+    skk->candidate_populated_handler = g_signal_connect(skk_context_get_candidates(skk->context), "populated", G_CALLBACK(skk_candidate_list_popuplated_cb), skk);
+    skk->notify_preedit_handler = g_signal_connect(skk->context, "notify::preedit", G_CALLBACK(skk_candidate_update_preedit_cb), skk);
+    skk->retrieve_surrounding_text_handler = g_signal_connect(skk->context, "retrieve_surrounding_text", G_CALLBACK(skk_context_retrieve_surrounding_text_cb), skk);
+    skk->delete_surrounding_text_handler = g_signal_connect(skk->context, "delete_surrounding_text", G_CALLBACK(skk_context_delete_surrounding_text_cb), skk);
 
 
-    const char* AUTO_START_HENKAN_KEYWORDS[] = {
+    gchar* AUTO_START_HENKAN_KEYWORDS[] = {
         "を", "、", "。", "．", "，", "？", "」",
         "！", "；", "：", ")", ";", ":", "）",
         "”", "】", "』", "》", "〉", "｝", "］",
         "〕", "}", "]", "?", ".", ",", "!"
     };
-    skk_context_set_auto_start_henkan_keywords(skk->ctx, AUTO_START_HENKAN_KEYWORDS, G_N_ELEMENTS(AUTO_START_HENKAN_KEYWORDS));
-    skk_context_set_period_style(skk->ctx, SKK_PERIOD_STYLE_JA_JA);
-    skk_context_set_input_mode(skk->ctx, SKK_INPUT_MODE_HIRAGANA);
-    skk_context_set_egg_like_newline(skk->ctx, FALSE);
-
-    skk_candidate_list_set_page_size(skk_context_get_candidates(skk->ctx), 7);
-    skk_candidate_list_set_page_start(skk_context_get_candidates(skk->ctx), 4);
+    skk_context_set_auto_start_henkan_keywords(skk->context, AUTO_START_HENKAN_KEYWORDS, G_N_ELEMENTS(AUTO_START_HENKAN_KEYWORDS));
 
     SkkRule* rule = skk_rule_new("default", NULL);
     if (rule) {
-        skk_context_set_typing_rule(skk->ctx, rule);
+        skk_context_set_typing_rule(skk->context, rule);
     }
+
+    FcitxIMEventHook hk;
+    hk.arg = skk;
+    hk.func = FcitxSkkResetHook;
+    FcitxInstanceRegisterResetInputHook(instance, hk);
 
     return skk;
 }
@@ -201,8 +501,13 @@ FcitxSkkDestroy(void *arg)
     FcitxSkk *skk = (FcitxSkk*)arg;
     if (fcitx_unlikely(!arg))
         return;
-    g_object_unref(skk->ctx);
-    utarray_done(&skk->dicts);
+    g_signal_handler_disconnect(skk_context_get_candidates(skk->context), skk->candidate_selected_handler);
+    g_signal_handler_disconnect(skk_context_get_candidates(skk->context), skk->candidate_populated_handler);
+    g_signal_handler_disconnect(skk->context, skk->handler);
+    g_signal_handler_disconnect(skk->context, skk->notify_preedit_handler);
+    g_signal_handler_disconnect(skk->context, skk->retrieve_surrounding_text_handler);
+    g_signal_handler_disconnect(skk->context, skk->delete_surrounding_text_handler);
+    g_object_unref(skk->context);
     free(arg);
 }
 
@@ -213,14 +518,13 @@ FcitxSkkInit(void *arg)
     if (!arg)
         return false;
     FcitxInstanceSetContext(skk->owner, CONTEXT_IM_KEYBOARD_LAYOUT, "ja");
+    boolean flag = true;
+    FcitxInstanceSetContext(skk->owner, CONTEXT_IM_KEYBOARD_LAYOUT, "jp");
+    FcitxInstanceSetContext(skk->owner, CONTEXT_DISABLE_AUTOENG, &flag);
+    FcitxInstanceSetContext(skk->owner, CONTEXT_DISABLE_QUICKPHRASE, &flag);
+    FcitxInstanceSetContext(skk->owner, CONTEXT_DISABLE_FULLWIDTH, &flag);
+    FcitxInstanceSetContext(skk->owner, CONTEXT_DISABLE_AUTO_FIRST_CANDIDATE_HIGHTLIGHT, &flag);
     return true;
-}
-
-INPUT_RETURN_VALUE FcitxSkkKeyBlocker(void* arg, FcitxKeySym sym, unsigned int state)
-{
-    if (sym == FcitxKey_j && state == FcitxKeyState_Ctrl)
-        return IRV_DO_NOTHING;
-    return IRV_TO_PROCESS;
 }
 
 static INPUT_RETURN_VALUE
@@ -238,24 +542,22 @@ static INPUT_RETURN_VALUE
 FcitxSkkDoInputReal(void *arg, FcitxKeySym sym, unsigned int state)
 {
     FcitxSkk *skk = (FcitxSkk*)arg;
-    FcitxInputState* input = FcitxInstanceGetInputState(skk->owner);
-    FcitxCandidateWordList* candList = FcitxInputStateGetCandidateList(input);
     // Filter out unnecessary modifier bits
     // FIXME: should resolve virtual modifiers
 
-    if (skk_candidate_list_get_page_visible(skk_context_get_candidates(skk->ctx))) {
+    if (skk_candidate_list_get_page_visible(skk_context_get_candidates(skk->context))) {
         INPUT_RETURN_VALUE result = FcitxSkkDoCandidate (skk, sym, state);
         if (result == IRV_TO_PROCESS)
             return result;
     }
 
     SkkModifierType modifiers = (SkkModifierType) state & (FcitxKeyState_SimpleMask | (1 << 30));
-    SkkKeyEvent* key = skk_key_event_new_from_x_keysym(sym, state, NULL);
+    SkkKeyEvent* key = skk_key_event_new_from_x_keysym(sym, modifiers, NULL);
     if (!key)
         return IRV_TO_PROCESS;
 
-    gboolean retval = skk_context_process_key_event(skk->ctx, key);
-    gchar* output = skk_context_poll_output(skk->ctx);
+    gboolean retval = skk_context_process_key_event(skk->context, key);
+    gchar* output = skk_context_poll_output(skk->context);
 
     g_object_unref(key);
 
@@ -301,26 +603,26 @@ static INPUT_RETURN_VALUE
 FcitxSkkGetCandWord(void* arg, FcitxCandidateWord* cand)
 {
     FcitxSkk *skk = (FcitxSkk*)arg;
-    SkkCandidateList* skkCandList = skk_context_get_candidates(skk->ctx);
-    guint pageSize = skk_candidate_list_get_page_size(skkCandList);
+    SkkCandidateList* skkCandList = skk_context_get_candidates(skk->context);
     int idx = *(int*) cand->priv;
+    gboolean retval = skk_candidate_list_select_at(skkCandList, idx % skk_candidate_list_get_page_size(skkCandList));
+    if (retval) {
+        return IRV_DISPLAY_CANDWORDS;
+    }
 
-    skk->selected = false;
-    skk_candidate_list_select_at(skkCandList, idx);
-
-    return IRV_DISPLAY_CANDWORDS;
+    return IRV_TO_PROCESS;
 }
 
 boolean FcitxSkkPaging(void* arg, boolean prev) {
     FcitxSkk *skk = (FcitxSkk*)arg;
-    SkkCandidateList* skkCandList = skk_context_get_candidates(skk->ctx);
+    SkkCandidateList* skkCandList = skk_context_get_candidates(skk->context);
     boolean result;
     if (prev)
-        skk_candidate_list_page_up(skkCandList);
+        result = skk_candidate_list_page_up(skkCandList);
     else
-        skk_candidate_list_page_down(skkCandList);
+        result = skk_candidate_list_page_down(skkCandList);
     FcitxSkkGetCandWords(skk);
-    return true;
+    return result;
 }
 
 static INPUT_RETURN_VALUE
@@ -330,8 +632,10 @@ FcitxSkkGetCandWords(void *arg)
     FcitxInstanceCleanInputWindow(skk->owner);
     FcitxInputState* input = FcitxInstanceGetInputState(skk->owner);
     FcitxCandidateWordList* candList = FcitxInputStateGetCandidateList(input);
-    SkkCandidateList* skkCandList = skk_context_get_candidates(skk->ctx);
-    FcitxCandidateWordSetPageSize(candList, 7);
+    SkkCandidateList* skkCandList = skk_context_get_candidates(skk->context);
+    FcitxCandidateWordSetChoose(candList, DIGIT_STR_CHOOSE);
+    FcitxCandidateWordSetPageSize(candList, skk->config.pageSize);
+    FcitxCandidateWordSetLayoutHint(candList, skk->config.candidateLayout);
 
     if (skk_candidate_list_get_page_visible(skkCandList)) {
         int i = 0;
@@ -341,6 +645,7 @@ FcitxSkkGetCandWords(void *arg)
         guint page_start = skk_candidate_list_get_page_start(skkCandList);
         guint page_size = skk_candidate_list_get_page_size(skkCandList);
         for (i = skk_candidate_list_get_page_start(skkCandList), j = 0; i < size; i ++, j++) {
+            SkkCandidate* skkCandidate = skk_candidate_list_get(skkCandList, i);
             FcitxCandidateWord word;
             word.callback = FcitxSkkGetCandWord;
             word.extraType = MSG_OTHER;
@@ -349,7 +654,10 @@ FcitxSkkGetCandWords(void *arg)
             *id = j;
             word.priv = id;
             word.strExtra = NULL;
-            word.strWord = strdup(skk_candidate_get_text(skk_candidate_list_get(skkCandList, i)));
+            if (skk->config.showAnnotation && skk_candidate_get_annotation(skkCandidate)) {
+                fcitx_utils_alloc_cat_str(word.strExtra, " [", skk_candidate_get_annotation(skkCandidate), "]");
+            }
+            word.strWord = strdup(skk_candidate_get_text(skkCandidate));
             if (i == cursor_pos) {
                 word.wordType = MSG_CANDIATE_CURSOR;
             } else {
@@ -362,34 +670,36 @@ FcitxSkkGetCandWords(void *arg)
     }
     skk->update_candidate = false;
 
-    FcitxMessages* clientPreedit = FcitxInputStateGetClientPreedit(input);
-    FcitxMessages* preedit = FcitxInputStateGetClientPreedit(input);
+    FcitxMessages* preedit = (FcitxInstanceICSupportPreedit(skk->owner, FcitxInstanceGetCurrentIC(skk->owner)))
+                                ? FcitxInputStateGetClientPreedit(input)
+                                : FcitxInputStateGetPreedit(input);
 
-    const gchar* preeditString = skk_context_get_preedit(skk->ctx);
+
+    const gchar* preeditString = skk_context_get_preedit(skk->context);
     size_t len = strlen(preeditString);
     if (len > 0) {
         guint offset, nchars;
-        skk_context_get_preedit_underline(skk->ctx, &offset, &nchars);
+        skk_context_get_preedit_underline(skk->context, &offset, &nchars);
 
         if (nchars > 0) {
-            const gchar* preeditString = skk_context_get_preedit(skk->ctx);
+            const gchar* preeditString = skk_context_get_preedit(skk->context);
             char* off = fcitx_utf8_get_nth_char(preeditString, offset);
             if (offset > 0) {
                 char* left = strndup(preeditString, off - preeditString);
-                FcitxMessagesAddMessageAtLast(clientPreedit, MSG_OTHER, "%s", left);
+                FcitxMessagesAddMessageAtLast(preedit, MSG_OTHER, "%s", left);
                 fcitx_utils_free(left);
             }
             char* right = fcitx_utf8_get_nth_char(off, nchars);
             char* middle = strndup(off, right - off);
-            FcitxMessagesAddMessageAtLast(clientPreedit, MSG_HIGHLIGHT, "%s", middle);
+            FcitxMessagesAddMessageAtLast(preedit, MSG_HIGHLIGHT, "%s", middle);
             fcitx_utils_free(middle);
 
             if (*right != 0) {
-                FcitxMessagesAddMessageAtLast(clientPreedit, MSG_OTHER, "%s", right);
+                FcitxMessagesAddMessageAtLast(preedit, MSG_OTHER, "%s", right);
             }
         }
         else {
-            FcitxMessagesAddMessageAtLast(clientPreedit, MSG_OTHER, "%s", preeditString);
+            FcitxMessagesAddMessageAtLast(preedit, MSG_OTHER, "%s", preeditString);
         }
     }
 
@@ -403,5 +713,23 @@ static void
 FcitxSkkReset(void *arg)
 {
     FcitxSkk *skk = (FcitxSkk*)arg;
-    skk_context_reset(skk->ctx);
+    skk_context_reset(skk->context);
+}
+
+static void FcitxSkkReloadConfig(void* arg)
+{
+    FcitxSkk *skk = (FcitxSkk*)arg;
+    SkkLoadConfig(&skk->config);
+    FcitxSkkApplyConfig(skk);
+    FcitxSkkLoadRule(skk);
+    FcitxSkkLoadDictionary(skk);
+}
+
+void FcitxSkkApplyConfig(FcitxSkk* skk)
+{
+    SkkCandidateList* skkCandidates = skk_context_get_candidates(skk->context);
+    skk_candidate_list_set_page_start(skkCandidates, skk->config.nTriggersToShowCandWin);
+    skk_candidate_list_set_page_size(skkCandidates, skk->config.pageSize);
+    skk_context_set_period_style(skk->context, skk->config.punctuationStyle);
+    skk_context_set_egg_like_newline(skk->context, skk->config.eggLikeNewLine);
 }

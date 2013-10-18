@@ -23,19 +23,41 @@
 
 #include <fcitx/ime.h>
 #include <fcitx/instance.h>
+#include <fcitx/candidate.h>
 #include <libintl.h>
 #include <libskk/libskk.h>
 #include <fcitx-utils/utils.h>
 
 #define _(x) dgettext("fcitx-skk", x)
+#define N_(x) (x)
+
+typedef struct _FcitxSkkConfig {
+    FcitxGenericConfig gconfig;
+    SkkPeriodStyle punctuationStyle;
+    SkkInputMode initialInputMode;
+    FcitxCandidateLayoutHint candidateLayout;
+    int nTriggersToShowCandWin;
+    int pageSize;
+    boolean showAnnotation;
+    boolean eggLikeNewLine;
+} FcitxSkkConfig;
 
 typedef struct {
     FcitxInstance *owner;
-    SkkContext *ctx;
-    UT_array dicts;
+    SkkContext *context;
     boolean selected;
     boolean updatePreedit;
     boolean update_candidate;
+    FcitxSkkConfig config;
+    FcitxUIMenu inputModeMenu;
+    gulong handler;
+    gulong candidate_selected_handler;
+    gulong candidate_populated_handler;
+    gulong notify_preedit_handler;
+    gulong retrieve_surrounding_text_handler;
+    gulong delete_surrounding_text_handler;
 } FcitxSkk;
+
+CONFIG_BINDING_DECLARE(FcitxSkkConfig);
 
 #endif

@@ -1,0 +1,56 @@
+[General/PunctuationStyle]
+Type=Enum
+Description=Punctuation Style
+DefaultValue=Japanese
+EnumCount=4
+Enum0=Japanese
+Enum1=Latin
+Enum2=Wide latin
+Enum3=Wide latin Japanese
+
+[General/InitialInputMode]
+Type=Enum
+Description=Initial Input Mode
+DefaultValue=Hiragana
+EnumCount=5
+Enum0=Hiragana
+Enum1=Katakana
+Enum2=Half width Katakana
+Enum3=Direct input
+Enum4=Wide latin
+
+[General/PageSize]
+Type=Integer
+Description=Page size
+DefaultValue=7
+Min=1
+Max=10
+
+[General/EggLikeNewLine]
+Type=Boolean
+Description=Return-key does not insert new line on commit
+DefaultValue=False
+
+[General/CandidateLayout]
+Type=Enum
+Description=Candidate List Layout
+EnumCount=3
+Enum0=Global
+Enum1=Vertical
+Enum2=Horizontal
+DefaultValue=Vertical
+
+[General/NTriggersToShowCandWin]
+Type=Integer
+Description=Number candidate of Triggers To Show Candidate Window
+DefaultValue=4
+Min=0
+Max=7
+
+[General/ShowAnnotation]
+Type=Boolean
+Description=Show Annotation
+DefaultValue=True
+
+[DescriptionFile]
+LocaleDomain=fcitx-kkc

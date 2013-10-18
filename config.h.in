@@ -2,5 +2,6 @@
 #define ___CONFIG_H___
 
 #define LOCALEDIR "@LOCALEDIR@"
+#define SKK_DEFAULT_PATH "@SKK_DEFAULT_PATH@"
 
 #endif /* __CONFIG_H__ */
