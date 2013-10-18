@@ -2,6 +2,7 @@ include_directories(${FCITX4_FCITX_INCLUDE_DIRS})
 include_directories(${FCITX4_FCITX_CONFIG_INCLUDE_DIRS})
 include_directories(${FCITX4_FCITX_UTILS_INCLUDE_DIRS})
 include_directories(${LIBSKK_INCLUDE_DIRS})
+link_directories(${LIBSKK_LIBRARY_DIRS})
 
 set(fcitx_skk_sources
   skk.c skk-config.c)

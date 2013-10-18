@@ -5,7 +5,8 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 option(ENABLE_QT "Enable Qt for GUI configuration" On)
 
 find_package(Fcitx 4.2.8 REQUIRED)
-find_package(LibSkk 1.0.0 REQUIRED)
+include(FindPkgConfig)
+pkg_check_modules(LIBSKK "libskk" REQUIRED)
 _fcitx_add_uninstall_target()
 
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_C_FLAGS}")

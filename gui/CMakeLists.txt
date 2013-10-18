@@ -23,6 +23,7 @@ include_directories(
 link_directories(
   ${FCITX_QT_LIBRARY_DIRS}
   ${FCITX4_FCITX_CONFIG_LIBRARY_DIRS}
+  ${LIBSKK_LIBRARY_DIRS}
   )
 qt4_wrap_ui(SKK_CONFIG_SRCS dictwidget.ui adddictdialog.ui)
 add_library(fcitx-skk-config
