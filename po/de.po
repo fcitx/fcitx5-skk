@@ -92,11 +92,7 @@ msgstr ""
 msgid "Return-key does not insert new line on commit"
 msgstr ""
 
-#: gui/adddictdialog.cpp:115
-msgid "Select Dictionary Directory"
-msgstr ""
-
-#: gui/adddictdialog.cpp:101
+#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
 msgid "Select Dictionary File"
 msgstr ""
 
