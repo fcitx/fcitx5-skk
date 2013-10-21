@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-18 12:10-0400\n"
+"POT-Creation-Date: 2013-10-21 12:00-0400\n"
 "PO-Revision-Date: 2013-10-18 10:06+0000\n"
 "Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/fcitx/"
@@ -44,12 +44,13 @@ msgstr "类型(&T)："
 msgid "Candidate List Layout"
 msgstr "候选词列表"
 
-#: src/fcitx-skk.conf.in:9
-msgid "Dictionary"
-msgstr "词典"
-
 #: gui/dictwidget.cpp:61
 msgid "Dictionary Manager"
+msgstr "词典管理器"
+
+#: src/fcitx-skk.conf.in:9
+#, fuzzy
+msgid "Dictionary and Rule"
 msgstr "词典管理器"
 
 #: src/fcitx-skk.desc:19
@@ -153,3 +154,6 @@ msgstr "全角英文"
 #: src/fcitx-skk.desc:9
 msgid "Wide latin Japanese"
 msgstr "全角英文日语"
+
+#~ msgid "Dictionary"
+#~ msgstr "词典"
