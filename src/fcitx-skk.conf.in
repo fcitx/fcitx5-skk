@@ -6,5 +6,5 @@ Category=InputMethod
 Enabled=True
 Library=fcitx-skk.so
 Type=SharedLibrary
-SubConfig=Dictionary:native:skk/dictionary_list,fcitx-skk:domain
+SubConfig=Dictionary and Rule:native:skk/dictionary_list,fcitx-skk:domain
 IMRegisterMethod=ConfigFile
