@@ -53,4 +53,4 @@ Description=Show Annotation
 DefaultValue=True
 
 [DescriptionFile]
-LocaleDomain=fcitx-kkc
+LocaleDomain=fcitx-skk
