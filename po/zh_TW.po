@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-18 06:00-0400\n"
-"PO-Revision-Date: 2013-10-18 10:06+0000\n"
+"POT-Creation-Date: 2013-10-21 12:00-0400\n"
+"PO-Revision-Date: 2013-10-21 16:06+0000\n"
 "Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/fcitx/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgid "Skk Input Method For Fcitx"
 msgstr "Fcitx 的 Skk 日語輸入法"
 
 #: src/fcitx-skk.conf.in:9
-msgid "Dictionary"
+msgid "Dictionary and Rule"
 msgstr ""
 
 #: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
