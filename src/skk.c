@@ -482,11 +482,6 @@ FcitxSkkCreate(FcitxInstance *instance)
     };
     skk_context_set_auto_start_henkan_keywords(skk->context, AUTO_START_HENKAN_KEYWORDS, G_N_ELEMENTS(AUTO_START_HENKAN_KEYWORDS));
 
-    SkkRule* rule = skk_rule_new("default", NULL);
-    if (rule) {
-        skk_context_set_typing_rule(skk->context, rule);
-    }
-
     FcitxIMEventHook hk;
     hk.arg = skk;
     hk.func = FcitxSkkResetHook;
