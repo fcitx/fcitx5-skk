@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# しろう, 2013
+# emasaka <emasaka@gmail.com>, 2014
+# shirou - しろう, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-26 14:42-0400\n"
-"PO-Revision-Date: 2013-10-21 16:06+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2014-01-30 18:01-0500\n"
+"PO-Revision-Date: 2014-01-31 02:17+0000\n"
+"Last-Translator: emasaka <emasaka@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
 "Language: ja\n"
@@ -65,11 +66,11 @@ msgstr "全般"
 msgid "Global"
 msgstr "全体"
 
-#: src/skk.c:95 src/fcitx-skk.desc:18
+#: src/skk.c:97 src/fcitx-skk.desc:18
 msgid "Half width Katakana"
 msgstr "半角カタカナ"
 
-#: src/skk.c:93 src/fcitx-skk.desc:16
+#: src/skk.c:95 src/fcitx-skk.desc:16
 msgid "Hiragana"
 msgstr "ひらがな"
 
@@ -81,7 +82,7 @@ msgstr "水平"
 msgid "Initial Input Mode"
 msgstr "初期入力モード"
 
-#: src/skk.c:464
+#: src/skk.c:466
 msgid "Input Mode"
 msgstr "入力モード"
 
@@ -89,11 +90,11 @@ msgstr "入力モード"
 msgid "Japanese"
 msgstr "日本語"
 
-#: src/skk.c:94 src/fcitx-skk.desc:17
+#: src/skk.c:96 src/fcitx-skk.desc:17
 msgid "Katakana"
 msgstr "カタカナ"
 
-#: src/skk.c:96 src/fcitx-skk.desc:7
+#: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
 msgstr "英数"
 
@@ -111,7 +112,7 @@ msgstr "句読点スタイル"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
-msgstr ""
+msgstr "確定時にリターンキーを押しても改行を挿入しない"
 
 #: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
 msgid "Select Dictionary File"
@@ -125,7 +126,7 @@ msgstr "サーバー"
 msgid "Show Annotation"
 msgstr "注釈を表示"
 
-#: src/skk.c:438 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
+#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
 msgid "Skk"
 msgstr "SKK"
 
@@ -145,7 +146,7 @@ msgstr "ユーザー"
 msgid "Vertical"
 msgstr "垂直"
 
-#: src/skk.c:97 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
+#: src/skk.c:99 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
 msgid "Wide latin"
 msgstr "全角英数"
 
