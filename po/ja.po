@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-01-30 18:01-0500\n"
-"PO-Revision-Date: 2014-01-31 02:17+0000\n"
+"POT-Creation-Date: 2014-01-31 18:02-0500\n"
+"PO-Revision-Date: 2014-02-01 03:14+0000\n"
 "Last-Translator: emasaka <emasaka@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: gui/dictwidget.cpp:34
 msgid "&Rule:"
-msgstr ""
+msgstr "タイピング方式"
 
 #: gui/adddictdialog.cpp:35
 msgid "&Type:"
@@ -50,7 +50,7 @@ msgstr "辞書マネージャー"
 
 #: src/fcitx-skk.conf.in:9
 msgid "Dictionary and Rule"
-msgstr ""
+msgstr "辞書とタイピング方式"
 
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
