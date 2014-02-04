@@ -1,2 +1,2 @@
-type=file,file=@SKK_DEFAULT_PATH@,mode=readonly
 type=file,file=$FCITX_CONFIG_DIR/skk/user.dict,mode=readwrite
+type=file,file=@SKK_DEFAULT_PATH@,mode=readonly

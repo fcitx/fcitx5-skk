@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-21 12:00-0400\n"
-"PO-Revision-Date: 2013-10-18 10:06+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2013-10-31 06:03-0400\n"
+"PO-Revision-Date: 2013-10-31 05:48+0000\n"
+"Last-Translator: mar well <marwell.1980@freenet.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/fcitx/language/"
 "de/)\n"
 "Language: de\n"
@@ -21,111 +21,111 @@ msgstr ""
 
 #: gui/adddictdialog.cpp:37
 msgid "&Host:"
-msgstr ""
+msgstr "&Host:"
 
 #: gui/adddictdialog.cpp:36
 msgid "&Path:"
-msgstr ""
+msgstr "&Pfad:"
 
 #: gui/adddictdialog.cpp:38
 msgid "&Port:"
-msgstr ""
+msgstr "&Port:"
 
 #: gui/dictwidget.cpp:34
 msgid "&Rule:"
-msgstr ""
+msgstr "&Regel:"
 
 #: gui/adddictdialog.cpp:35
 msgid "&Type:"
-msgstr ""
+msgstr "&Typ:"
 
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
-msgstr ""
+msgstr "Layout der Kandidatenliste"
 
 #: gui/dictwidget.cpp:61
 msgid "Dictionary Manager"
-msgstr ""
+msgstr "Wörterbuchverwaltung"
 
 #: src/fcitx-skk.conf.in:9
 msgid "Dictionary and Rule"
-msgstr ""
+msgstr "Wörterbücher und Regeln"
 
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
-msgstr ""
+msgstr "Direkte Eingabe"
 
 #: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
 #: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
 #: src/fcitx-skk.desc:50
 msgid "General"
-msgstr ""
+msgstr "Allgemein"
 
 #: src/fcitx-skk.desc:38
 msgid "Global"
-msgstr ""
+msgstr "Global"
 
-#: src/skk.c:95 src/fcitx-skk.desc:18
+#: src/skk.c:97 src/fcitx-skk.desc:18
 msgid "Half width Katakana"
-msgstr ""
+msgstr "Halbbreite Katakana"
 
-#: src/skk.c:93 src/fcitx-skk.desc:16
+#: src/skk.c:95 src/fcitx-skk.desc:16
 msgid "Hiragana"
-msgstr ""
+msgstr "Hiragana"
 
 #: src/fcitx-skk.desc:40
 msgid "Horizontal"
-msgstr ""
+msgstr "Waagerecht"
 
 #: src/fcitx-skk.desc:13
 msgid "Initial Input Mode"
-msgstr ""
+msgstr "Eingabemodus beim Start"
 
-#: src/skk.c:464
+#: src/skk.c:466
 msgid "Input Mode"
-msgstr ""
+msgstr "Eingabemodus"
 
 #: src/fcitx-skk.desc:6
 msgid "Japanese"
-msgstr ""
+msgstr "Japanisch"
 
-#: src/skk.c:94 src/fcitx-skk.desc:17
+#: src/skk.c:96 src/fcitx-skk.desc:17
 msgid "Katakana"
-msgstr ""
+msgstr "Katakana"
 
-#: src/skk.c:96 src/fcitx-skk.desc:7
+#: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
-msgstr ""
+msgstr "Latin"
 
 #: src/fcitx-skk.desc:45
 msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr ""
+msgstr "Anzahl der Kanditaten, bei der das Kandidatenfenster angezeigt wird"
 
 #: src/fcitx-skk.desc:24
 msgid "Page size"
-msgstr ""
+msgstr "Seitengröße"
 
 #: src/fcitx-skk.desc:3
 msgid "Punctuation Style"
-msgstr ""
+msgstr "Stil der Interpunktion"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
-msgstr ""
+msgstr "Return-Taste erzeugt keinen Zeilenwechsel"
 
 #: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
 msgid "Select Dictionary File"
-msgstr ""
+msgstr "Wörterbuchdatei auswählen"
 
 #: gui/adddictdialog.cpp:41
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: src/fcitx-skk.desc:52
 msgid "Show Annotation"
-msgstr ""
+msgstr "Anmerkungen zeigen"
 
-#: src/skk.c:438 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
+#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
 msgid "Skk"
 msgstr "Skk"
 
@@ -135,20 +135,20 @@ msgstr "Skk Eingabemethode für Fcitx"
 
 #: gui/adddictdialog.cpp:39
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: gui/adddictdialog.cpp:40
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #: src/fcitx-skk.desc:39
 msgid "Vertical"
-msgstr ""
+msgstr "Senkrecht"
 
-#: src/skk.c:97 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
+#: src/skk.c:99 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
 msgid "Wide latin"
-msgstr ""
+msgstr "Vollbreites Latin"
 
 #: src/fcitx-skk.desc:9
 msgid "Wide latin Japanese"
-msgstr ""
+msgstr "Wide latin Japanese"
