@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-01-31 18:02-0500\n"
-"PO-Revision-Date: 2014-02-01 03:14+0000\n"
+"POT-Creation-Date: 2014-02-04 12:24+0000\n"
+"PO-Revision-Date: 2014-02-04 11:28+0000\n"
 "Last-Translator: emasaka <emasaka@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: gui/adddictdialog.cpp:37
 msgid "&Host:"
-msgstr ""
+msgstr "ホスト:"
 
 #: gui/adddictdialog.cpp:36
 msgid "&Path:"
@@ -30,7 +30,7 @@ msgstr "パス(&P):"
 
 #: gui/adddictdialog.cpp:38
 msgid "&Port:"
-msgstr ""
+msgstr "ポート:"
 
 #: gui/dictwidget.cpp:34
 msgid "&Rule:"
@@ -38,7 +38,7 @@ msgstr "タイピング方式"
 
 #: gui/adddictdialog.cpp:35
 msgid "&Type:"
-msgstr ""
+msgstr "形式:"
 
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
@@ -120,7 +120,7 @@ msgstr "辞書ファイルを選択"
 
 #: gui/adddictdialog.cpp:41
 msgid "Server"
-msgstr "サーバー"
+msgstr "SKKサーバー"
 
 #: src/fcitx-skk.desc:52
 msgid "Show Annotation"
