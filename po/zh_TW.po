@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# BrLi <rainman59118@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2013-10-21 12:00-0400\n"
-"PO-Revision-Date: 2013-10-21 16:06+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"PO-Revision-Date: 2014-06-06 05:00+0000\n"
+"Last-Translator: BrLi <rainman59118@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/fcitx/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,63 +20,63 @@ msgstr ""
 
 #: gui/adddictdialog.cpp:35
 msgid "&Type:"
-msgstr ""
+msgstr "類型(&T)："
 
 #: gui/adddictdialog.cpp:36
 msgid "&Path:"
-msgstr ""
+msgstr "路徑(&P)："
 
 #: gui/adddictdialog.cpp:37
 msgid "&Host:"
-msgstr ""
+msgstr "主機(&H)："
 
 #: gui/adddictdialog.cpp:38
 msgid "&Port:"
-msgstr ""
+msgstr "埠口(&P)："
 
 #: gui/adddictdialog.cpp:39
 msgid "System"
-msgstr ""
+msgstr "系統"
 
 #: gui/adddictdialog.cpp:40
 msgid "User"
-msgstr ""
+msgstr "使用者"
 
 #: gui/adddictdialog.cpp:41
 msgid "Server"
-msgstr ""
+msgstr "伺服器"
 
 #: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
 msgid "Select Dictionary File"
-msgstr ""
+msgstr "選擇字典檔案"
 
 #: gui/dictwidget.cpp:34
 msgid "&Rule:"
-msgstr ""
+msgstr "按鍵方案(&R)："
 
 #: gui/dictwidget.cpp:61
 msgid "Dictionary Manager"
-msgstr ""
+msgstr "字典管理員"
 
 #: src/skk.c:93 src/fcitx-skk.desc:16
 msgid "Hiragana"
-msgstr ""
+msgstr "平假名"
 
 #: src/skk.c:94 src/fcitx-skk.desc:17
 msgid "Katakana"
-msgstr ""
+msgstr "片假名"
 
 #: src/skk.c:95 src/fcitx-skk.desc:18
 msgid "Half width Katakana"
-msgstr ""
+msgstr "半形片假名"
 
 #: src/skk.c:96 src/fcitx-skk.desc:7
 msgid "Latin"
-msgstr ""
+msgstr "英文"
 
 #: src/skk.c:97 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
 msgid "Wide latin"
-msgstr ""
+msgstr "全形英文"
 
 #: src/skk.c:438 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
 msgid "Skk"
@@ -83,7 +84,7 @@ msgstr "Skk"
 
 #: src/skk.c:464
 msgid "Input Mode"
-msgstr ""
+msgstr "輸入模式"
 
 #: src/fcitx-skk.conf.in:4
 msgid "Skk Input Method For Fcitx"
@@ -97,31 +98,31 @@ msgstr ""
 #: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
 #: src/fcitx-skk.desc:50
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: src/fcitx-skk.desc:3
 msgid "Punctuation Style"
-msgstr ""
+msgstr "標點風格"
 
 #: src/fcitx-skk.desc:6
 msgid "Japanese"
-msgstr ""
+msgstr "日語"
 
 #: src/fcitx-skk.desc:9
 msgid "Wide latin Japanese"
-msgstr ""
+msgstr "全形拉丁日語"
 
 #: src/fcitx-skk.desc:13
 msgid "Initial Input Mode"
-msgstr ""
+msgstr "初始輸入模式"
 
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
-msgstr ""
+msgstr "直接輸入"
 
 #: src/fcitx-skk.desc:24
 msgid "Page size"
-msgstr ""
+msgstr "頁面大小"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
