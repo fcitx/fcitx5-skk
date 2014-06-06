@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2013-10-21 12:00-0400\n"
-"PO-Revision-Date: 2014-06-06 05:00+0000\n"
+"PO-Revision-Date: 2014-06-06 05:02+0000\n"
 "Last-Translator: BrLi <rainman59118@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/fcitx/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -92,7 +92,7 @@ msgstr "Fcitx 的 Skk 日語輸入法"
 
 #: src/fcitx-skk.conf.in:9
 msgid "Dictionary and Rule"
-msgstr ""
+msgstr "字典與規則"
 
 #: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
 #: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
@@ -126,28 +126,28 @@ msgstr "頁面大小"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
-msgstr ""
+msgstr "確認送出時 Enter 鍵不輸入新行"
 
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
-msgstr ""
+msgstr "候選詞清單"
 
 #: src/fcitx-skk.desc:38
 msgid "Global"
-msgstr ""
+msgstr "全域"
 
 #: src/fcitx-skk.desc:39
 msgid "Vertical"
-msgstr ""
+msgstr "縱向"
 
 #: src/fcitx-skk.desc:40
 msgid "Horizontal"
-msgstr ""
+msgstr "橫向"
 
 #: src/fcitx-skk.desc:45
 msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr ""
+msgstr "觸發顯示候選字視窗的按鍵次數"
 
 #: src/fcitx-skk.desc:52
 msgid "Show Annotation"
-msgstr ""
+msgstr "顯示注釋"
