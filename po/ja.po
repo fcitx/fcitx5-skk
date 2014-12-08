@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-02-04 12:24+0000\n"
-"PO-Revision-Date: 2014-02-04 11:28+0000\n"
+"POT-Creation-Date: 2014-12-08 12:40+0900\n"
+"PO-Revision-Date: 2014-12-08 12:43+0900\n"
 "Last-Translator: emasaka <emasaka@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
@@ -40,6 +40,10 @@ msgstr "タイピング方式"
 msgid "&Type:"
 msgstr "形式:"
 
+#: src/fcitx-skk.desc:60
+msgid "ABC (a,b,c,...)"
+msgstr ""
+
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
 msgstr "候補リストのレイアウト"
@@ -52,13 +56,17 @@ msgstr "辞書マネージャー"
 msgid "Dictionary and Rule"
 msgstr "辞書とタイピング方式"
 
+#: src/fcitx-skk.desc:59
+msgid "Digit (0,1,2,...)"
+msgstr "数字キー (0,1,2,...)"
+
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
 msgstr "直接入力"
 
 #: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
 #: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
-#: src/fcitx-skk.desc:50
+#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
 msgid "General"
 msgstr "全般"
 
@@ -94,6 +102,10 @@ msgstr "日本語"
 msgid "Katakana"
 msgstr "カタカナ"
 
+#: src/fcitx-skk.desc:57
+msgid "Keys to Select from Candidate Window"
+msgstr "候補ウィンドウからの選択キー"
+
 #: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
 msgstr "英数"
@@ -109,6 +121,10 @@ msgstr "ページサイズ"
 #: src/fcitx-skk.desc:3
 msgid "Punctuation Style"
 msgstr "句読点スタイル"
+
+#: src/fcitx-skk.desc:61
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr "Qwertyキーボード中央行 (a,s,d,...)"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
