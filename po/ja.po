@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# AWASHIRO Ikuya <ikunya@gmail.com>, 2014
 # emasaka <emasaka@gmail.com>, 2014
 # WAKAYAMA Shirou <shirou.faw@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-12-08 06:02+0100\n"
-"PO-Revision-Date: 2014-02-04 11:28+0000\n"
-"Last-Translator: emasaka <emasaka@gmail.com>\n"
+"POT-Creation-Date: 2014-12-08 12:02+0100\n"
+"PO-Revision-Date: 2014-12-08 09:49+0000\n"
+"Last-Translator: AWASHIRO Ikuya <ikunya@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
 "Language: ja\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: gui/adddictdialog.cpp:37
 msgid "&Host:"
-msgstr "ホスト:"
+msgstr "ホスト(&H):"
 
 #: gui/adddictdialog.cpp:36
 msgid "&Path:"
@@ -30,19 +31,19 @@ msgstr "パス(&P):"
 
 #: gui/adddictdialog.cpp:38
 msgid "&Port:"
-msgstr "ポート:"
+msgstr "ポート(&P):"
 
 #: gui/dictwidget.cpp:34
 msgid "&Rule:"
-msgstr "タイピング方式"
+msgstr "タイピング方式(&R):"
 
 #: gui/adddictdialog.cpp:35
 msgid "&Type:"
-msgstr "形式:"
+msgstr "形式(&T):"
 
 #: src/fcitx-skk.desc:60
 msgid "ABC (a,b,c,...)"
-msgstr ""
+msgstr "ABC (a,b,c,...)"
 
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
@@ -58,7 +59,7 @@ msgstr "辞書とタイピング方式"
 
 #: src/fcitx-skk.desc:59
 msgid "Digit (0,1,2,...)"
-msgstr ""
+msgstr "数字キー (0,1,2,...)"
 
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
@@ -104,7 +105,7 @@ msgstr "カタカナ"
 
 #: src/fcitx-skk.desc:57
 msgid "Keys to Select from Candidate Window"
-msgstr ""
+msgstr "候補ウィンドウからの選択キー"
 
 #: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
@@ -124,7 +125,7 @@ msgstr "句読点スタイル"
 
 #: src/fcitx-skk.desc:61
 msgid "Qwerty Center Row (a,s,d,...)"
-msgstr ""
+msgstr "Qwertyキーボード中央行 (a,s,d,...)"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"

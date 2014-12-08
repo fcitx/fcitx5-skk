@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-21 12:00-0400\n"
-"PO-Revision-Date: 2014-06-06 05:02+0000\n"
-"Last-Translator: BrLi <rainman59118@gmail.com>\n"
+"POT-Creation-Date: 2014-12-08 12:40+0900\n"
+"PO-Revision-Date: 2014-12-08 05:03+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/fcitx/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,31 +58,31 @@ msgstr "按鍵方案(&R)："
 msgid "Dictionary Manager"
 msgstr "字典管理員"
 
-#: src/skk.c:93 src/fcitx-skk.desc:16
+#: src/skk.c:95 src/fcitx-skk.desc:16
 msgid "Hiragana"
 msgstr "平假名"
 
-#: src/skk.c:94 src/fcitx-skk.desc:17
+#: src/skk.c:96 src/fcitx-skk.desc:17
 msgid "Katakana"
 msgstr "片假名"
 
-#: src/skk.c:95 src/fcitx-skk.desc:18
+#: src/skk.c:97 src/fcitx-skk.desc:18
 msgid "Half width Katakana"
 msgstr "半形片假名"
 
-#: src/skk.c:96 src/fcitx-skk.desc:7
+#: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
 msgstr "英文"
 
-#: src/skk.c:97 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
+#: src/skk.c:99 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
 msgid "Wide latin"
 msgstr "全形英文"
 
-#: src/skk.c:438 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
+#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
 msgid "Skk"
 msgstr "Skk"
 
-#: src/skk.c:464
+#: src/skk.c:466
 msgid "Input Mode"
 msgstr "輸入模式"
 
@@ -96,7 +96,7 @@ msgstr "字典與規則"
 
 #: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
 #: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
-#: src/fcitx-skk.desc:50
+#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
 msgid "General"
 msgstr "一般"
 
@@ -151,3 +151,19 @@ msgstr "觸發顯示候選字視窗的按鍵次數"
 #: src/fcitx-skk.desc:52
 msgid "Show Annotation"
 msgstr "顯示注釋"
+
+#: src/fcitx-skk.desc:57
+msgid "Keys to Select from Candidate Window"
+msgstr ""
+
+#: src/fcitx-skk.desc:59
+msgid "Digit (0,1,2,...)"
+msgstr ""
+
+#: src/fcitx-skk.desc:60
+msgid "ABC (a,b,c,...)"
+msgstr ""
+
+#: src/fcitx-skk.desc:61
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr ""
