@@ -4,13 +4,13 @@
 #
 # Translators:
 # emasaka <emasaka@gmail.com>, 2014
-# shirou - しろう, 2013
+# WAKAYAMA Shirou <shirou.faw@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-12-08 12:40+0900\n"
-"PO-Revision-Date: 2014-12-08 12:43+0900\n"
+"POT-Creation-Date: 2014-12-08 06:02+0100\n"
+"PO-Revision-Date: 2014-02-04 11:28+0000\n"
 "Last-Translator: emasaka <emasaka@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
@@ -58,7 +58,7 @@ msgstr "辞書とタイピング方式"
 
 #: src/fcitx-skk.desc:59
 msgid "Digit (0,1,2,...)"
-msgstr "数字キー (0,1,2,...)"
+msgstr ""
 
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
@@ -104,7 +104,7 @@ msgstr "カタカナ"
 
 #: src/fcitx-skk.desc:57
 msgid "Keys to Select from Candidate Window"
-msgstr "候補ウィンドウからの選択キー"
+msgstr ""
 
 #: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
@@ -124,7 +124,7 @@ msgstr "句読点スタイル"
 
 #: src/fcitx-skk.desc:61
 msgid "Qwerty Center Row (a,s,d,...)"
-msgstr "Qwertyキーボード中央行 (a,s,d,...)"
+msgstr ""
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"

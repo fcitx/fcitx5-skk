@@ -4,14 +4,14 @@
 #
 # Translators:
 # Christopher Meng <cickumqt@gmail.com>, 2013
-# Xuetian Weng <wengxt@gmail.com>, 2013
+# csslayer <wengxt@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-27 12:02-0400\n"
+"POT-Creation-Date: 2014-12-08 06:02+0100\n"
 "PO-Revision-Date: 2013-10-27 15:06+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/fcitx/"
 "language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -40,6 +40,10 @@ msgstr "按键方案(&R):"
 msgid "&Type:"
 msgstr "类型(&T)："
 
+#: src/fcitx-skk.desc:60
+msgid "ABC (a,b,c,...)"
+msgstr ""
+
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
 msgstr "候选词列表"
@@ -52,13 +56,17 @@ msgstr "词典管理器"
 msgid "Dictionary and Rule"
 msgstr "词典和规则"
 
+#: src/fcitx-skk.desc:59
+msgid "Digit (0,1,2,...)"
+msgstr ""
+
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
 msgstr "直接输入"
 
 #: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
 #: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
-#: src/fcitx-skk.desc:50
+#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
 msgid "General"
 msgstr "常规"
 
@@ -94,6 +102,10 @@ msgstr "日语"
 msgid "Katakana"
 msgstr "片假名"
 
+#: src/fcitx-skk.desc:57
+msgid "Keys to Select from Candidate Window"
+msgstr ""
+
 #: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
 msgstr "英文"
@@ -109,6 +121,10 @@ msgstr "页面大小"
 #: src/fcitx-skk.desc:3
 msgid "Punctuation Style"
 msgstr "标点风格"
+
+#: src/fcitx-skk.desc:61
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr ""
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"

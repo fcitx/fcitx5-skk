@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# mar well <marwell.1980@freenet.de>, 2013
+# mar well <m.wellendorf@gmx.de>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-10-31 06:03-0400\n"
+"POT-Creation-Date: 2014-12-08 06:02+0100\n"
 "PO-Revision-Date: 2013-10-31 05:48+0000\n"
-"Last-Translator: mar well <marwell.1980@freenet.de>\n"
+"Last-Translator: mar well <m.wellendorf@gmx.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/fcitx/language/"
 "de/)\n"
 "Language: de\n"
@@ -39,6 +39,10 @@ msgstr "&Regel:"
 msgid "&Type:"
 msgstr "&Typ:"
 
+#: src/fcitx-skk.desc:60
+msgid "ABC (a,b,c,...)"
+msgstr ""
+
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
 msgstr "Layout der Kandidatenliste"
@@ -51,13 +55,17 @@ msgstr "Wörterbuchverwaltung"
 msgid "Dictionary and Rule"
 msgstr "Wörterbücher und Regeln"
 
+#: src/fcitx-skk.desc:59
+msgid "Digit (0,1,2,...)"
+msgstr ""
+
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
 msgstr "Direkte Eingabe"
 
 #: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
 #: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
-#: src/fcitx-skk.desc:50
+#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
 msgid "General"
 msgstr "Allgemein"
 
@@ -93,6 +101,10 @@ msgstr "Japanisch"
 msgid "Katakana"
 msgstr "Katakana"
 
+#: src/fcitx-skk.desc:57
+msgid "Keys to Select from Candidate Window"
+msgstr ""
+
 #: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
 msgstr "Latin"
@@ -108,6 +120,10 @@ msgstr "Seitengröße"
 #: src/fcitx-skk.desc:3
 msgid "Punctuation Style"
 msgstr "Stil der Interpunktion"
+
+#: src/fcitx-skk.desc:61
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr ""
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
