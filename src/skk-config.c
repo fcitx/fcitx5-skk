@@ -27,4 +27,5 @@ CONFIG_BINDING_REGISTER("General", "CandidateLayout", candidateLayout)
 CONFIG_BINDING_REGISTER("General", "NTriggersToShowCandWin", nTriggersToShowCandWin)
 CONFIG_BINDING_REGISTER("General", "ShowAnnotation", showAnnotation)
 CONFIG_BINDING_REGISTER("General", "EggLikeNewLine", eggLikeNewLine)
+CONFIG_BINDING_REGISTER("General", "CandidateChooseKey", candidateChooseKey) /* candidate selection keys */
 CONFIG_BINDING_END()

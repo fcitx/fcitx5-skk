@@ -33,6 +33,15 @@
 #define _(x) dgettext("fcitx-skk", x)
 #define N_(x) (x)
 
+#define ABCD_STR_CHOOSE "abcdefghij"
+#define ASDF_STR_CHOOSE "asdfghjkl;"
+
+typedef enum _FcitxSkkChooseKeyType {
+    ChooseDigit,
+    ChooseABCD,
+    ChooseASDF
+} FcitxSkkChooseKeyType;
+
 typedef struct _FcitxSkkConfig {
     FcitxGenericConfig gconfig;
     SkkPeriodStyle punctuationStyle;
@@ -42,6 +51,7 @@ typedef struct _FcitxSkkConfig {
     int pageSize;
     boolean showAnnotation;
     boolean eggLikeNewLine;
+    FcitxSkkChooseKeyType candidateChooseKey;
 } FcitxSkkConfig;
 
 typedef struct {

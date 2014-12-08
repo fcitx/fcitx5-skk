@@ -52,5 +52,15 @@ Type=Boolean
 Description=Show Annotation
 DefaultValue=True
 
+[General/CandidateChooseKey]
+Type=Enum
+Description=Keys to Select from Candidate Window
+EnumCount=3
+Enum0=Digit (0,1,2,...)
+Enum1=ABC (a,b,c,...)
+Enum2=Qwerty Center Row (a,s,d,...)
+DefaultValue=Digit (0,1,2,...)
+
+
 [DescriptionFile]
 LocaleDomain=fcitx-skk

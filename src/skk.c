@@ -630,7 +630,20 @@ FcitxSkkGetCandWords(void *arg)
     FcitxInputState* input = FcitxInstanceGetInputState(skk->owner);
     FcitxCandidateWordList* candList = FcitxInputStateGetCandidateList(input);
     SkkCandidateList* skkCandList = skk_context_get_candidates(skk->context);
-    FcitxCandidateWordSetChoose(candList, DIGIT_STR_CHOOSE);
+    switch (skk->config.candidateChooseKey){
+    case ChooseABCD:
+        FcitxCandidateWordSetChoose(candList, ABCD_STR_CHOOSE);
+        break;
+    case ChooseASDF:
+        FcitxCandidateWordSetChoose(candList, ASDF_STR_CHOOSE);
+        break;
+    case ChooseDigit:
+// FALL THRU
+    default:
+        FcitxCandidateWordSetChoose(candList, DIGIT_STR_CHOOSE);
+        break;
+    }
+
     FcitxCandidateWordSetPageSize(candList, skk->config.pageSize);
     FcitxCandidateWordSetLayoutHint(candList, skk->config.candidateLayout);
 
