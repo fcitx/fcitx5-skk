@@ -4,12 +4,13 @@
 #
 # Translators:
 # mar well <m.wellendorf@gmx.de>, 2013
+# mar well <m.wellendorf@gmx.de>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-12-08 06:02+0100\n"
-"PO-Revision-Date: 2013-10-31 05:48+0000\n"
+"POT-Creation-Date: 2014-12-09 12:02+0100\n"
+"PO-Revision-Date: 2014-12-09 09:44+0000\n"
 "Last-Translator: mar well <m.wellendorf@gmx.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/fcitx/language/"
 "de/)\n"
@@ -41,7 +42,7 @@ msgstr "&Typ:"
 
 #: src/fcitx-skk.desc:60
 msgid "ABC (a,b,c,...)"
-msgstr ""
+msgstr "ABC (a,b,c,...)"
 
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
@@ -57,7 +58,7 @@ msgstr "Wörterbücher und Regeln"
 
 #: src/fcitx-skk.desc:59
 msgid "Digit (0,1,2,...)"
-msgstr ""
+msgstr "Ziffer (0,1,2,...)"
 
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
@@ -103,7 +104,7 @@ msgstr "Katakana"
 
 #: src/fcitx-skk.desc:57
 msgid "Keys to Select from Candidate Window"
-msgstr ""
+msgstr "Auswahltaste für die Kandidaten"
 
 #: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
@@ -123,7 +124,7 @@ msgstr "Stil der Interpunktion"
 
 #: src/fcitx-skk.desc:61
 msgid "Qwerty Center Row (a,s,d,...)"
-msgstr ""
+msgstr "Mittlere Reihe der QWERTY Tastatur (a,s,d,...)"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
