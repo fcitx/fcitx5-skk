@@ -5,13 +5,14 @@
 # Translators:
 # Christopher Meng <cickumqt@gmail.com>, 2013
 # csslayer <wengxt@gmail.com>, 2013
+# wwj402 <wwj402@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2015-07-08 18:02+0200\n"
-"PO-Revision-Date: 2014-12-08 05:03+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2015-07-17 00:02+0200\n"
+"PO-Revision-Date: 2015-07-16 17:37+0000\n"
+"Last-Translator: wwj402 <wwj402@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/p/fcitx/language/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -42,7 +43,7 @@ msgstr "类型(&T)："
 
 #: src/fcitx-skk.desc:60
 msgid "ABC (a,b,c,...)"
-msgstr ""
+msgstr "字母(a,b,c,...)"
 
 #: src/fcitx-skk.desc:36
 msgid "Candidate List Layout"
@@ -58,7 +59,7 @@ msgstr "词典和规则"
 
 #: src/fcitx-skk.desc:59
 msgid "Digit (0,1,2,...)"
-msgstr ""
+msgstr "数字(0,1,2,...)"
 
 #: src/fcitx-skk.desc:19
 msgid "Direct input"
@@ -104,7 +105,7 @@ msgstr "片假名"
 
 #: src/fcitx-skk.desc:57
 msgid "Keys to Select from Candidate Window"
-msgstr ""
+msgstr "从候选窗口选择要选的键"
 
 #: src/skk.c:98 src/fcitx-skk.desc:7
 msgid "Latin"
@@ -124,7 +125,7 @@ msgstr "标点风格"
 
 #: src/fcitx-skk.desc:61
 msgid "Qwerty Center Row (a,s,d,...)"
-msgstr ""
+msgstr "Qwerty 键盘中心行 (a,s,d,...)"
 
 #: src/fcitx-skk.desc:31
 msgid "Return-key does not insert new line on commit"
