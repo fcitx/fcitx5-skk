@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Gökhan Kalayci <gkmediagokhan@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: fcitx\n"
+"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
+"POT-Creation-Date: 2014-12-08 12:40+0900\n"
+"PO-Revision-Date: 2017-04-20 20:34+0000\n"
+"Last-Translator: Gökhan Kalayci <gkmediagokhan@gmail.com>\n"
+"Language-Team: Turkish (http://www.transifex.com/fcitx/fcitx/language/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: gui/adddictdialog.cpp:35
+msgid "&Type:"
+msgstr "&Tip:"
+
+#: gui/adddictdialog.cpp:36
+msgid "&Path:"
+msgstr "&Yol:"
+
+#: gui/adddictdialog.cpp:37
+msgid "&Host:"
+msgstr "&Host:"
+
+#: gui/adddictdialog.cpp:38
+msgid "&Port:"
+msgstr "&Port:"
+
+#: gui/adddictdialog.cpp:39
+msgid "System"
+msgstr "Sistem"
+
+#: gui/adddictdialog.cpp:40
+msgid "User"
+msgstr "Kullanıcı"
+
+#: gui/adddictdialog.cpp:41
+msgid "Server"
+msgstr "Sunucu"
+
+#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
+msgid "Select Dictionary File"
+msgstr "Sözlük Dosyasını Seçin"
+
+#: gui/dictwidget.cpp:34
+msgid "&Rule:"
+msgstr "&Kural:"
+
+#: gui/dictwidget.cpp:61
+msgid "Dictionary Manager"
+msgstr "Sözlük Yönetimi"
+
+#: src/skk.c:95 src/fcitx-skk.desc:16
+msgid "Hiragana"
+msgstr "Hiragana"
+
+#: src/skk.c:96 src/fcitx-skk.desc:17
+msgid "Katakana"
+msgstr "Katakana"
+
+#: src/skk.c:97 src/fcitx-skk.desc:18
+msgid "Half width Katakana"
+msgstr "Yarı geniş Katakana"
+
+#: src/skk.c:98 src/fcitx-skk.desc:7
+msgid "Latin"
+msgstr "Latin"
+
+#: src/skk.c:99 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
+msgid "Wide latin"
+msgstr "Geniş latin"
+
+#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
+msgid "Skk"
+msgstr "Skk"
+
+#: src/skk.c:466
+msgid "Input Mode"
+msgstr "Giriş Yöntemi"
+
+#: src/fcitx-skk.conf.in:4
+msgid "Skk Input Method For Fcitx"
+msgstr "Fcitx için Skk Giriş Yöntemi"
+
+#: src/fcitx-skk.conf.in:9
+msgid "Dictionary and Rule"
+msgstr "Sözlük ve Kural"
+
+#: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
+#: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
+#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
+msgid "General"
+msgstr "Genel"
+
+#: src/fcitx-skk.desc:3
+msgid "Punctuation Style"
+msgstr "Noktalama İşareti Stili"
+
+#: src/fcitx-skk.desc:6
+msgid "Japanese"
+msgstr "Japonca"
+
+#: src/fcitx-skk.desc:9
+msgid "Wide latin Japanese"
+msgstr "Geniş latin Japonca"
+
+#: src/fcitx-skk.desc:13
+msgid "Initial Input Mode"
+msgstr "Başlangıç Giriş Modu"
+
+#: src/fcitx-skk.desc:19
+msgid "Direct input"
+msgstr "Doğrudan giriş"
+
+#: src/fcitx-skk.desc:24
+msgid "Page size"
+msgstr "Sayfa boyutu"
+
+#: src/fcitx-skk.desc:31
+msgid "Return-key does not insert new line on commit"
+msgstr "Dönüş anahtarı, tamamlandığında yeni satır eklemez"
+
+#: src/fcitx-skk.desc:36
+msgid "Candidate List Layout"
+msgstr "Aday Liste Düzeni"
+
+#: src/fcitx-skk.desc:38
+msgid "Global"
+msgstr "Küresel"
+
+#: src/fcitx-skk.desc:39
+msgid "Vertical"
+msgstr "Dikey"
+
+#: src/fcitx-skk.desc:40
+msgid "Horizontal"
+msgstr "Yatay"
+
+#: src/fcitx-skk.desc:45
+msgid "Number candidate of Triggers To Show Candidate Window"
+msgstr "Aday Penceresini Gösteren Tetikleyicilerin Aday Sayısı"
+
+#: src/fcitx-skk.desc:52
+msgid "Show Annotation"
+msgstr "Açıklamayı Göster"
+
+#: src/fcitx-skk.desc:57
+msgid "Keys to Select from Candidate Window"
+msgstr "Aday Pencereden Seçilecek Tuşlar"
+
+#: src/fcitx-skk.desc:59
+msgid "Digit (0,1,2,...)"
+msgstr "Sayısal (0,1,2,...)"
+
+#: src/fcitx-skk.desc:60
+msgid "ABC (a,b,c,...)"
+msgstr "ABC (a,b,c,...)"
+
+#: src/fcitx-skk.desc:61
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr "Qwerty Orta Dizi (a,s,d,...)"
