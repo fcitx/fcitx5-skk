@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christopher Meng <i@cicku.me>, 2013
 # csslayer <wengxt@gmail.com>, 2013
@@ -10,146 +10,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2015-12-11 23:18-0800\n"
+"POT-Creation-Date: 2014-12-08 12:40+0900\n"
 "PO-Revision-Date: 2015-07-16 17:37+0000\n"
 "Last-Translator: wwj402 <wwj402@gmail.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/fcitx/fcitx/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/fcitx/fcitx/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: gui/adddictdialog.cpp:37
-msgid "&Host:"
-msgstr "主机(&H)："
-
-#: gui/adddictdialog.cpp:36
-msgid "&Path:"
-msgstr "路径(&P):"
-
-#: gui/adddictdialog.cpp:38
-msgid "&Port:"
-msgstr "端口(&P)："
-
-#: gui/dictwidget.cpp:34
-msgid "&Rule:"
-msgstr "按键方案(&R):"
 
 #: gui/adddictdialog.cpp:35
 msgid "&Type:"
 msgstr "类型(&T)："
 
-#: src/fcitx-skk.desc:60
-msgid "ABC (a,b,c,...)"
-msgstr "字母(a,b,c,...)"
+#: gui/adddictdialog.cpp:36
+msgid "&Path:"
+msgstr "路径(&P):"
 
-#: src/fcitx-skk.desc:36
-msgid "Candidate List Layout"
-msgstr "候选词列表"
+#: gui/adddictdialog.cpp:37
+msgid "&Host:"
+msgstr "主机(&H)："
 
-#: gui/dictwidget.cpp:61
-msgid "Dictionary Manager"
-msgstr "词典管理器"
-
-#: src/fcitx-skk.conf.in:9
-msgid "Dictionary and Rule"
-msgstr "词典和规则"
-
-#: src/fcitx-skk.desc:59
-msgid "Digit (0,1,2,...)"
-msgstr "数字(0,1,2,...)"
-
-#: src/fcitx-skk.desc:19
-msgid "Direct input"
-msgstr "直接输入"
-
-#: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
-#: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
-#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
-msgid "General"
-msgstr "常规"
-
-#: src/fcitx-skk.desc:38
-msgid "Global"
-msgstr "全局"
-
-#: src/skk.c:97 src/fcitx-skk.desc:18
-msgid "Half width Katakana"
-msgstr "半角片假名"
-
-#: src/skk.c:95 src/fcitx-skk.desc:16
-msgid "Hiragana"
-msgstr "平假名"
-
-#: src/fcitx-skk.desc:40
-msgid "Horizontal"
-msgstr "横向"
-
-#: src/fcitx-skk.desc:13
-msgid "Initial Input Mode"
-msgstr "初始输入模式"
-
-#: src/skk.c:466
-msgid "Input Mode"
-msgstr "输入模式"
-
-#: src/fcitx-skk.desc:6
-msgid "Japanese"
-msgstr "日语"
-
-#: src/skk.c:96 src/fcitx-skk.desc:17
-msgid "Katakana"
-msgstr "片假名"
-
-#: src/fcitx-skk.desc:57
-msgid "Keys to Select from Candidate Window"
-msgstr "从候选窗口选择要选的键"
-
-#: src/skk.c:98 src/fcitx-skk.desc:7
-msgid "Latin"
-msgstr "英文"
-
-#: src/fcitx-skk.desc:45
-msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr "触发显示候选词窗口的按键次数"
-
-#: src/fcitx-skk.desc:24
-msgid "Page size"
-msgstr "页面大小"
-
-#: src/fcitx-skk.desc:3
-msgid "Punctuation Style"
-msgstr "标点风格"
-
-#: src/fcitx-skk.desc:61
-msgid "Qwerty Center Row (a,s,d,...)"
-msgstr "Qwerty 键盘中心行 (a,s,d,...)"
-
-#: src/fcitx-skk.desc:31
-msgid "Return-key does not insert new line on commit"
-msgstr "回车提交时不插入新行"
-
-#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
-msgid "Select Dictionary File"
-msgstr "选择词典文件"
-
-#: gui/adddictdialog.cpp:41
-msgid "Server"
-msgstr "服务器"
-
-#: src/fcitx-skk.desc:52
-msgid "Show Annotation"
-msgstr "显示注释"
-
-#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
-msgid "Skk"
-msgstr "Skk"
-
-#: src/fcitx-skk.conf.in:4
-msgid "Skk Input Method For Fcitx"
-msgstr "Fcitx 的 Skk 日语输入法"
+#: gui/adddictdialog.cpp:38
+msgid "&Port:"
+msgstr "端口(&P)："
 
 #: gui/adddictdialog.cpp:39
 msgid "System"
@@ -159,14 +44,128 @@ msgstr "系统"
 msgid "User"
 msgstr "用户"
 
-#: src/fcitx-skk.desc:39
-msgid "Vertical"
-msgstr "纵向"
+#: gui/adddictdialog.cpp:41
+msgid "Server"
+msgstr "服务器"
+
+#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
+msgid "Select Dictionary File"
+msgstr "选择词典文件"
+
+#: gui/dictwidget.cpp:34
+msgid "&Rule:"
+msgstr "按键方案(&R):"
+
+#: gui/dictwidget.cpp:61
+msgid "Dictionary Manager"
+msgstr "词典管理器"
+
+#: src/skk.c:95 src/fcitx-skk.desc:16
+msgid "Hiragana"
+msgstr "平假名"
+
+#: src/skk.c:96 src/fcitx-skk.desc:17
+msgid "Katakana"
+msgstr "片假名"
+
+#: src/skk.c:97 src/fcitx-skk.desc:18
+msgid "Half width Katakana"
+msgstr "半角片假名"
+
+#: src/skk.c:98 src/fcitx-skk.desc:7
+msgid "Latin"
+msgstr "英文"
 
 #: src/skk.c:99 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
 msgid "Wide latin"
 msgstr "全角英文"
 
+#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
+msgid "Skk"
+msgstr "Skk"
+
+#: src/skk.c:466
+msgid "Input Mode"
+msgstr "输入模式"
+
+#: src/fcitx-skk.conf.in:4
+msgid "Skk Input Method For Fcitx"
+msgstr "Fcitx 的 Skk 日语输入法"
+
+#: src/fcitx-skk.conf.in:9
+msgid "Dictionary and Rule"
+msgstr "词典和规则"
+
+#: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
+#: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
+#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
+msgid "General"
+msgstr "常规"
+
+#: src/fcitx-skk.desc:3
+msgid "Punctuation Style"
+msgstr "标点风格"
+
+#: src/fcitx-skk.desc:6
+msgid "Japanese"
+msgstr "日语"
+
 #: src/fcitx-skk.desc:9
 msgid "Wide latin Japanese"
 msgstr "全角英文日语"
+
+#: src/fcitx-skk.desc:13
+msgid "Initial Input Mode"
+msgstr "初始输入模式"
+
+#: src/fcitx-skk.desc:19
+msgid "Direct input"
+msgstr "直接输入"
+
+#: src/fcitx-skk.desc:24
+msgid "Page size"
+msgstr "页面大小"
+
+#: src/fcitx-skk.desc:31
+msgid "Return-key does not insert new line on commit"
+msgstr "回车提交时不插入新行"
+
+#: src/fcitx-skk.desc:36
+msgid "Candidate List Layout"
+msgstr "候选词列表"
+
+#: src/fcitx-skk.desc:38
+msgid "Global"
+msgstr "全局"
+
+#: src/fcitx-skk.desc:39
+msgid "Vertical"
+msgstr "纵向"
+
+#: src/fcitx-skk.desc:40
+msgid "Horizontal"
+msgstr "横向"
+
+#: src/fcitx-skk.desc:45
+msgid "Number candidate of Triggers To Show Candidate Window"
+msgstr "触发显示候选词窗口的按键次数"
+
+#: src/fcitx-skk.desc:52
+msgid "Show Annotation"
+msgstr "显示注释"
+
+#: src/fcitx-skk.desc:57
+msgid "Keys to Select from Candidate Window"
+msgstr "从候选窗口选择要选的键"
+
+#: src/fcitx-skk.desc:59
+msgid "Digit (0,1,2,...)"
+msgstr "数字(0,1,2,...)"
+
+#: src/fcitx-skk.desc:60
+msgid "ABC (a,b,c,...)"
+msgstr "字母(a,b,c,...)"
+
+#: src/fcitx-skk.desc:61
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr "Qwerty 键盘中心行 (a,s,d,...)"
