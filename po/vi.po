@@ -1,38 +1,153 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Trong Dzang <contact@bizover.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-12-08 12:40+0900\n"
+"POT-Creation-Date: 2017-06-09 07:37-0700\n"
 "PO-Revision-Date: 2014-12-08 05:03+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>\n"
-"Language-Team: Vietnamese (http://www.transifex.com/fcitx/fcitx/language/vi/)\n"
+"Language-Team: Vietnamese (http://www.transifex.com/fcitx/fcitx/language/"
+"vi/)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: gui/adddictdialog.cpp:35
-msgid "&Type:"
+#: gui/adddictdialog.cpp:37
+msgid "&Host:"
 msgstr ""
 
 #: gui/adddictdialog.cpp:36
 msgid "&Path:"
 msgstr ""
 
-#: gui/adddictdialog.cpp:37
-msgid "&Host:"
-msgstr ""
-
 #: gui/adddictdialog.cpp:38
 msgid "&Port:"
 msgstr ""
+
+#: gui/dictwidget.cpp:34
+msgid "&Rule:"
+msgstr ""
+
+#: gui/adddictdialog.cpp:35
+msgid "&Type:"
+msgstr ""
+
+#: src/fcitx-skk.desc:60
+msgid "ABC (a,b,c,...)"
+msgstr ""
+
+#: src/fcitx-skk.desc:36
+msgid "Candidate List Layout"
+msgstr ""
+
+#: gui/dictwidget.cpp:61
+msgid "Dictionary Manager"
+msgstr ""
+
+#: src/fcitx-skk.conf.in:9
+msgid "Dictionary and Rule"
+msgstr ""
+
+#: src/fcitx-skk.desc:59
+msgid "Digit (0,1,2,...)"
+msgstr ""
+
+#: src/fcitx-skk.desc:19
+msgid "Direct input"
+msgstr ""
+
+#: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
+#: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
+#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
+msgid "General"
+msgstr ""
+
+#: src/fcitx-skk.desc:38
+msgid "Global"
+msgstr ""
+
+#: src/skk.c:97 src/fcitx-skk.desc:18
+msgid "Half width Katakana"
+msgstr ""
+
+#: src/skk.c:95 src/fcitx-skk.desc:16
+msgid "Hiragana"
+msgstr ""
+
+#: src/fcitx-skk.desc:40
+msgid "Horizontal"
+msgstr ""
+
+#: src/fcitx-skk.desc:13
+msgid "Initial Input Mode"
+msgstr ""
+
+#: src/skk.c:466
+msgid "Input Mode"
+msgstr ""
+
+#: src/fcitx-skk.desc:6
+msgid "Japanese"
+msgstr ""
+
+#: src/skk.c:96 src/fcitx-skk.desc:17
+msgid "Katakana"
+msgstr ""
+
+#: src/fcitx-skk.desc:57
+msgid "Keys to Select from Candidate Window"
+msgstr ""
+
+#: src/skk.c:98 src/fcitx-skk.desc:7
+msgid "Latin"
+msgstr ""
+
+#: src/fcitx-skk.desc:45
+msgid "Number candidate of Triggers To Show Candidate Window"
+msgstr ""
+
+#: src/fcitx-skk.desc:24
+msgid "Page size"
+msgstr ""
+
+#: src/fcitx-skk.desc:3
+msgid "Punctuation Style"
+msgstr ""
+
+#: src/fcitx-skk.desc:61
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr ""
+
+#: src/fcitx-skk.desc:31
+msgid "Return-key does not insert new line on commit"
+msgstr ""
+
+#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
+msgid "Select Dictionary File"
+msgstr ""
+
+#: gui/adddictdialog.cpp:41
+msgid "Server"
+msgstr ""
+
+#: src/fcitx-skk.desc:52
+msgid "Show Annotation"
+msgstr ""
+
+#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
+msgid "Skk"
+msgstr "Skk"
+
+#: src/fcitx-skk.conf.in:4
+msgid "Skk Input Method For Fcitx"
+msgstr "Bộ nhập liệu Skk cho Fcitx"
 
 #: gui/adddictdialog.cpp:39
 msgid "System"
@@ -42,128 +157,14 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: gui/adddictdialog.cpp:41
-msgid "Server"
-msgstr ""
-
-#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
-msgid "Select Dictionary File"
-msgstr ""
-
-#: gui/dictwidget.cpp:34
-msgid "&Rule:"
-msgstr ""
-
-#: gui/dictwidget.cpp:61
-msgid "Dictionary Manager"
-msgstr ""
-
-#: src/skk.c:95 src/fcitx-skk.desc:16
-msgid "Hiragana"
-msgstr ""
-
-#: src/skk.c:96 src/fcitx-skk.desc:17
-msgid "Katakana"
-msgstr ""
-
-#: src/skk.c:97 src/fcitx-skk.desc:18
-msgid "Half width Katakana"
-msgstr ""
-
-#: src/skk.c:98 src/fcitx-skk.desc:7
-msgid "Latin"
+#: src/fcitx-skk.desc:39
+msgid "Vertical"
 msgstr ""
 
 #: src/skk.c:99 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
 msgid "Wide latin"
 msgstr ""
 
-#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
-msgid "Skk"
-msgstr "Skk"
-
-#: src/skk.c:466
-msgid "Input Mode"
-msgstr ""
-
-#: src/fcitx-skk.conf.in:4
-msgid "Skk Input Method For Fcitx"
-msgstr "Bộ nhập liệu Skk cho Fcitx"
-
-#: src/fcitx-skk.conf.in:9
-msgid "Dictionary and Rule"
-msgstr ""
-
-#: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
-#: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
-#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
-msgid "General"
-msgstr ""
-
-#: src/fcitx-skk.desc:3
-msgid "Punctuation Style"
-msgstr ""
-
-#: src/fcitx-skk.desc:6
-msgid "Japanese"
-msgstr ""
-
 #: src/fcitx-skk.desc:9
 msgid "Wide latin Japanese"
-msgstr ""
-
-#: src/fcitx-skk.desc:13
-msgid "Initial Input Mode"
-msgstr ""
-
-#: src/fcitx-skk.desc:19
-msgid "Direct input"
-msgstr ""
-
-#: src/fcitx-skk.desc:24
-msgid "Page size"
-msgstr ""
-
-#: src/fcitx-skk.desc:31
-msgid "Return-key does not insert new line on commit"
-msgstr ""
-
-#: src/fcitx-skk.desc:36
-msgid "Candidate List Layout"
-msgstr ""
-
-#: src/fcitx-skk.desc:38
-msgid "Global"
-msgstr ""
-
-#: src/fcitx-skk.desc:39
-msgid "Vertical"
-msgstr ""
-
-#: src/fcitx-skk.desc:40
-msgid "Horizontal"
-msgstr ""
-
-#: src/fcitx-skk.desc:45
-msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr ""
-
-#: src/fcitx-skk.desc:52
-msgid "Show Annotation"
-msgstr ""
-
-#: src/fcitx-skk.desc:57
-msgid "Keys to Select from Candidate Window"
-msgstr ""
-
-#: src/fcitx-skk.desc:59
-msgid "Digit (0,1,2,...)"
-msgstr ""
-
-#: src/fcitx-skk.desc:60
-msgid "ABC (a,b,c,...)"
-msgstr ""
-
-#: src/fcitx-skk.desc:61
-msgid "Qwerty Center Row (a,s,d,...)"
 msgstr ""
