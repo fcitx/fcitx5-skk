@@ -1,38 +1,153 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Walter Garcia-Fontes <walter.garcia@upf.edu>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-12-08 12:40+0900\n"
-"PO-Revision-Date: 2017-01-08 08:06+0000\n"
+"POT-Creation-Date: 2017-09-14 16:03-0700\n"
+"PO-Revision-Date: 2017-08-03 16:58+0000\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan (http://www.transifex.com/fcitx/fcitx/language/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: gui/adddictdialog.cpp:35
-msgid "&Type:"
-msgstr "&Tipus:"
-
-#: gui/adddictdialog.cpp:36
-msgid "&Path:"
-msgstr "&Camí:"
 
 #: gui/adddictdialog.cpp:37
 msgid "&Host:"
 msgstr "&Ordinador:"
 
+#: gui/adddictdialog.cpp:36
+msgid "&Path:"
+msgstr "&Camí:"
+
 #: gui/adddictdialog.cpp:38
 msgid "&Port:"
 msgstr "&Port:"
+
+#: gui/dictwidget.cpp:34
+msgid "&Rule:"
+msgstr "&Regla"
+
+#: gui/adddictdialog.cpp:35
+msgid "&Type:"
+msgstr "&Tipus:"
+
+#: src/fcitx-skk.desc:60
+msgid "ABC (a,b,c,...)"
+msgstr "ABC (a,b,c,...)"
+
+#: src/fcitx-skk.desc:36
+msgid "Candidate List Layout"
+msgstr "Disposició de la llista de candidates"
+
+#: gui/dictwidget.cpp:61
+msgid "Dictionary Manager"
+msgstr "Gestor de diccionari"
+
+#: src/fcitx-skk.conf.in:9
+msgid "Dictionary and Rule"
+msgstr "Diccionari i regla"
+
+#: src/fcitx-skk.desc:59
+msgid "Digit (0,1,2,...)"
+msgstr "Dígit (0,1,2,...)"
+
+#: src/fcitx-skk.desc:19
+msgid "Direct input"
+msgstr "Entrada directa"
+
+#: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
+#: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
+#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
+msgid "General"
+msgstr "General"
+
+#: src/fcitx-skk.desc:38
+msgid "Global"
+msgstr "Global"
+
+#: src/skk.c:97 src/fcitx-skk.desc:18
+msgid "Half width Katakana"
+msgstr "Katakana amplada mitjana"
+
+#: src/skk.c:95 src/fcitx-skk.desc:16
+msgid "Hiragana"
+msgstr "Hiragana"
+
+#: src/fcitx-skk.desc:40
+msgid "Horizontal"
+msgstr "Horitzontal"
+
+#: src/fcitx-skk.desc:13
+msgid "Initial Input Mode"
+msgstr "Mètode d'entrada inicial"
+
+#: src/skk.c:466
+msgid "Input Mode"
+msgstr "Mode d'entrada"
+
+#: src/fcitx-skk.desc:6
+msgid "Japanese"
+msgstr "Japonès"
+
+#: src/skk.c:96 src/fcitx-skk.desc:17
+msgid "Katakana"
+msgstr "Katakana"
+
+#: src/fcitx-skk.desc:57
+msgid "Keys to Select from Candidate Window"
+msgstr "Tecles per seleccionar de la finestra de candidates"
+
+#: src/skk.c:98 src/fcitx-skk.desc:7
+msgid "Latin"
+msgstr "Llatí"
+
+#: src/fcitx-skk.desc:45
+msgid "Number candidate of Triggers To Show Candidate Window"
+msgstr ""
+"Nombre de candidates d'activadors per mostrar la finestra de candidates"
+
+#: src/fcitx-skk.desc:24
+msgid "Page size"
+msgstr "Mida de pàgina"
+
+#: src/fcitx-skk.desc:3
+msgid "Punctuation Style"
+msgstr "Estil de puntuació"
+
+#: src/fcitx-skk.desc:61
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr "Fila central qwerty (a,s,d,...)"
+
+#: src/fcitx-skk.desc:31
+msgid "Return-key does not insert new line on commit"
+msgstr "La tecla intro no insereix una línia nova a l'enviament"
+
+#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
+msgid "Select Dictionary File"
+msgstr "Selecciona el fitxer de diccionari"
+
+#: gui/adddictdialog.cpp:41
+msgid "Server"
+msgstr "Servidor"
+
+#: src/fcitx-skk.desc:52
+msgid "Show Annotation"
+msgstr "Mostra l'anotació"
+
+#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
+msgid "Skk"
+msgstr "Skk"
+
+#: src/fcitx-skk.conf.in:4
+msgid "Skk Input Method For Fcitx"
+msgstr "Mètode d'entrada skk per al fcitx"
 
 #: gui/adddictdialog.cpp:39
 msgid "System"
@@ -42,128 +157,14 @@ msgstr "Sistema"
 msgid "User"
 msgstr "Usuari"
 
-#: gui/adddictdialog.cpp:41
-msgid "Server"
-msgstr "Servidor"
-
-#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
-msgid "Select Dictionary File"
-msgstr "Selecciona el fitxer de diccionari"
-
-#: gui/dictwidget.cpp:34
-msgid "&Rule:"
-msgstr "&Regla"
-
-#: gui/dictwidget.cpp:61
-msgid "Dictionary Manager"
-msgstr "Gestor de diccionari"
-
-#: src/skk.c:95 src/fcitx-skk.desc:16
-msgid "Hiragana"
-msgstr "Hiragana"
-
-#: src/skk.c:96 src/fcitx-skk.desc:17
-msgid "Katakana"
-msgstr "Katakana"
-
-#: src/skk.c:97 src/fcitx-skk.desc:18
-msgid "Half width Katakana"
-msgstr "Katakana amplada mitjana"
-
-#: src/skk.c:98 src/fcitx-skk.desc:7
-msgid "Latin"
-msgstr "Llatí"
+#: src/fcitx-skk.desc:39
+msgid "Vertical"
+msgstr "Vertical"
 
 #: src/skk.c:99 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
 msgid "Wide latin"
 msgstr "Llatí ample"
 
-#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
-msgid "Skk"
-msgstr "Skk"
-
-#: src/skk.c:466
-msgid "Input Mode"
-msgstr "Mode d'entrada"
-
-#: src/fcitx-skk.conf.in:4
-msgid "Skk Input Method For Fcitx"
-msgstr "Mètode d'entrada skk per al fcitx"
-
-#: src/fcitx-skk.conf.in:9
-msgid "Dictionary and Rule"
-msgstr "Diccionari i regla"
-
-#: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
-#: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
-#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
-msgid "General"
-msgstr "General"
-
-#: src/fcitx-skk.desc:3
-msgid "Punctuation Style"
-msgstr "Estil de puntuació"
-
-#: src/fcitx-skk.desc:6
-msgid "Japanese"
-msgstr "Japonès"
-
 #: src/fcitx-skk.desc:9
 msgid "Wide latin Japanese"
 msgstr "Japonès llatí ample"
-
-#: src/fcitx-skk.desc:13
-msgid "Initial Input Mode"
-msgstr "Mètode d'entrada inicial"
-
-#: src/fcitx-skk.desc:19
-msgid "Direct input"
-msgstr "Entrada directa"
-
-#: src/fcitx-skk.desc:24
-msgid "Page size"
-msgstr "Mida de pàgina"
-
-#: src/fcitx-skk.desc:31
-msgid "Return-key does not insert new line on commit"
-msgstr "La tecla intro no insereix una línia nova a l'enviament"
-
-#: src/fcitx-skk.desc:36
-msgid "Candidate List Layout"
-msgstr "Disposició de la llista de candidates"
-
-#: src/fcitx-skk.desc:38
-msgid "Global"
-msgstr "Global"
-
-#: src/fcitx-skk.desc:39
-msgid "Vertical"
-msgstr "Vertical"
-
-#: src/fcitx-skk.desc:40
-msgid "Horizontal"
-msgstr "Horitzontal"
-
-#: src/fcitx-skk.desc:45
-msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr "Nombre de candidates d'activadors per mostrar la finestra de candidates"
-
-#: src/fcitx-skk.desc:52
-msgid "Show Annotation"
-msgstr "Mostra l'anotació"
-
-#: src/fcitx-skk.desc:57
-msgid "Keys to Select from Candidate Window"
-msgstr "Tecles per seleccionar de la finestra de candidates"
-
-#: src/fcitx-skk.desc:59
-msgid "Digit (0,1,2,...)"
-msgstr "Dígit (0,1,2,...)"
-
-#: src/fcitx-skk.desc:60
-msgid "ABC (a,b,c,...)"
-msgstr "ABC (a,b,c,...)"
-
-#: src/fcitx-skk.desc:61
-msgid "Qwerty Center Row (a,s,d,...)"
-msgstr "Fila central qwerty (a,s,d,...)"
