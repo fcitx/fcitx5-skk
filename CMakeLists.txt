@@ -1,30 +1,22 @@
 cmake_minimum_required(VERSION 3.4.0)
 project(fcitx5-skk VERSION 0.0.1)
 
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
-
+find_package(ECM REQUIRED 1.0.0)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH}) 
 option(ENABLE_QT "Enable Qt for GUI configuration" On)
 
+include(ECMUninstallTarget)
+include(FeatureSummary)
+
+find_package(PkgConfig REQUIRED)
 find_package(Fcitx5Core REQUIRED)
-include(FindPkgConfig)
-pkg_check_modules(LIBSKK "libskk" REQUIRED)
+pkg_check_modules(LibSKK IMPORTED_TARGET "libskk" REQUIRED)
 
-set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_C_FLAGS}")
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
-set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}")
-set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_MODULE_LINKER_FLAGS}")
+include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
 
-if (NOT SKK_DEFAULT_PATH)
-    set(SKK_DEFAULT_PATH "/usr/share/skk/SKK-JISYO.L")
-endif ()
+option(SKK_DEFAULT_PATH "Default path of SKK" "/usr/share/skk/SKK-JISYO.L")
 
-if(NOT DEFINED LIB_INSTALL_DIR)
-  set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib)
-endif()
-
-if(NOT DEFINED LOCALEDIR)
-  set(LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
-endif()
+include(GNUInstallDirs)
 
 #if (ENABLE_QT)
 #find_package(Qt 4.8 REQUIRED)
@@ -40,3 +32,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 add_subdirectory(src)
 #add_subdirectory(data)
 #add_subdirectory(gui)
+
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
