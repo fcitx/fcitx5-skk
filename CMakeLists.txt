@@ -37,6 +37,6 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 #add_subdirectory(po)
-#add_subdirectory(src)
+add_subdirectory(src)
 #add_subdirectory(data)
 #add_subdirectory(gui)
