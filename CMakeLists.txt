@@ -1,10 +1,11 @@
-cmake_minimum_required(VERSION 2.8.6)
-project(fcitx-skk)
+cmake_minimum_required(VERSION 3.4.0)
+project(fcitx5-skk VERSION 0.0.1)
 
+find_package(ECM REQUIRED 1.0.0)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 option(ENABLE_QT "Enable Qt for GUI configuration" On)
 
-find_package(Fcitx 4.2.8 REQUIRED)
+find_package(Fcitx5Core REQUIRED)
 include(FindPkgConfig)
 pkg_check_modules(LIBSKK "libskk" REQUIRED)
 _fcitx_add_uninstall_target()
@@ -26,17 +27,17 @@ if(NOT DEFINED LOCALEDIR)
   set(LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
 endif()
 
-if (ENABLE_QT)
-find_package(Qt 4.8 REQUIRED)
-pkg_check_modules(FCITX_QT "fcitx-qt>=4.2.8" REQUIRED)
-endif ()
+#if (ENABLE_QT)
+#find_package(Qt 4.8 REQUIRED)
+#pkg_check_modules(FCITX_QT "fcitx-qt>=4.2.8" REQUIRED)
+#endif ()
 
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
   "${CMAKE_CURRENT_BINARY_DIR}/config.h"
   IMMEDIATE @ONLY)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_subdirectory(po)
-add_subdirectory(src)
-add_subdirectory(data)
-add_subdirectory(gui)
+#add_subdirectory(po)
+#add_subdirectory(src)
+#add_subdirectory(data)
+#add_subdirectory(gui)
