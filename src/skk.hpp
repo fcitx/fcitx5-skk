@@ -45,7 +45,7 @@ public:
 
 class SkkState final: public InputContextProperty {
 public: 
-    SkkState(SkkEngine* engine) : context_{engine -> context()} {}
+    SkkState(SkkEngine* engine);
 private:
     SkkContext *context_;
 };

@@ -1,24 +1,30 @@
 #include "skk.hpp"
 namespace fcitx {
-    SkkEngine::SkkEngine(Instance *instance):
-        instance_{instance},
-        factory_([this](InputContext &) { return new SkkState(this); }) 
+    SkkState::SkkState(SkkEngine *engine):
+        context_{skk_context_new(0, 0)}
     {
-        skk_context_set_period_style(context_.get(), SKK_PERIOD_STYLE_JA_JA);
-        skk_context_set_input_mode(context_.get(), SKK_INPUT_MODE_HIRAGANA);
+        skk_context_set_period_style(context_, SKK_PERIOD_STYLE_JA_JA);
+        skk_context_set_input_mode(context_, SKK_INPUT_MODE_HIRAGANA);
 
-        instance_ -> inputContextManager().registerProperty("skkState", &factory_);
     
-        char* AUTO_START_HENKAN_KEYWORDS[] = {
+        gchar* AUTO_START_HENKAN_KEYWORDS[] = {
             "を", "、", "。", "．", "，", "？", "」",
             "！", "；", "：", ")", ";", ":", "）",
             "”", "】", "』", "》", "〉", "｝", "］",
             "〕", "}", "]", "?", ".", ",", "!"
         };
         
-        skk_context_set_auto_start_henkan_keywords(context_.get(), 
+        skk_context_set_auto_start_henkan_keywords(context_, 
                                                    AUTO_START_HENKAN_KEYWORDS,        
                                                    G_N_ELEMENTS(AUTO_START_HENKAN_KEYWORDS));
+    }
+    
+    SkkEngine::SkkEngine(Instance *instance):
+        instance_{instance},
+        factory_([this](InputContext &) { return new SkkState(this); }) 
+    {
+       
+        instance_ -> inputContextManager().registerProperty("skkState", &factory_);
 
     
 
