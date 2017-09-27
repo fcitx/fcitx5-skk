@@ -45,11 +45,14 @@ class SkkState final: public InputContextProperty {
 public: 
     SkkState(SkkEngine* engine);
 private:
-    std::unique_ptr<SkkContext, decltype(&g_object_unref)> context_;
     SkkEngine *engine_;
+    std::unique_ptr<SkkContext, decltype(&g_object_unref)> context_;
+
     
-    static void input_mode_changed_cb(GObject * gobject, GParamSpec *pspec, gpointer userdata){}
+    void UpdateInputMode();
     
+    static void input_mode_changed_cb(GObject * gobject, GParamSpec *pspec, gpointer user_data);
+    gulong input_mode_changed_hnd;
 };
 
 
