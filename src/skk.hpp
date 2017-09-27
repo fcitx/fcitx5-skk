@@ -29,6 +29,4 @@ public:
     }
 };
 
-FCITX_ADDON_FACTORY(SkkAddonFactory)
-
 }

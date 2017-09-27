@@ -26,3 +26,6 @@ namespace fcitx {
 
     SkkEngine::~SkkEngine() {}
 }
+
+
+FCITX_ADDON_FACTORY(SkkAddonFactory)
