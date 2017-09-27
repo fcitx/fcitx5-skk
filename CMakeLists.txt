@@ -10,7 +10,8 @@ include(FeatureSummary)
 
 find_package(PkgConfig REQUIRED)
 find_package(Fcitx5Core REQUIRED)
-pkg_check_modules(LibSKK IMPORTED_TARGET "libskk" REQUIRED)
+pkg_check_modules(GObject2 IMPORTED_TARGET "gobject-2.0" REQUIRED)
+find_package(LibSKK REQUIRED)
 
 include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
 

@@ -6,7 +6,8 @@ add_library(skk MODULE ${SKK_SOURCES})
 target_link_libraries(skk
     Fcitx5::Core
     Fcitx5::Config
-    PkgConfig::LibSKK
+    PkgConfig::GObject2
+    LibSKK::LibSKK
 )
 set_target_properties(skk PROPERTIES PREFIX "")
 install(TARGETS skk DESTINATION "${CMAKE_INSTALL_LIBDIR}/fcitx5")
