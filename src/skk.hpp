@@ -27,12 +27,10 @@ public:
     void save() override;
     
     auto &factory() { return factory_; }
-    SkkContext* context() { return context_.get(); }
     
 private:
     Instance *instance_;
     FactoryFor<SkkState> factory_;
-    std::unique_ptr<SkkContext> context_;
 };
 
 class SkkAddonFactory final: public AddonFactory {
@@ -47,7 +45,7 @@ class SkkState final: public InputContextProperty {
 public: 
     SkkState(SkkEngine* engine);
 private:
-    SkkContext *context_;
+    std::unique_ptr<SkkContext, decltype(&g_object_unref)> context_;
 };
 
 

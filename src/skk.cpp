@@ -1,10 +1,10 @@
 #include "skk.hpp"
 namespace fcitx {
     SkkState::SkkState(SkkEngine *engine):
-        context_{skk_context_new(0, 0)}
+        context_(skk_context_new(0, 0), &g_object_unref)
     {
-        skk_context_set_period_style(context_, SKK_PERIOD_STYLE_JA_JA);
-        skk_context_set_input_mode(context_, SKK_INPUT_MODE_HIRAGANA);
+        skk_context_set_period_style(context_.get(), SKK_PERIOD_STYLE_JA_JA);
+        skk_context_set_input_mode(context_.get(), SKK_INPUT_MODE_HIRAGANA);
 
     
         gchar* AUTO_START_HENKAN_KEYWORDS[] = {
@@ -14,7 +14,7 @@ namespace fcitx {
             "〕", "}", "]", "?", ".", ",", "!"
         };
         
-        skk_context_set_auto_start_henkan_keywords(context_, 
+        skk_context_set_auto_start_henkan_keywords(context_.get(), 
                                                    AUTO_START_HENKAN_KEYWORDS,        
                                                    G_N_ELEMENTS(AUTO_START_HENKAN_KEYWORDS));
     }
@@ -23,6 +23,7 @@ namespace fcitx {
         instance_{instance},
         factory_([this](InputContext &) { return new SkkState(this); }) 
     {
+        skk_init();
        
         instance_ -> inputContextManager().registerProperty("skkState", &factory_);
 
