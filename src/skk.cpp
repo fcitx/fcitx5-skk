@@ -4,19 +4,19 @@ namespace fcitx {
         instance_{instance},
         factory_([this](InputContext &) { return new SkkState(this); }) 
     {
-        skk_context_set_period_style(context_, SKK_PERIOD_STYLE_JA_JA);
-        skk_context_set_input_mode(context_, SKK_INPUT_MODE_HIRAGANA);
+        skk_context_set_period_style(context_.get(), SKK_PERIOD_STYLE_JA_JA);
+        skk_context_set_input_mode(context_.get(), SKK_INPUT_MODE_HIRAGANA);
 
         instance_ -> inputContextManager().registerProperty("skkState", &factory_);
     
-        wchar_t* AUTO_START_HENKAN_KEYWORDS[] = {
+        char* AUTO_START_HENKAN_KEYWORDS[] = {
             "を", "、", "。", "．", "，", "？", "」",
             "！", "；", "：", ")", ";", ":", "）",
             "”", "】", "』", "》", "〉", "｝", "］",
             "〕", "}", "]", "?", ".", ",", "!"
         };
         
-        skk_context_set_auto_start_henkan_keywords(context_, 
+        skk_context_set_auto_start_henkan_keywords(context_.get(), 
                                                    AUTO_START_HENKAN_KEYWORDS,        
                                                    G_N_ELEMENTS(AUTO_START_HENKAN_KEYWORDS));
 
@@ -47,4 +47,4 @@ namespace fcitx {
 }
 
 
-FCITX_ADDON_FACTORY(SkkAddonFactory)
+FCITX_ADDON_FACTORY(fcitx::SkkAddonFactory)

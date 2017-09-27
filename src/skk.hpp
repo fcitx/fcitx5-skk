@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <fcitx/inputmethodengine.h>
 #include <fcitx/addonfactory.h>
 #include <fcitx/instance.h>
@@ -15,7 +17,7 @@ class SkkState;
     
 class SkkEngine final: public InputMethodEngine {
 public:
-    SkkEngine(Instance *instance);s
+    SkkEngine(Instance *instance);
     ~SkkEngine();
     
     void activate(const InputMethodEntry &entry, InputContextEvent &event) override;
@@ -25,12 +27,12 @@ public:
     void save() override;
     
     auto &factory() { return factory_; }
-    SkkContext* context() { return context_; }
+    SkkContext* context() { return context_.get(); }
     
 private:
     Instance *instance_;
     FactoryFor<SkkState> factory_;
-    unique_ptr<SkkContext> context_;
+    std::unique_ptr<SkkContext> context_;
 };
 
 class SkkAddonFactory final: public AddonFactory {
@@ -42,7 +44,8 @@ public:
 
 
 class SkkState final: public InputContextProperty {
-    SkkState(SkkEngine* engine) : context_{engine -> context} {}
+public: 
+    SkkState(SkkEngine* engine) : context_{engine -> context()} {}
 private:
     SkkContext *context_;
 };
