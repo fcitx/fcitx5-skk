@@ -46,6 +46,10 @@ public:
     SkkState(SkkEngine* engine);
 private:
     std::unique_ptr<SkkContext, decltype(&g_object_unref)> context_;
+    SkkEngine *engine_;
+    
+    static void input_mode_changed_cb(GObject * gobject, GParamSpec *pspec, gpointer userdata){}
+    
 };
 
 
