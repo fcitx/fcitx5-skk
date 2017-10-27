@@ -1,7 +1,6 @@
 [InputMethod]
-UniqueName=skk
-_Name=Skk
-IconName=skk
-Priority=1
+Name=Skk
+Icon=fcitx-skk
 LangCode=ja
-Parent=fcitx-skk
+Addon=skk
+Label=skk
