@@ -49,10 +49,16 @@ private:
     std::unique_ptr<SkkContext, decltype(&g_object_unref)> context_;
 
     
+    bool selected;
+    
     void UpdateInputMode();
     
+    // callbacks and their handlers
+    gulong input_mode_changed_handler;
     static void input_mode_changed_cb(GObject * gobject, GParamSpec *pspec, gpointer user_data);
-    gulong input_mode_changed_hnd;
+    gulong candidate_selected_handler;
+    static void candidate_list_selected_cb(SkkCandidateList * gobject, GParamSpec *pspec, gpointer user_data);
+    
 };
 
 
