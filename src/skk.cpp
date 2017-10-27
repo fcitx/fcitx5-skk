@@ -6,7 +6,7 @@ namespace fcitx {
     
     SkkEngine::SkkEngine(Instance *instance):
         instance_{instance},
-        factory_([this](InputContext &) { return new SkkState(this); }) 
+        factory_([this](InputContext & ic) { return new SkkState(this, &ic); }) 
     {
         skk_init();
        
@@ -47,8 +47,9 @@ namespace fcitx {
     /////////////////////////////////////////////////////////////////////////////////////
     /// SkkState
     
-    SkkState::SkkState(SkkEngine *engine):
+    SkkState::SkkState(SkkEngine *engine, InputContext * ic):
         engine_(engine),
+        ic_(ic),
         context_(skk_context_new(0, 0), &g_object_unref)
     {
         SkkContext * context = context_.get();
@@ -82,23 +83,20 @@ namespace fcitx {
         // FIXME
     }
     
-    void SkkState::input_mode_changed_cb(GObject * gobject, GParamSpec *pspec, gpointer user_data){
-            (void)gobject;
-            (void)pspec;
-            SkkState *self = static_cast<SkkState*>(user_data);
-            self -> UpdateInputMode();
+    void SkkState::input_mode_changed_cb(GObject *, GParamSpec *, SkkState *skk){
+        skk -> UpdateInputMode();
     }
-    void SkkState::candidate_list_selected_cb(SkkCandidateList * gobject, GParamSpec *pspec, gpointer user_data){
-            SkkState *skk = static_cast<SkkState*>(user_data);
-            skk->selected = true;
-            SkkContext * context = skk->context_.get();
-            gchar* output = skk_context_poll_output(context);
+    void SkkState::candidate_list_selected_cb(SkkCandidateList *, GParamSpec *, SkkState *skk){
+        skk->selected = true;
+        SkkContext * context = skk->context_.get();
+        gchar* output = skk_context_poll_output(context);
 
-            if (output && strlen(output) > 0) {
-                //FcitxInstanceCommitString(skk->engine_, FcitxInstanceGetCurrentIC(skk->engine_), output);
-            }
+        if (output && strlen(output) > 0) {
+            skk -> ic_ -> commitString(output);
+            //FcitxInstanceCommitString(skk->owner, FcitxInstanceGetCurrentIC(skk->owner), output);
+        }
 
-            g_free(output);
+        g_free(output);
     }
 }
 

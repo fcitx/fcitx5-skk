@@ -43,9 +43,10 @@ public:
 
 class SkkState final: public InputContextProperty {
 public: 
-    SkkState(SkkEngine* engine);
+    SkkState(SkkEngine* engine, InputContext * ic);
 private:
     SkkEngine *engine_;
+    InputContext * ic_;
     std::unique_ptr<SkkContext, decltype(&g_object_unref)> context_;
 
     
@@ -55,9 +56,9 @@ private:
     
     // callbacks and their handlers
     gulong input_mode_changed_handler;
-    static void input_mode_changed_cb(GObject * gobject, GParamSpec *pspec, gpointer user_data);
+    static void input_mode_changed_cb(GObject * gobject, GParamSpec *pspec, SkkState * skk);
     gulong candidate_selected_handler;
-    static void candidate_list_selected_cb(SkkCandidateList * gobject, GParamSpec *pspec, gpointer user_data);
+    static void candidate_list_selected_cb(SkkCandidateList * gobject, GParamSpec *pspec, SkkState *skk);
     
 };
 
