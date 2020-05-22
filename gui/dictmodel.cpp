@@ -17,53 +17,49 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <QFile>
-#include <QStringList>
-#include <QSet>
 #include <QDebug>
+#include <QFile>
+#include <QSet>
+#include <QStringList>
 #include <QTemporaryFile>
-#include <fcitx-config/xdg.h>
+#include <fcitx-utils/standardpath.h>
 
+#include <fcntl.h>
 #include "dictmodel.h"
 
-DictModel::DictModel(QObject* parent) : QAbstractListModel(parent)
-{
-    m_requiredKeys << "file" << "type" << "mode";
+namespace fcitx {
+
+DictModel::DictModel(QObject *parent) : QAbstractListModel(parent) {
+    m_requiredKeys << "file"
+                   << "type"
+                   << "mode";
 }
 
-DictModel::~DictModel()
-{
-
-}
-
-void DictModel::defaults()
-{
-    char* path = fcitx_utils_get_fcitx_path_with_filename("pkgdatadir", "skk/dictionary_list");
-    QFile f(path);
+void DictModel::defaults() {
+    auto path =
+        StandardPath::global().fcitxPath("pkgdatadir", "skk/dictionary_list");
+    QFile f(path.data());
     if (f.open(QIODevice::ReadOnly)) {
         load(f);
     }
 }
 
-void DictModel::load()
-{
-    FILE* fp = FcitxXDGGetFileWithPrefix("skk", "dictionary_list", "r", NULL);
-    if (!fp) {
+void DictModel::load() {
+    auto file = StandardPath::global().open(StandardPath::Type::PkgData,
+                                            "skk/dictionary_list", O_RDONLY);
+    if (file.fd() < 0) {
         return;
     }
     QFile f;
-    if (!f.open(fp, QIODevice::ReadOnly)) {
-        fclose(fp);
+    if (!f.open(file.fd(), QIODevice::ReadOnly)) {
         return;
     }
 
     load(f);
     f.close();
-    fclose(fp);
 }
 
-void DictModel::load(QFile& file)
-{
+void DictModel::load(QFile &file) {
     beginResetModel();
     m_dicts.clear();
 
@@ -77,7 +73,7 @@ void DictModel::load(QFile& file)
 
         bool failed = false;
         QMap<QString, QString> dict;
-        Q_FOREACH(const QString& item, items) {
+        Q_FOREACH (const QString &item, items) {
             if (!item.contains('=')) {
                 failed = true;
                 break;
@@ -99,59 +95,47 @@ void DictModel::load(QFile& file)
     endResetModel();
 }
 
-bool DictModel::save()
-{
-    char* name = NULL;
-    FcitxXDGMakeDirUser("skk");
-    FcitxXDGGetFileUserWithPrefix("skk", "dictionary_list", NULL, &name);
-    QString fileName = QString::fromLocal8Bit(name);
-    QTemporaryFile tempFile(fileName);
-    free(name);
-    if (!tempFile.open()) {
-        return false;
-    }
-
-    typedef QMap<QString, QString> DictType;
-
-    Q_FOREACH(const DictType& dict, m_dicts) {
-        boolean first = true;
-        Q_FOREACH(const QString& key, dict.keys()) {
-            if (first) {
-                first = false;
-            } else {
-                tempFile.write(",");
+bool DictModel::save() {
+    return StandardPath::global().safeSave(
+        StandardPath::Type::PkgData, "skk/dictionary_list", [this](int fd) {
+            QFile tempFile;
+            if (!tempFile.open(fd, QIODevice::WriteOnly)) {
+                return false;
             }
-            tempFile.write(key.toUtf8());
-            tempFile.write("=");
-            tempFile.write(dict[key].toUtf8());
-        }
-        tempFile.write("\n");
-    }
 
-    tempFile.setAutoRemove(false);
-    QFile::remove(fileName);
-    if (!tempFile.rename(fileName)) {
-        tempFile.remove();
-        return false;
-    }
+            typedef QMap<QString, QString> DictType;
 
-    return true;
+            Q_FOREACH (const DictType &dict, m_dicts) {
+                bool first = true;
+                Q_FOREACH (const QString &key, dict.keys()) {
+                    if (first) {
+                        first = false;
+                    } else {
+                        tempFile.write(",");
+                    }
+                    tempFile.write(key.toUtf8());
+                    tempFile.write("=");
+                    tempFile.write(dict[key].toUtf8());
+                }
+                tempFile.write("\n");
+            }
+            return true;
+        });
 }
 
-int DictModel::rowCount(const QModelIndex& parent) const
-{
+int DictModel::rowCount(const QModelIndex &parent) const {
+    if (parent.isValid()) {
+        return 0;
+    }
     return m_dicts.size();
 }
 
-bool DictModel::removeRows(int row, int count, const QModelIndex& parent)
-{
+bool DictModel::removeRows(int row, int count, const QModelIndex &parent) {
     if (parent.isValid()) {
         return false;
     }
 
-    if (count == 0
-        || row >= m_dicts.size()
-        || row + count > m_dicts.size()) {
+    if (count == 0 || row >= m_dicts.size() || row + count > m_dicts.size()) {
         return false;
     }
 
@@ -162,9 +146,7 @@ bool DictModel::removeRows(int row, int count, const QModelIndex& parent)
     return true;
 }
 
-
-QVariant DictModel::data(const QModelIndex& index, int role) const
-{
+QVariant DictModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid()) {
         return QVariant();
     }
@@ -173,35 +155,32 @@ QVariant DictModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
 
-    switch(role) {
-        case Qt::DisplayRole:
-            if (m_dicts[index.row()]["type"] == "file") {
-                return m_dicts[index.row()]["file"];
-            } else {
-                return QString("%1:%2").arg(m_dicts[index.row()]["host"], m_dicts[index.row()]["port"]);
-            }
+    switch (role) {
+    case Qt::DisplayRole:
+        if (m_dicts[index.row()]["type"] == "file") {
+            return m_dicts[index.row()]["file"];
+        } else {
+            return QString("%1:%2").arg(m_dicts[index.row()]["host"],
+                                        m_dicts[index.row()]["port"]);
+        }
     }
     return QVariant();
 }
 
-bool DictModel::moveUp(const QModelIndex& currentIndex)
-{
-    if (currentIndex.row() > 0
-        && currentIndex.row() < m_dicts.size()) {
+bool DictModel::moveUp(const QModelIndex &currentIndex) {
+    if (currentIndex.row() > 0 && currentIndex.row() < m_dicts.size()) {
         beginResetModel();
-        m_dicts.swap(currentIndex.row() - 1, currentIndex.row());
+        m_dicts.swapItemsAt(currentIndex.row() - 1, currentIndex.row());
         endResetModel();
         return true;
     }
     return false;
 }
 
-bool DictModel::moveDown(const QModelIndex& currentIndex)
-{
-    if (currentIndex.row() >= 0
-        && currentIndex.row() + 1 < m_dicts.size()) {
+bool DictModel::moveDown(const QModelIndex &currentIndex) {
+    if (currentIndex.row() >= 0 && currentIndex.row() + 1 < m_dicts.size()) {
         beginResetModel();
-        m_dicts.swap(currentIndex.row() + 1, currentIndex.row());
+        m_dicts.swapItemsAt(currentIndex.row() + 1, currentIndex.row());
         endResetModel();
         return true;
     }
@@ -209,9 +188,10 @@ bool DictModel::moveDown(const QModelIndex& currentIndex)
     return false;
 }
 
-void DictModel::add(const QMap< QString, QString >& dict)
-{
+void DictModel::add(const QMap<QString, QString> &dict) {
     beginInsertRows(QModelIndex(), m_dicts.size(), m_dicts.size());
     m_dicts << dict;
     endInsertRows();
 }
+
+} // namespace fcitx

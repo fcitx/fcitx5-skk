@@ -3,48 +3,27 @@ set(SKK_CONFIG_SRCS
   dictwidget.cpp
   adddictdialog.cpp
   dictmodel.cpp
-  rulemodel.cpp
   )
-fcitx_translate_add_sources(
-  ${SKK_CONFIG_SRCS})
 
 if(NOT ENABLE_QT)
   return()
 endif()
 
-include_directories(${LIBSKK_INCLUDE_DIRS})
-include_directories(
-  ${FCITX_QT_INCLUDE_DIRS}
-  ${QT_QTCORE_INCLUDE_DIR}
-  ${QT_QTGUI_INCLUDE_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}
-  )
-
-link_directories(
-  ${FCITX_QT_LIBRARY_DIRS}
-  ${FCITX4_FCITX_CONFIG_LIBRARY_DIRS}
-  ${LIBSKK_LIBRARY_DIRS}
-  )
-qt4_wrap_ui(SKK_CONFIG_SRCS dictwidget.ui adddictdialog.ui)
-add_library(fcitx-skk-config
+add_library(fcitx5-skk-config
   MODULE ${SKK_CONFIG_SRCS})
 
-add_definitions(-DQT_NO_KEYWORDS -std=c++11)
-
-set_target_properties(fcitx-skk-config PROPERTIES
-                      LINK_FLAGS "-Wl,--no-undefined"
+set_target_properties(fcitx5-skk-config PROPERTIES
                       AUTOMOC TRUE
+                      AUTOUIC TRUE
+                      AUTOUIC_OPTIONS "-tr=fcitx::tr2fcitx;--include=fcitxqti18nhelper.h"
 )
-target_link_libraries(fcitx-skk-config
-  debug ${QT_QTCORE_LIBRARY_DEBUG}
-  debug ${QT_QTDBUS_LIBRARY_DEBUG}
-  debug ${QT_QTGUI_LIBRARY_DEBUG}
-  optimized ${QT_QTCORE_LIBRARY_RELEASE}
-  optimized ${QT_QTDBUS_LIBRARY_RELEASE}
-  optimized ${QT_QTGUI_LIBRARY_RELEASE}
-  ${FCITX_QT_LIBRARIES}
-  ${FCITX4_FCITX_CONFIG_LIBRARIES}
-  ${LIBSKK_LIBRARIES}
+target_link_libraries(fcitx5-skk-config
+  Qt5::Core
+  Qt5::Widgets
+  Fcitx5Qt5::WidgetsAddons
+  Fcitx5::Utils
+  PkgConfig::GObject2
+  LibSKK::LibSKK
   )
 
-install(TARGETS fcitx-skk-config DESTINATION ${FCITX4_ADDON_INSTALL_DIR}/qt)
+install(TARGETS fcitx5-skk-config DESTINATION ${CMAKE_INSTALL_LIBDIR}/fcitx5/qt5)

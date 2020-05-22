@@ -1,45 +1,31 @@
-/***************************************************************************
- *   Copyright (C) 2013~2013 by CSSlayer                                   *
- *   wengxt@gmail.com                                                      *
- *                                                                         *
- *  This program is free software: you can redistribute it and/or modify   *
- *  it under the terms of the GNU General Public License as published by   *
- *  the Free Software Foundation, either version 3 of the License, or      *
- *  (at your option) any later version.                                    *
- *                                                                         *
- *  This program is distributed in the hope that it will be useful,        *
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of         *
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
- *  GNU General Public License for more details.                           *
- *                                                                         *
- *  You should have received a copy of the GNU General Public License      *
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.  *
- *                                                                         *
- ***************************************************************************/
+/*
+ * SPDX-FileCopyrightText: 2013~2020 CSSlayer <wengxt@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ */
 
 #ifndef FCITX_SKK_GUI_DICTWIDGET_H
 #define FCITX_SKK_GUI_DICTWIDGET_H
 
-#include <fcitx-qt/fcitxqtconfiguiwidget.h>
+#include <memory>
+#include <fcitxqtconfiguiwidget.h>
+#include "ui_dictwidget.h"
+
+namespace fcitx {
 
 class RuleModel;
 class DictModel;
-namespace Ui {
-class SkkDictWidget;
-}
 
-class SkkDictWidget : public FcitxQtConfigUIWidget
-{
+class SkkDictWidget : public FcitxQtConfigUIWidget {
     Q_OBJECT
 public:
-    explicit SkkDictWidget(QWidget* parent = 0);
-    virtual ~SkkDictWidget();
+    explicit SkkDictWidget(QWidget *parent = 0);
 
-    virtual void load();
-    virtual void save();
-    virtual QString title();
-    virtual QString addon();
-    virtual QString icon();
+    void load() override;
+    void save() override;
+    QString title() override;
+    QString icon() override;
 
 private Q_SLOTS:
     void addDictClicked();
@@ -47,12 +33,13 @@ private Q_SLOTS:
     void removeDictClicked();
     void moveUpDictClicked();
     void moveDownClicked();
-    void ruleChanged(int);
+
 private:
-    Ui::SkkDictWidget* m_ui;
-    DictModel* m_dictModel;
-    RuleModel* m_ruleModel;
+    std::unique_ptr<Ui::SkkDictWidget> m_ui;
+    DictModel *m_dictModel;
+    RuleModel *m_ruleModel;
 };
 
+} // namespace fcitx
 
 #endif // FCITX_SKK_GUI_DICTWIDGET_H

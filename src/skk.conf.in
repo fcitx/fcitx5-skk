@@ -4,3 +4,4 @@ Icon=fcitx-skk
 LangCode=ja
 Addon=skk
 Label=skk
+Configurable=True

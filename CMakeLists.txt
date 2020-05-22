@@ -16,23 +16,23 @@ find_package(LibSKK REQUIRED)
 
 include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
 
-option(SKK_DEFAULT_PATH "Default path of SKK" "/usr/share/skk/SKK-JISYO.L")
+set(SKK_DEFAULT_PATH "/usr/share/skk/SKK-JISYO.L" CACHE STRING "Default path of SKK")
 
 include(GNUInstallDirs)
 
-#if (ENABLE_QT)
-#find_package(Qt 4.8 REQUIRED)
-#pkg_check_modules(FCITX_QT "fcitx-qt>=4.2.8" REQUIRED)
-#endif ()
+if (ENABLE_QT)
+find_package(Qt5 5.7 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(Fcitx5Qt5WidgetsAddons REQUIRED)
+endif ()
 
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
   "${CMAKE_CURRENT_BINARY_DIR}/config.h"
   IMMEDIATE @ONLY)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-#add_subdirectory(po)
+add_subdirectory(po)
 add_subdirectory(src)
-#add_subdirectory(data)
-#add_subdirectory(gui)
+add_subdirectory(data)
+add_subdirectory(gui)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

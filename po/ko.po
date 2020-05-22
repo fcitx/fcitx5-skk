@@ -1,169 +1,224 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Bon Keun Seo <scobyseo@gmail.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: fcitx\n"
+"Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-12-08 12:40+0900\n"
+"POT-Creation-Date: 2020-05-22 12:21-0700\n"
 "PO-Revision-Date: 2017-07-15 12:53+0000\n"
 "Last-Translator: Bon Keun Seo <scobyseo@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/fcitx/fcitx/language/ko/)\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: gui/adddictdialog.cpp:35
-msgid "&Type:"
-msgstr "형식(&T):"
-
-#: gui/adddictdialog.cpp:36
-msgid "&Path:"
-msgstr "경로(&P)"
-
-#: gui/adddictdialog.cpp:37
+#. i18n: file: gui/adddictdialog.ui:70
+#. i18n: ectx: property (text), widget (QLabel, hostLabel)
+#: rc.cpp:12
+#, kde-format
 msgid "&Host:"
 msgstr "호스트(&H)"
 
-#: gui/adddictdialog.cpp:38
+#. i18n: file: gui/adddictdialog.ui:42
+#. i18n: ectx: property (text), widget (QLabel, pathLabel)
+#: rc.cpp:9
+#, kde-format
+msgid "&Path:"
+msgstr "경로(&P)"
+
+#. i18n: file: gui/adddictdialog.ui:80
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: rc.cpp:15
+#, kde-format
 msgid "&Port:"
 msgstr "포트(&P):"
 
-#: gui/adddictdialog.cpp:39
-msgid "System"
-msgstr "시스템"
+#. i18n: file: gui/adddictdialog.ui:22
+#. i18n: ectx: property (text), widget (QLabel, typeLabel)
+#: rc.cpp:6
+#, kde-format
+msgid "&Type:"
+msgstr "형식(&T):"
 
-#: gui/adddictdialog.cpp:40
-msgid "User"
-msgstr "사용자"
-
-#: gui/adddictdialog.cpp:41
-msgid "Server"
-msgstr "서버"
-
-#: gui/adddictdialog.cpp:101 gui/adddictdialog.cpp:113
-msgid "Select Dictionary File"
-msgstr "사전 파일 선택"
-
-#: gui/dictwidget.cpp:34
-msgid "&Rule:"
-msgstr "규칙(&R)"
-
-#: gui/dictwidget.cpp:61
-msgid "Dictionary Manager"
-msgstr "사전 관리자"
-
-#: src/skk.c:95 src/fcitx-skk.desc:16
-msgid "Hiragana"
-msgstr "히라가나"
-
-#: src/skk.c:96 src/fcitx-skk.desc:17
-msgid "Katakana"
-msgstr "가타카나"
-
-#: src/skk.c:97 src/fcitx-skk.desc:18
-msgid "Half width Katakana"
-msgstr "반각 가타가나"
-
-#: src/skk.c:98 src/fcitx-skk.desc:7
-msgid "Latin"
-msgstr "로마자"
-
-#: src/skk.c:99 src/fcitx-skk.desc:8 src/fcitx-skk.desc:20
-msgid "Wide latin"
-msgstr "전각 로마자"
-
-#: src/skk.c:440 src/fcitx-skk.conf.in:3 src/skk.conf.in:3
-msgid "Skk"
-msgstr "Skk"
-
-#: src/skk.c:466
-msgid "Input Mode"
-msgstr "입력 모드"
-
-#: src/fcitx-skk.conf.in:4
-msgid "Skk Input Method For Fcitx"
-msgstr "Fcitx를 위한 Skk 입력기"
-
-#: src/fcitx-skk.conf.in:9
-msgid "Dictionary and Rule"
-msgstr "사전과 규칙"
-
-#: src/fcitx-skk.desc:1 src/fcitx-skk.desc:11 src/fcitx-skk.desc:22
-#: src/fcitx-skk.desc:29 src/fcitx-skk.desc:34 src/fcitx-skk.desc:43
-#: src/fcitx-skk.desc:50 src/fcitx-skk.desc:55
-msgid "General"
-msgstr "일반"
-
-#: src/fcitx-skk.desc:3
-msgid "Punctuation Style"
-msgstr "문장부호 스타일"
-
-#: src/fcitx-skk.desc:6
-msgid "Japanese"
-msgstr "일본어"
-
-#: src/fcitx-skk.desc:9
-msgid "Wide latin Japanese"
-msgstr "전각 로마자 일본어"
-
-#: src/fcitx-skk.desc:13
-msgid "Initial Input Mode"
-msgstr "초기 입력 모드"
-
-#: src/fcitx-skk.desc:19
-msgid "Direct input"
-msgstr "직접 입력"
-
-#: src/fcitx-skk.desc:24
-msgid "Page size"
-msgstr "페이지 크기"
-
-#: src/fcitx-skk.desc:31
-msgid "Return-key does not insert new line on commit"
-msgstr "입력 완료 시 엔터키가 새 줄을 추가하지 않음"
-
-#: src/fcitx-skk.desc:36
-msgid "Candidate List Layout"
-msgstr "후보 목록 모양"
-
-#: src/fcitx-skk.desc:38
-msgid "Global"
-msgstr "전역"
-
-#: src/fcitx-skk.desc:39
-msgid "Vertical"
-msgstr "세로"
-
-#: src/fcitx-skk.desc:40
-msgid "Horizontal"
-msgstr "가로"
-
-#: src/fcitx-skk.desc:45
-msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr "후보 창을 보이기 위한 후보의 수"
-
-#: src/fcitx-skk.desc:52
-msgid "Show Annotation"
-msgstr "주석 보이기"
-
-#: src/fcitx-skk.desc:57
-msgid "Keys to Select from Candidate Window"
-msgstr "후보 창에서 선택하는 키"
-
-#: src/fcitx-skk.desc:59
-msgid "Digit (0,1,2,...)"
-msgstr "숫자 (0, 1, 2, ...)"
-
-#: src/fcitx-skk.desc:60
+#: src/skk.h:31
 msgid "ABC (a,b,c,...)"
 msgstr "알파벳 (a, b, c, ...)"
 
-#: src/fcitx-skk.desc:61
+#: src/skk.h:85
+#, fuzzy
+msgid "Candidate Key"
+msgstr "후보 목록 모양"
+
+#: src/skk.h:77
+#, fuzzy
+msgid "Candidate Layout"
+msgstr "후보 목록 모양"
+
+#: src/skk.h:96
+#, fuzzy
+msgid "Candidates Page Down"
+msgstr "후보 목록 모양"
+
+#: src/skk.h:90
+#, fuzzy
+msgid "Candidates Page Up"
+msgstr "후보 목록 모양"
+
+#: src/skk.h:108
+msgid "Cursor Down"
+msgstr ""
+
+#: src/skk.h:102
+msgid "Cursor Up"
+msgstr ""
+
+#. i18n: file: gui/adddictdialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
+#: rc.cpp:3
+#, kde-format
+msgid "Dialog"
+msgstr ""
+
+#: gui/dictwidget.cpp:51
+msgid "Dictionary Manager"
+msgstr "사전 관리자"
+
+#: src/skk.h:30
+msgid "Digit (0,1,2,...)"
+msgstr "숫자 (0, 1, 2, ...)"
+
+#: src/skk.cpp:72 src/skk.h:42
+msgid "Direct input"
+msgstr "직접 입력"
+
+#. i18n: file: gui/dictwidget.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
+#: rc.cpp:21
+#, kde-format
+msgid "Form"
+msgstr ""
+
+#: src/skk.cpp:69 src/skk.h:41
+msgid "Half width Katakana"
+msgstr "반각 가타가나"
+
+#: src/skk.cpp:67 src/skk.h:40
+msgid "Hiragana"
+msgstr "히라가나"
+
+#: src/skk.h:35
+msgid "Horizontal"
+msgstr "가로"
+
+#: src/skk.h:72
+msgid "Initial Input Mode"
+msgstr "초기 입력 모드"
+
+#: src/skk.h:37
+msgid "Japanese"
+msgstr "일본어"
+
+#: src/skk.cpp:68 src/skk.h:40
+msgid "Katakana"
+msgstr "가타카나"
+
+#: src/skk.cpp:70 src/skk.h:37 src/skk.h:41
+msgid "Latin"
+msgstr "로마자"
+
+#: src/skk.h:34
+msgid "Not set"
+msgstr ""
+
+#: src/skk.h:113
+msgid "Number candidate of Triggers To Show Candidate Window"
+msgstr "후보 창을 보이기 위한 후보의 수"
+
+#: src/skk.h:74
+msgid "Page size"
+msgstr "페이지 크기"
+
+#: src/skk.h:69
+msgid "Punctuation Style"
+msgstr "문장부호 스타일"
+
+#: src/skk.h:32
 msgid "Qwerty Center Row (a,s,d,...)"
 msgstr "키보드 중간열 (a, s, d, ...)"
+
+#: src/skk.h:81
+msgid "Return-key does not insert new line on commit"
+msgstr "입력 완료 시 엔터키가 새 줄을 추가하지 않음"
+
+#: src/skk.h:67
+#, fuzzy
+msgid "Rule"
+msgstr "규칙(&R)"
+
+#: gui/adddictdialog.cpp:74 gui/adddictdialog.cpp:87
+msgid "Select Dictionary File"
+msgstr "사전 파일 선택"
+
+#: gui/adddictdialog.cpp:24
+msgid "Server"
+msgstr "서버"
+
+#: src/skk.h:82
+msgid "Show Annotation"
+msgstr "주석 보이기"
+
+#: src/skk.conf.in:3 src/skk-addon.conf.in:3
+msgid "Skk"
+msgstr "Skk"
+
+#: src/skk-addon.conf.in:4
+msgid "Skk Input Method For Fcitx"
+msgstr "Fcitx를 위한 Skk 입력기"
+
+#: gui/adddictdialog.cpp:22
+msgid "System"
+msgstr "시스템"
+
+#: gui/adddictdialog.cpp:23
+msgid "User"
+msgstr "사용자"
+
+#: src/skk.h:35
+msgid "Vertical"
+msgstr "세로"
+
+#: src/skk.cpp:71 src/skk.h:38 src/skk.h:42
+msgid "Wide latin"
+msgstr "전각 로마자"
+
+#: src/skk.h:38
+msgid "Wide latin Japanese"
+msgstr "전각 로마자 일본어"
+
+#. i18n: file: gui/adddictdialog.ui:103
+#. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
+#: rc.cpp:18
+#, kde-format
+msgid "localhost"
+msgstr ""
+
+#~ msgid "Input Mode"
+#~ msgstr "입력 모드"
+
+#~ msgid "Dictionary and Rule"
+#~ msgstr "사전과 규칙"
+
+#~ msgid "General"
+#~ msgstr "일반"
+
+#~ msgid "Global"
+#~ msgstr "전역"
+
+#~ msgid "Keys to Select from Candidate Window"
+#~ msgstr "후보 창에서 선택하는 키"
