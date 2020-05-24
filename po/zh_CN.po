@@ -1,20 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the fcitx5-skk package.
 #
 # Translators:
-# Christopher Meng <i@cicku.me>, 2013
-# csslayer <wengxt@gmail.com>, 2013
-# wwj402 <wwj402@gmail.com>, 2015
+# csslayer <wengxt@gmail.com>, 2020
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-22 12:21-0700\n"
-"PO-Revision-Date: 2015-07-16 17:37+0000\n"
-"Last-Translator: wwj402 <wwj402@gmail.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/fcitx/fcitx/"
-"language/zh_CN/)\n"
+"POT-Creation-Date: 2020-05-24 00:01-0700\n"
+"PO-Revision-Date: 2020-05-22 22:25+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
+"zh_CN/)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,28 +22,28 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:70
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:12
+#: rc.cpp:15
 #, kde-format
 msgid "&Host:"
 msgstr "主机(&H)："
 
 #. i18n: file: gui/adddictdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:9
+#: rc.cpp:12
 #, kde-format
 msgid "&Path:"
 msgstr "路径(&P):"
 
 #. i18n: file: gui/adddictdialog.ui:80
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:15
+#: rc.cpp:18
 #, kde-format
 msgid "&Port:"
 msgstr "端口(&P)："
 
 #. i18n: file: gui/adddictdialog.ui:22
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:6
+#: rc.cpp:9
 #, kde-format
 msgid "&Type:"
 msgstr "类型(&T)："
@@ -54,24 +53,20 @@ msgid "ABC (a,b,c,...)"
 msgstr "字母(a,b,c,...)"
 
 #: src/skk.h:85
-#, fuzzy
 msgid "Candidate Key"
-msgstr "候选词列表"
+msgstr ""
 
 #: src/skk.h:77
-#, fuzzy
 msgid "Candidate Layout"
-msgstr "候选词列表"
+msgstr ""
 
 #: src/skk.h:96
-#, fuzzy
 msgid "Candidates Page Down"
-msgstr "候选词列表"
+msgstr ""
 
 #: src/skk.h:90
-#, fuzzy
 msgid "Candidates Page Up"
-msgstr "候选词列表"
+msgstr ""
 
 #: src/skk.h:108
 msgid "Cursor Down"
@@ -83,9 +78,13 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:3
+#: rc.cpp:6
 #, kde-format
 msgid "Dialog"
+msgstr ""
+
+#: src/skk.h:115
+msgid "Dictionary"
 msgstr ""
 
 #: gui/dictwidget.cpp:51
@@ -96,22 +95,22 @@ msgstr "词典管理器"
 msgid "Digit (0,1,2,...)"
 msgstr "数字(0,1,2,...)"
 
-#: src/skk.cpp:72 src/skk.h:42
+#: src/skk.h:42 src/skk.cpp:72
 msgid "Direct input"
 msgstr "直接输入"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:21
+#: rc.cpp:3
 #, kde-format
 msgid "Form"
 msgstr ""
 
-#: src/skk.cpp:69 src/skk.h:41
+#: src/skk.h:41 src/skk.cpp:69
 msgid "Half width Katakana"
 msgstr "半角片假名"
 
-#: src/skk.cpp:67 src/skk.h:40
+#: src/skk.h:40 src/skk.cpp:67
 msgid "Hiragana"
 msgstr "平假名"
 
@@ -127,11 +126,11 @@ msgstr "初始输入模式"
 msgid "Japanese"
 msgstr "日语"
 
-#: src/skk.cpp:68 src/skk.h:40
+#: src/skk.h:40 src/skk.cpp:68
 msgid "Katakana"
 msgstr "片假名"
 
-#: src/skk.cpp:70 src/skk.h:37 src/skk.h:41
+#: src/skk.h:37 src/skk.h:41 src/skk.cpp:70
 msgid "Latin"
 msgstr "英文"
 
@@ -160,9 +159,8 @@ msgid "Return-key does not insert new line on commit"
 msgstr "回车提交时不插入新行"
 
 #: src/skk.h:67
-#, fuzzy
 msgid "Rule"
-msgstr "按键方案(&R):"
+msgstr ""
 
 #: gui/adddictdialog.cpp:74 gui/adddictdialog.cpp:87
 msgid "Select Dictionary File"
@@ -196,7 +194,7 @@ msgstr "用户"
 msgid "Vertical"
 msgstr "纵向"
 
-#: src/skk.cpp:71 src/skk.h:38 src/skk.h:42
+#: src/skk.h:38 src/skk.h:42 src/skk.cpp:71
 msgid "Wide latin"
 msgstr "全角英文"
 
@@ -206,22 +204,7 @@ msgstr "全角英文日语"
 
 #. i18n: file: gui/adddictdialog.ui:103
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:18
+#: rc.cpp:21
 #, kde-format
 msgid "localhost"
 msgstr ""
-
-#~ msgid "Dictionary and Rule"
-#~ msgstr "词典和规则"
-
-#~ msgid "General"
-#~ msgstr "常规"
-
-#~ msgid "Global"
-#~ msgstr "全局"
-
-#~ msgid "Input Mode"
-#~ msgstr "输入模式"
-
-#~ msgid "Keys to Select from Candidate Window"
-#~ msgstr "从候选窗口选择要选的键"

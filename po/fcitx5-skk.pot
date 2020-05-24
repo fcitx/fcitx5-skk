@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-22 12:21-0700\n"
+"POT-Creation-Date: 2020-05-24 00:01-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,28 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:70
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:12
+#: rc.cpp:15
 #, kde-format
 msgid "&Host:"
 msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:9
+#: rc.cpp:12
 #, kde-format
 msgid "&Path:"
 msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:80
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:15
+#: rc.cpp:18
 #, kde-format
 msgid "&Port:"
 msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:22
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:6
+#: rc.cpp:9
 #, kde-format
 msgid "&Type:"
 msgstr ""
@@ -73,9 +73,13 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:3
+#: rc.cpp:6
 #, kde-format
 msgid "Dialog"
+msgstr ""
+
+#: src/skk.h:115
+msgid "Dictionary"
 msgstr ""
 
 #: gui/dictwidget.cpp:51
@@ -86,22 +90,22 @@ msgstr ""
 msgid "Digit (0,1,2,...)"
 msgstr ""
 
-#: src/skk.cpp:72 src/skk.h:42
+#: src/skk.h:42 src/skk.cpp:72
 msgid "Direct input"
 msgstr ""
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:21
+#: rc.cpp:3
 #, kde-format
 msgid "Form"
 msgstr ""
 
-#: src/skk.cpp:69 src/skk.h:41
+#: src/skk.h:41 src/skk.cpp:69
 msgid "Half width Katakana"
 msgstr ""
 
-#: src/skk.cpp:67 src/skk.h:40
+#: src/skk.h:40 src/skk.cpp:67
 msgid "Hiragana"
 msgstr ""
 
@@ -117,11 +121,11 @@ msgstr ""
 msgid "Japanese"
 msgstr ""
 
-#: src/skk.cpp:68 src/skk.h:40
+#: src/skk.h:40 src/skk.cpp:68
 msgid "Katakana"
 msgstr ""
 
-#: src/skk.cpp:70 src/skk.h:37 src/skk.h:41
+#: src/skk.h:37 src/skk.h:41 src/skk.cpp:70
 msgid "Latin"
 msgstr ""
 
@@ -185,7 +189,7 @@ msgstr ""
 msgid "Vertical"
 msgstr ""
 
-#: src/skk.cpp:71 src/skk.h:38 src/skk.h:42
+#: src/skk.h:38 src/skk.h:42 src/skk.cpp:71
 msgid "Wide latin"
 msgstr ""
 
@@ -195,7 +199,7 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:103
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:18
+#: rc.cpp:21
 #, kde-format
 msgid "localhost"
 msgstr ""
