@@ -5,14 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
 # 黃柏諺 <s8321414@gmail.com>, 2020
+# Walter Cheuk <wwycheuk@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-24 00:01-0700\n"
+"POT-Creation-Date: 2020-05-25 00:01-0700\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2020\n"
+"Last-Translator: Walter Cheuk <wwycheuk@gmail.com>, 2020\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -40,7 +41,7 @@ msgstr "路徑(&P)："
 #: rc.cpp:18
 #, kde-format
 msgid "&Port:"
-msgstr "埠口(&P)："
+msgstr "連接埠(&P)："
 
 #. i18n: file: gui/adddictdialog.ui:22
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
@@ -86,7 +87,7 @@ msgstr "對話框"
 
 #: src/skk.h:115
 msgid "Dictionary"
-msgstr ""
+msgstr "字典"
 
 #: gui/dictwidget.cpp:51
 msgid "Dictionary Manager"
