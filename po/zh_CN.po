@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-24 00:01-0700\n"
+"POT-Creation-Date: 2020-05-27 00:02-0700\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -54,38 +54,38 @@ msgstr "字母(a,b,c,...)"
 
 #: src/skk.h:85
 msgid "Candidate Key"
-msgstr ""
+msgstr "候选词键"
 
 #: src/skk.h:77
 msgid "Candidate Layout"
-msgstr ""
+msgstr "候选词布局"
 
 #: src/skk.h:96
 msgid "Candidates Page Down"
-msgstr ""
+msgstr "候选词下一页"
 
 #: src/skk.h:90
 msgid "Candidates Page Up"
-msgstr ""
+msgstr "候选词上一页"
 
 #: src/skk.h:108
 msgid "Cursor Down"
-msgstr ""
+msgstr "光标后移"
 
 #: src/skk.h:102
 msgid "Cursor Up"
-msgstr ""
+msgstr "光标前移"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
 #: rc.cpp:6
 #, kde-format
 msgid "Dialog"
-msgstr ""
+msgstr "对话框"
 
 #: src/skk.h:115
 msgid "Dictionary"
-msgstr ""
+msgstr "词典"
 
 #: gui/dictwidget.cpp:51
 msgid "Dictionary Manager"
@@ -104,7 +104,7 @@ msgstr "直接输入"
 #: rc.cpp:3
 #, kde-format
 msgid "Form"
-msgstr ""
+msgstr "表单"
 
 #: src/skk.h:41 src/skk.cpp:69
 msgid "Half width Katakana"
@@ -136,7 +136,7 @@ msgstr "英文"
 
 #: src/skk.h:34
 msgid "Not set"
-msgstr ""
+msgstr "未设置"
 
 #: src/skk.h:113
 msgid "Number candidate of Triggers To Show Candidate Window"
@@ -160,7 +160,7 @@ msgstr "回车提交时不插入新行"
 
 #: src/skk.h:67
 msgid "Rule"
-msgstr ""
+msgstr "规则"
 
 #: gui/adddictdialog.cpp:74 gui/adddictdialog.cpp:87
 msgid "Select Dictionary File"
@@ -207,4 +207,4 @@ msgstr "全角英文日语"
 #: rc.cpp:21
 #, kde-format
 msgid "localhost"
-msgstr ""
+msgstr "localhost"
