@@ -50,7 +50,7 @@ Text skkContextGetPreedit(SkkContext *context) {
         }
     }
 
-    preedit.setCursor(strlen(preeditString));
+    preedit.setCursor(len);
     return preedit;
 }
 
@@ -383,20 +383,21 @@ std::string SkkEngine::subMode(const InputMethodEntry &, InputContext &ic) {
 }
 
 void SkkEngine::loadRule() {
-    SkkRuleMetadata *meta = skk_rule_find_rule(config_.rule->data());
+    UniqueCPtr<SkkRuleMetadata, skk_rule_metadata_free> meta{
+        skk_rule_find_rule(config_.rule->data())};
 
     if (!meta) {
-        meta = skk_rule_find_rule("default");
+        meta.reset(skk_rule_find_rule("default"));
         if (!meta) {
             return;
         }
     }
 
-    SkkRule *rule = skk_rule_new(meta->name, nullptr);
+    GObjectUniquePtr<SkkRule> rule{skk_rule_new(meta->name, nullptr)};
     if (!rule) {
         return;
     }
-    userRule_.reset(rule);
+    userRule_ = std::move(rule);
 }
 
 typedef enum _FcitxSkkDictType {
@@ -660,11 +661,10 @@ void SkkState::updateUI() {
             std::make_unique<SkkFcitxCandidateList>(engine_, ic_));
     }
 
-    if (auto str = skk_context_poll_output(context)) {
-        if (str && str[0]) {
-            ic_->commitString(str);
+    if (auto str = UniqueCPtr<char, g_free>{skk_context_poll_output(context)}) {
+        if (str && str.get()[0]) {
+            ic_->commitString(str.get());
         }
-        g_free(str);
     }
     Text preedit = skkContextGetPreedit(context);
     if (ic_->capabilityFlags().test(CapabilityFlag::Preedit)) {
