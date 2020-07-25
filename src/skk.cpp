@@ -397,14 +397,18 @@ void SkkEngine::loadRule() {
     UniqueCPtr<SkkRuleMetadata, skk_rule_metadata_free> meta{
         skk_rule_find_rule(config_.rule->data())};
 
-    if (!meta) {
+    GObjectUniquePtr<SkkRule> rule;
+
+    if (meta) {
+        rule.reset(skk_rule_new(meta->name, nullptr));
+    }
+    if (!rule || !meta) {
         meta.reset(skk_rule_find_rule("default"));
-        if (!meta) {
-            return;
+        if (meta) {
+            rule.reset(skk_rule_new(meta->name, nullptr));
         }
     }
 
-    GObjectUniquePtr<SkkRule> rule{skk_rule_new(meta->name, nullptr)};
     if (!rule) {
         return;
     }
