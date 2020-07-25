@@ -6,7 +6,9 @@
  */
 #include "skk.h"
 #include <fcntl.h>
+#include <stddef.h>
 #include <fcitx-config/iniparser.h>
+#include <fcitx-utils/log.h>
 #include <fcitx-utils/utf8.h>
 #include <fcitx/inputpanel.h>
 #include <fcitx/userinterfacemanager.h>
@@ -18,11 +20,6 @@ FCITX_DEFINE_LOG_CATEGORY(skk_logcategory, "skk");
 namespace fcitx {
 
 namespace {
-
-template <typename T>
-std::unique_ptr<T, decltype(&g_object_unref)> makeGObjectUnique(T *p) {
-    return {p, &g_object_unref};
-}
 
 Text skkContextGetPreedit(SkkContext *context) {
     Text preedit;
@@ -180,8 +177,8 @@ public:
         int pageLast = std::min(size, static_cast<int>(pageFirst + page_size));
 
         for (int i = pageFirst; i < pageLast; i++) {
-            GObjectUniquePtr<SkkCandidate> skkCandidate =
-                makeGObjectUnique(skk_candidate_list_get(skkCandidates, i));
+            GObjectUniquePtr<SkkCandidate> skkCandidate{
+                skk_candidate_list_get(skkCandidates, i)};
             Text text;
             text.append(skk_candidate_get_text(skkCandidate.get()));
             if (*engine->config().showAnnotation) {
@@ -278,9 +275,11 @@ private:
 /// SkkEngine
 
 SkkEngine::SkkEngine(Instance *instance)
-    : instance_{instance},
-      factory_([this](InputContext &ic) { return new SkkState(this, &ic); }),
-      userRule_(makeGObjectUnique<SkkRule>(nullptr)) {
+    : instance_{instance}, factory_([this](InputContext &ic) {
+          auto newState = new SkkState(this, &ic);
+          newState->applyConfig();
+          return newState;
+      }) {
     skk_init();
 
     modeAction_ = std::make_unique<SkkModeAction>(this);
@@ -305,6 +304,13 @@ SkkEngine::SkkEngine(Instance *instance)
     for (auto &subModeAction : subModeActions_) {
         menu_->addAction(subModeAction.get());
     }
+
+    reloadConfig();
+
+    if (!userRule_) {
+        throw std::runtime_error("Failed to load any skk rule.");
+    }
+
     instance_->inputContextManager().registerProperty("skkState", &factory_);
     instance_->inputContextManager().foreach([this](InputContext *ic) {
         auto state = this->state(ic);
@@ -312,8 +318,6 @@ SkkEngine::SkkEngine(Instance *instance)
         ic->updateProperty(&factory_);
         return true;
     });
-
-    reloadConfig();
 }
 
 void SkkEngine::activate(const InputMethodEntry &entry,
@@ -406,19 +410,17 @@ void SkkEngine::loadDictionary() {
     auto file = StandardPath::global().open(StandardPath::Type::PkgData,
                                             "skk/dictionary_list", O_RDONLY);
 
-    std::unique_ptr<FILE, decltype(&fclose)> fp(fdopen(file.fd(), "r"),
-                                                &std::fclose);
+    UniqueFilePtr fp(fdopen(file.fd(), "rb"));
     if (!fp) {
         return;
     }
 
-    char *buf = nullptr;
+    UniqueCPtr<char> buf;
     size_t len = 0;
 
-    while (getline(&buf, &len, fp.get()) != -1) {
-        auto trimmed = stringutils::trim(buf);
-
-        auto tokens = stringutils::split(stringutils::trim(buf), ",");
+    while (getline(buf, &len, fp.get()) != -1) {
+        const auto trimmed = stringutils::trim(buf.get());
+        const auto tokens = stringutils::split(trimmed, ",");
 
         if (tokens.size() < 3) {
             continue;
@@ -477,15 +479,13 @@ void SkkEngine::loadDictionary() {
                     SkkCdbDict *dict =
                         skk_cdb_dict_new(path.data(), encoding.data(), nullptr);
                     if (dict) {
-                        dictionaries_.push_back(
-                            makeGObjectUnique(SKK_DICT(dict)));
+                        dictionaries_.emplace_back(SKK_DICT(dict));
                     }
                 } else {
                     SkkFileDict *dict = skk_file_dict_new(
                         path.data(), encoding.data(), nullptr);
                     if (dict) {
-                        dictionaries_.push_back(
-                            makeGObjectUnique(SKK_DICT(dict)));
+                        dictionaries_.emplace_back(SKK_DICT(dict));
                     }
                 }
             } else {
@@ -501,8 +501,7 @@ void SkkEngine::loadDictionary() {
                 SkkUserDict *userdict = skk_user_dict_new(
                     realpath.data(), encoding.data(), nullptr);
                 if (userdict) {
-                    dictionaries_.push_back(
-                        makeGObjectUnique(SKK_DICT(userdict)));
+                    dictionaries_.emplace_back(SKK_DICT(userdict));
                 }
             }
         } else if (type == FSTD_Server) {
@@ -522,12 +521,10 @@ void SkkEngine::loadDictionary() {
             SkkSkkServ *dict =
                 skk_skk_serv_new(host.data(), iPort, encoding.data(), nullptr);
             if (dict) {
-                dictionaries_.push_back(makeGObjectUnique(SKK_DICT(dict)));
+                dictionaries_.emplace_back(SKK_DICT(dict));
             }
         }
     }
-
-    free(buf);
 }
 
 SkkEngine::~SkkEngine() {}
@@ -536,8 +533,7 @@ SkkEngine::~SkkEngine() {}
 /// SkkState
 
 SkkState::SkkState(SkkEngine *engine, InputContext *ic)
-    : engine_(engine), ic_(ic),
-      context_(skk_context_new(nullptr, 0), &g_object_unref) {
+    : engine_(engine), ic_(ic), context_(skk_context_new(nullptr, 0)) {
     SkkContext *context = context_.get();
     skk_context_set_period_style(context, *engine_->config().punctuationStyle);
     skk_context_set_input_mode(context, *engine_->config().inputMode);
@@ -576,10 +572,9 @@ void SkkState::keyEvent(KeyEvent &keyEvent) {
         modifiers |= SKK_MODIFIER_TYPE_RELEASE_MASK;
     }
 
-    GObjectUniquePtr<SkkKeyEvent> key =
-        makeGObjectUnique(skk_key_event_new_from_x_keysym(
-            keyEvent.rawKey().sym(), static_cast<SkkModifierType>(modifiers),
-            nullptr));
+    GObjectUniquePtr<SkkKeyEvent> key{skk_key_event_new_from_x_keysym(
+        keyEvent.rawKey().sym(), static_cast<SkkModifierType>(modifiers),
+        nullptr)};
     if (!key) {
         return;
     }

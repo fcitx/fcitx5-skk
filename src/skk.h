@@ -116,7 +116,7 @@ FCITX_CONFIGURATION(
                               "fcitx://config/addon/skk/dictionary_list"};);
 
 template <typename T>
-using GObjectUniquePtr = std::unique_ptr<T, decltype(&g_object_unref)>;
+using GObjectUniquePtr = UniqueCPtr<T, g_object_unref>;
 
 class SkkState;
 
@@ -196,7 +196,7 @@ private:
 
     SkkEngine *engine_;
     InputContext *ic_;
-    std::unique_ptr<SkkContext, decltype(&g_object_unref)> context_;
+    GObjectUniquePtr<SkkContext> context_;
     bool modeChanged_ = false;
 };
 
