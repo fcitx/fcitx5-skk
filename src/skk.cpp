@@ -197,7 +197,18 @@ public:
                 cursorIndex_ = i - pageFirst;
             }
 
-            labels_.emplace_back(std::to_string(i - pageFirst + 1) + ". ");
+            constexpr char labels[3][11] = {
+                "1234567890",
+                "abcdefghij",
+                "asdfghjkl;",
+            };
+
+            char label[2] = {labels[static_cast<int>(
+                                 engine_->config().candidateChooseKey.value())]
+                                   [(i - pageFirst) % 10],
+                             '\0'};
+
+            labels_.emplace_back(stringutils::concat(label, ". "));
             words_.emplace_back(std::make_unique<SkkCandidateWord>(
                 engine, text, i - page_start));
         }
