@@ -403,6 +403,8 @@ void SkkEngine::loadRule() {
         rule.reset(skk_rule_new(meta->name, nullptr));
     }
     if (!rule || !meta) {
+        FCITX_LOGC(skk_logcategory, Error)
+            << "Failed to load rule: " << config_.rule->data();
         meta.reset(skk_rule_find_rule("default"));
         if (meta) {
             rule.reset(skk_rule_new(meta->name, nullptr));
