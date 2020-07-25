@@ -10,6 +10,7 @@
 #include <memory>
 
 #include <fcitx-config/configuration.h>
+#include <fcitx-config/iniparser.h>
 #include <fcitx-utils/capabilityflags.h>
 #include <fcitx-utils/i18n.h>
 #include <fcitx/action.h>
@@ -139,6 +140,11 @@ public:
 
     auto &factory() { return factory_; }
     auto &config() { return config_; }
+    void setConfig(const RawConfig &config) override {
+        config_.load(config, true);
+        safeSaveAsIni(config_, "conf/skk.conf");
+        reloadConfig();
+    }
 
     SkkState *state(InputContext *ic) { return ic->propertyFor(&factory_); }
 
