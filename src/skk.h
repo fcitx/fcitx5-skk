@@ -40,7 +40,9 @@ FCITX_CONFIG_ENUM_NAME_WITH_I18N(SkkPeriodStyle, N_("Japanese"), N_("Latin"),
 
 FCITX_CONFIG_ENUM_NAME_WITH_I18N(SkkInputMode, N_("Hiragana"), N_("Katakana"),
                                  N_("Half width Katakana"), N_("Latin"),
-                                 N_("Wide latin"), N_("Direct input"));
+                                 N_("Wide latin"));
+
+static_assert(SkkInputModeI18NAnnotation::enumLength <= SKK_INPUT_MODE_LAST);
 
 struct NotEmpty {
     bool check(const std::string &value) const { return !value.empty(); }
