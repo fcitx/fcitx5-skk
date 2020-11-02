@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-27 00:02-0700\n"
+"POT-Creation-Date: 2020-11-02 15:56-0800\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -22,145 +22,153 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:70
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:15
+#: rc.cpp:15 rc.cpp:36
 #, kde-format
 msgid "&Host:"
 msgstr "主机(&H)："
 
 #. i18n: file: gui/adddictdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:12
+#: rc.cpp:12 rc.cpp:33
 #, kde-format
 msgid "&Path:"
 msgstr "路径(&P):"
 
 #. i18n: file: gui/adddictdialog.ui:80
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:18
+#: rc.cpp:18 rc.cpp:39
 #, kde-format
 msgid "&Port:"
 msgstr "端口(&P)："
 
 #. i18n: file: gui/adddictdialog.ui:22
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:9
+#: rc.cpp:9 rc.cpp:30
 #, kde-format
 msgid "&Type:"
 msgstr "类型(&T)："
 
-#: src/skk.h:31
+#: src/skk.h:32
 msgid "ABC (a,b,c,...)"
 msgstr "字母(a,b,c,...)"
 
-#: src/skk.h:85
+#: src/skk.h:88
 msgid "Candidate Key"
 msgstr "候选词键"
 
-#: src/skk.h:77
+#: src/skk.h:80
 msgid "Candidate Layout"
 msgstr "候选词布局"
 
-#: src/skk.h:96
+#: src/skk.h:99
 msgid "Candidates Page Down"
 msgstr "候选词下一页"
 
-#: src/skk.h:90
+#: src/skk.h:93
 msgid "Candidates Page Up"
 msgstr "候选词上一页"
 
-#: src/skk.h:108
+#: src/skk.h:111
 msgid "Cursor Down"
 msgstr "光标后移"
 
-#: src/skk.h:102
+#: src/skk.h:105
 msgid "Cursor Up"
 msgstr "光标前移"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:6
+#: rc.cpp:6 rc.cpp:27
 #, kde-format
 msgid "Dialog"
 msgstr "对话框"
 
-#: src/skk.h:115
+#: src/skk.h:118
 msgid "Dictionary"
 msgstr "词典"
 
-#: gui/dictwidget.cpp:51
+#: gui/dictwidget.cpp:38
 msgid "Dictionary Manager"
 msgstr "词典管理器"
 
-#: src/skk.h:30
+#: src/skk.h:31
 msgid "Digit (0,1,2,...)"
 msgstr "数字(0,1,2,...)"
 
-#: src/skk.h:42 src/skk.cpp:72
+#: src/skk.cpp:69
 msgid "Direct input"
 msgstr "直接输入"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:3
+#: rc.cpp:3 rc.cpp:24
 #, kde-format
 msgid "Form"
 msgstr "表单"
 
-#: src/skk.h:41 src/skk.cpp:69
+#: src/skk.h:42 src/skk.cpp:66
 msgid "Half width Katakana"
 msgstr "半角片假名"
 
-#: src/skk.h:40 src/skk.cpp:67
+#: src/skk.h:41 src/skk.cpp:64
 msgid "Hiragana"
 msgstr "平假名"
 
-#: src/skk.h:35
+#: src/skk.h:36
 msgid "Horizontal"
 msgstr "横向"
 
-#: src/skk.h:72
+#: src/skk.h:75
 msgid "Initial Input Mode"
 msgstr "初始输入模式"
 
-#: src/skk.h:37
+#: src/skk.h:38
 msgid "Japanese"
 msgstr "日语"
 
-#: src/skk.h:40 src/skk.cpp:68
+#: src/skk.h:41 src/skk.cpp:65
 msgid "Katakana"
 msgstr "片假名"
 
-#: src/skk.h:37 src/skk.h:41 src/skk.cpp:70
+#: src/skk.h:38 src/skk.h:42 src/skk.cpp:67
 msgid "Latin"
 msgstr "英文"
 
-#: src/skk.h:34
+#: src/skk.h:35
 msgid "Not set"
 msgstr "未设置"
 
-#: src/skk.h:113
+#: src/skk.h:116
 msgid "Number candidate of Triggers To Show Candidate Window"
 msgstr "触发显示候选词窗口的按键次数"
 
-#: src/skk.h:74
+#: src/skk.h:77
 msgid "Page size"
 msgstr "页面大小"
 
-#: src/skk.h:69
+#: src/skk.h:72
 msgid "Punctuation Style"
 msgstr "标点风格"
 
-#: src/skk.h:32
+#: src/skk.h:33
 msgid "Qwerty Center Row (a,s,d,...)"
 msgstr "Qwerty 键盘中心行 (a,s,d,...)"
 
-#: src/skk.h:81
+#: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
 msgstr "回车提交时不插入新行"
 
-#: src/skk.h:67
+#: src/skk.h:70
 msgid "Rule"
 msgstr "规则"
+
+#: org.fcitx.fcitx5-skk.metainfo.xml.in:7
+msgid "SKK"
+msgstr ""
+
+#: org.fcitx.fcitx5-skk.metainfo.xml.in:8
+msgid "SKK Japanese input method"
+msgstr ""
 
 #: gui/adddictdialog.cpp:74 gui/adddictdialog.cpp:87
 msgid "Select Dictionary File"
@@ -170,7 +178,7 @@ msgstr "选择词典文件"
 msgid "Server"
 msgstr "服务器"
 
-#: src/skk.h:82
+#: src/skk.h:85
 msgid "Show Annotation"
 msgstr "显示注释"
 
@@ -190,21 +198,21 @@ msgstr "系统"
 msgid "User"
 msgstr "用户"
 
-#: src/skk.h:35
+#: src/skk.h:36
 msgid "Vertical"
 msgstr "纵向"
 
-#: src/skk.h:38 src/skk.h:42 src/skk.cpp:71
+#: src/skk.h:39 src/skk.h:43 src/skk.cpp:68
 msgid "Wide latin"
 msgstr "全角英文"
 
-#: src/skk.h:38
+#: src/skk.h:39
 msgid "Wide latin Japanese"
 msgstr "全角英文日语"
 
 #. i18n: file: gui/adddictdialog.ui:103
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:21
+#: rc.cpp:21 rc.cpp:42
 #, kde-format
 msgid "localhost"
 msgstr "localhost"

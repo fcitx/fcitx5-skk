@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-24 00:01-0700\n"
+"POT-Creation-Date: 2020-11-02 15:56-0800\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Catalan (https://www.transifex.com/fcitx/teams/12005/ca/)\n"
@@ -21,145 +21,153 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:70
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:15
+#: rc.cpp:15 rc.cpp:36
 #, kde-format
 msgid "&Host:"
 msgstr "&Ordinador:"
 
 #. i18n: file: gui/adddictdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:12
+#: rc.cpp:12 rc.cpp:33
 #, kde-format
 msgid "&Path:"
 msgstr "&Camí:"
 
 #. i18n: file: gui/adddictdialog.ui:80
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:18
+#: rc.cpp:18 rc.cpp:39
 #, kde-format
 msgid "&Port:"
 msgstr "&Port:"
 
 #. i18n: file: gui/adddictdialog.ui:22
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:9
+#: rc.cpp:9 rc.cpp:30
 #, kde-format
 msgid "&Type:"
 msgstr "&Tipus:"
 
-#: src/skk.h:31
+#: src/skk.h:32
 msgid "ABC (a,b,c,...)"
 msgstr "ABC (a,b,c,...)"
 
-#: src/skk.h:85
+#: src/skk.h:88
 msgid "Candidate Key"
 msgstr ""
 
-#: src/skk.h:77
+#: src/skk.h:80
 msgid "Candidate Layout"
 msgstr ""
 
-#: src/skk.h:96
+#: src/skk.h:99
 msgid "Candidates Page Down"
 msgstr ""
 
-#: src/skk.h:90
+#: src/skk.h:93
 msgid "Candidates Page Up"
 msgstr ""
 
-#: src/skk.h:108
+#: src/skk.h:111
 msgid "Cursor Down"
 msgstr ""
 
-#: src/skk.h:102
+#: src/skk.h:105
 msgid "Cursor Up"
 msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:6
+#: rc.cpp:6 rc.cpp:27
 #, kde-format
 msgid "Dialog"
 msgstr ""
 
-#: src/skk.h:115
+#: src/skk.h:118
 msgid "Dictionary"
 msgstr ""
 
-#: gui/dictwidget.cpp:51
+#: gui/dictwidget.cpp:38
 msgid "Dictionary Manager"
 msgstr "Gestor de diccionari"
 
-#: src/skk.h:30
+#: src/skk.h:31
 msgid "Digit (0,1,2,...)"
 msgstr "Dígit (0,1,2,...)"
 
-#: src/skk.h:42 src/skk.cpp:72
+#: src/skk.cpp:69
 msgid "Direct input"
 msgstr "Entrada directa"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:3
+#: rc.cpp:3 rc.cpp:24
 #, kde-format
 msgid "Form"
 msgstr ""
 
-#: src/skk.h:41 src/skk.cpp:69
+#: src/skk.h:42 src/skk.cpp:66
 msgid "Half width Katakana"
 msgstr "Katakana amplada mitjana"
 
-#: src/skk.h:40 src/skk.cpp:67
+#: src/skk.h:41 src/skk.cpp:64
 msgid "Hiragana"
 msgstr "Hiragana"
 
-#: src/skk.h:35
+#: src/skk.h:36
 msgid "Horizontal"
 msgstr "Horitzontal"
 
-#: src/skk.h:72
+#: src/skk.h:75
 msgid "Initial Input Mode"
 msgstr "Mètode d'entrada inicial"
 
-#: src/skk.h:37
+#: src/skk.h:38
 msgid "Japanese"
 msgstr "Japonès"
 
-#: src/skk.h:40 src/skk.cpp:68
+#: src/skk.h:41 src/skk.cpp:65
 msgid "Katakana"
 msgstr "Katakana"
 
-#: src/skk.h:37 src/skk.h:41 src/skk.cpp:70
+#: src/skk.h:38 src/skk.h:42 src/skk.cpp:67
 msgid "Latin"
 msgstr "Llatí"
 
-#: src/skk.h:34
+#: src/skk.h:35
 msgid "Not set"
 msgstr ""
 
-#: src/skk.h:113
+#: src/skk.h:116
 msgid "Number candidate of Triggers To Show Candidate Window"
 msgstr ""
 "Nombre de candidates d'activadors per mostrar la finestra de candidates"
 
-#: src/skk.h:74
+#: src/skk.h:77
 msgid "Page size"
 msgstr "Mida de pàgina"
 
-#: src/skk.h:69
+#: src/skk.h:72
 msgid "Punctuation Style"
 msgstr "Estil de puntuació"
 
-#: src/skk.h:32
+#: src/skk.h:33
 msgid "Qwerty Center Row (a,s,d,...)"
 msgstr "Fila central qwerty (a,s,d,...)"
 
-#: src/skk.h:81
+#: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
 msgstr "La tecla intro no insereix una línia nova a l'enviament"
 
-#: src/skk.h:67
+#: src/skk.h:70
 msgid "Rule"
+msgstr ""
+
+#: org.fcitx.fcitx5-skk.metainfo.xml.in:7
+msgid "SKK"
+msgstr ""
+
+#: org.fcitx.fcitx5-skk.metainfo.xml.in:8
+msgid "SKK Japanese input method"
 msgstr ""
 
 #: gui/adddictdialog.cpp:74 gui/adddictdialog.cpp:87
@@ -170,7 +178,7 @@ msgstr "Selecciona el fitxer de diccionari"
 msgid "Server"
 msgstr "Servidor"
 
-#: src/skk.h:82
+#: src/skk.h:85
 msgid "Show Annotation"
 msgstr "Mostra l'anotació"
 
@@ -190,21 +198,21 @@ msgstr "Sistema"
 msgid "User"
 msgstr "Usuari"
 
-#: src/skk.h:35
+#: src/skk.h:36
 msgid "Vertical"
 msgstr "Vertical"
 
-#: src/skk.h:38 src/skk.h:42 src/skk.cpp:71
+#: src/skk.h:39 src/skk.h:43 src/skk.cpp:68
 msgid "Wide latin"
 msgstr "Llatí ample"
 
-#: src/skk.h:38
+#: src/skk.h:39
 msgid "Wide latin Japanese"
 msgstr "Japonès llatí ample"
 
 #. i18n: file: gui/adddictdialog.ui:103
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:21
+#: rc.cpp:21 rc.cpp:42
 #, kde-format
 msgid "localhost"
 msgstr ""

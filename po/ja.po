@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-16 00:01-0700\n"
+"POT-Creation-Date: 2020-11-02 15:56-0800\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: take100yen <take100yen@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -22,28 +22,28 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:70
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:15
+#: rc.cpp:15 rc.cpp:36
 #, kde-format
 msgid "&Host:"
 msgstr "ホスト(&H):"
 
 #. i18n: file: gui/adddictdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:12
+#: rc.cpp:12 rc.cpp:33
 #, kde-format
 msgid "&Path:"
 msgstr "パス(&P):"
 
 #. i18n: file: gui/adddictdialog.ui:80
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:18
+#: rc.cpp:18 rc.cpp:39
 #, kde-format
 msgid "&Port:"
 msgstr "ポート(&P):"
 
 #. i18n: file: gui/adddictdialog.ui:22
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:9
+#: rc.cpp:9 rc.cpp:30
 #, kde-format
 msgid "&Type:"
 msgstr "形式(&T):"
@@ -52,38 +52,38 @@ msgstr "形式(&T):"
 msgid "ABC (a,b,c,...)"
 msgstr "ABC (a,b,c,...)"
 
-#: src/skk.h:86
+#: src/skk.h:88
 msgid "Candidate Key"
 msgstr "候補の選択に使用するキー"
 
-#: src/skk.h:78
+#: src/skk.h:80
 msgid "Candidate Layout"
 msgstr ""
 
-#: src/skk.h:97
+#: src/skk.h:99
 msgid "Candidates Page Down"
 msgstr "次の候補リストへの移動"
 
-#: src/skk.h:91
+#: src/skk.h:93
 msgid "Candidates Page Up"
 msgstr "前の候補リストへの移動"
 
-#: src/skk.h:109
+#: src/skk.h:111
 msgid "Cursor Down"
 msgstr ""
 
-#: src/skk.h:103
+#: src/skk.h:105
 msgid "Cursor Up"
 msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:6
+#: rc.cpp:6 rc.cpp:27
 #, kde-format
 msgid "Dialog"
 msgstr ""
 
-#: src/skk.h:116
+#: src/skk.h:118
 msgid "Dictionary"
 msgstr "辞書"
 
@@ -95,13 +95,13 @@ msgstr "辞書マネージャー"
 msgid "Digit (0,1,2,...)"
 msgstr "数字キー (0,1,2,...)"
 
-#: src/skk.h:43 src/skk.cpp:69
+#: src/skk.cpp:69
 msgid "Direct input"
 msgstr "直接入力"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:3
+#: rc.cpp:3 rc.cpp:24
 #, kde-format
 msgid "Form"
 msgstr ""
@@ -118,7 +118,7 @@ msgstr "ひらがな"
 msgid "Horizontal"
 msgstr "水平"
 
-#: src/skk.h:73
+#: src/skk.h:75
 msgid "Initial Input Mode"
 msgstr "初期入力モード"
 
@@ -138,15 +138,15 @@ msgstr "英数"
 msgid "Not set"
 msgstr ""
 
-#: src/skk.h:114
+#: src/skk.h:116
 msgid "Number candidate of Triggers To Show Candidate Window"
 msgstr "候補ウィンドウを表示するまでの候補数"
 
-#: src/skk.h:75
+#: src/skk.h:77
 msgid "Page size"
 msgstr "ページサイズ"
 
-#: src/skk.h:70
+#: src/skk.h:72
 msgid "Punctuation Style"
 msgstr "句読点スタイル"
 
@@ -154,12 +154,20 @@ msgstr "句読点スタイル"
 msgid "Qwerty Center Row (a,s,d,...)"
 msgstr "Qwertyキーボード中央行 (a,s,d,...)"
 
-#: src/skk.h:82
+#: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
 msgstr "確定時にリターンキーを押しても改行を挿入しない"
 
-#: src/skk.h:68
+#: src/skk.h:70
 msgid "Rule"
+msgstr ""
+
+#: org.fcitx.fcitx5-skk.metainfo.xml.in:7
+msgid "SKK"
+msgstr ""
+
+#: org.fcitx.fcitx5-skk.metainfo.xml.in:8
+msgid "SKK Japanese input method"
 msgstr ""
 
 #: gui/adddictdialog.cpp:74 gui/adddictdialog.cpp:87
@@ -170,7 +178,7 @@ msgstr "辞書ファイルを選択"
 msgid "Server"
 msgstr "SKKサーバー"
 
-#: src/skk.h:83
+#: src/skk.h:85
 msgid "Show Annotation"
 msgstr "注釈を表示"
 
@@ -204,7 +212,7 @@ msgstr "全角英字と日本語"
 
 #. i18n: file: gui/adddictdialog.ui:103
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:21
+#: rc.cpp:21 rc.cpp:42
 #, kde-format
 msgid "localhost"
 msgstr "localhost"
