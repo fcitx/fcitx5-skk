@@ -7,8 +7,8 @@
 
 #include "main.h"
 #include <QApplication>
+#include <fcitx-utils/i18n.h>
 #include <glib-object.h>
-#include <libintl.h>
 #include <libskk/libskk.h>
 #include <qplugin.h>
 #include "dictwidget.h"
@@ -21,6 +21,7 @@ SkkConfigPlugin::SkkConfigPlugin(QObject *parent)
     g_type_init();
 #endif
     skk_init();
+    registerDomain("fcitx5-skk", FCITX_INSTALL_LOCALEDIR);
 }
 
 FcitxQtConfigUIWidget *SkkConfigPlugin::create(const QString &key) {
