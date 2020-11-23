@@ -29,15 +29,18 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
   "${CMAKE_CURRENT_BINARY_DIR}/config.h"
   IMMEDIATE @ONLY)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-skk\" -D_GNU_SOURCE)
+fcitx5_add_i18n_definition()
+
 
 add_subdirectory(po)
 add_subdirectory(src)
 add_subdirectory(data)
 add_subdirectory(gui)
 
-fcitx5_translate_desktop_file(org.fcitx.fcitx5-skk.metainfo.xml.in
-                              org.fcitx.fcitx5-skk.metainfo.xml XML)
+fcitx5_translate_desktop_file(org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in
+                              org.fcitx.Fcitx5.Addon.Skk.metainfo.xml XML)
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/org.fcitx.fcitx5-skk.metainfo.xml" DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/org.fcitx.Fcitx5.Addon.Skk.metainfo.xml" DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

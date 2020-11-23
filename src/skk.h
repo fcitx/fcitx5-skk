@@ -173,6 +173,7 @@ private:
 class SkkAddonFactory final : public AddonFactory {
 public:
     AddonInstance *create(AddonManager *manager) override {
+        registerDomain("fcitx5-skk", FCITX_INSTALL_LOCALEDIR);
         return new SkkEngine(manager->instance());
     }
 };
