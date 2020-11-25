@@ -341,8 +341,6 @@ void SkkEngine::activate(const InputMethodEntry &entry,
 
 void SkkEngine::deactivate(const InputMethodEntry &entry,
                            InputContextEvent &event) {
-    auto &statusArea = event.inputContext()->statusArea();
-    statusArea.clearGroup(StatusGroup::InputMethod);
     if (event.type() == EventType::InputContextSwitchInputMethod) {
         auto skkstate = this->state(event.inputContext());
         auto context = skkstate->context();
