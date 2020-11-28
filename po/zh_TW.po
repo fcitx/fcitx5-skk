@@ -6,14 +6,15 @@
 # csslayer <wengxt@gmail.com>, 2020
 # 黃柏諺 <s8321414@gmail.com>, 2020
 # Walter Cheuk <wwycheuk@gmail.com>, 2020
+# bruh, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-02 15:56-0800\n"
+"POT-Creation-Date: 2020-11-29 00:03+0100\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: Walter Cheuk <wwycheuk@gmail.com>, 2020\n"
+"Last-Translator: bruh, 2020\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -24,28 +25,28 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:70
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:15 rc.cpp:36
+#: rc.cpp:15
 #, kde-format
 msgid "&Host:"
 msgstr "主機(&H)："
 
 #. i18n: file: gui/adddictdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:12 rc.cpp:33
+#: rc.cpp:12
 #, kde-format
 msgid "&Path:"
 msgstr "路徑(&P)："
 
 #. i18n: file: gui/adddictdialog.ui:80
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:18 rc.cpp:39
+#: rc.cpp:18
 #, kde-format
 msgid "&Port:"
 msgstr "連接埠(&P)："
 
 #. i18n: file: gui/adddictdialog.ui:22
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:9 rc.cpp:30
+#: rc.cpp:9
 #, kde-format
 msgid "&Type:"
 msgstr "類型(&T)："
@@ -80,7 +81,7 @@ msgstr "游標向上"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:6 rc.cpp:27
+#: rc.cpp:6
 #, kde-format
 msgid "Dialog"
 msgstr "對話框"
@@ -103,16 +104,16 @@ msgstr "直接輸入"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:3 rc.cpp:24
+#: rc.cpp:3
 #, kde-format
 msgid "Form"
 msgstr "表單"
 
-#: src/skk.h:42 src/skk.cpp:66
+#: src/skk.cpp:66 src/skk.h:42
 msgid "Half width Katakana"
 msgstr "半形片假名"
 
-#: src/skk.h:41 src/skk.cpp:64
+#: src/skk.cpp:64 src/skk.h:41
 msgid "Hiragana"
 msgstr "平假名"
 
@@ -128,11 +129,11 @@ msgstr "初始輸入模式"
 msgid "Japanese"
 msgstr "日語"
 
-#: src/skk.h:41 src/skk.cpp:65
+#: src/skk.cpp:65 src/skk.h:41
 msgid "Katakana"
 msgstr "片假名"
 
-#: src/skk.h:38 src/skk.h:42 src/skk.cpp:67
+#: src/skk.cpp:67 src/skk.h:38 src/skk.h:42
 msgid "Latin"
 msgstr "英文"
 
@@ -164,13 +165,13 @@ msgstr "確認送出時 Enter 鍵不輸入新行"
 msgid "Rule"
 msgstr "規則"
 
-#: org.fcitx.fcitx5-skk.metainfo.xml.in:7
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
 msgid "SKK"
-msgstr ""
+msgstr "SKK"
 
-#: org.fcitx.fcitx5-skk.metainfo.xml.in:8
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
 msgid "SKK Japanese input method"
-msgstr ""
+msgstr "SKK 日語輸入法"
 
 #: gui/adddictdialog.cpp:74 gui/adddictdialog.cpp:87
 msgid "Select Dictionary File"
@@ -204,7 +205,7 @@ msgstr "使用者"
 msgid "Vertical"
 msgstr "縱向"
 
-#: src/skk.h:39 src/skk.h:43 src/skk.cpp:68
+#: src/skk.cpp:68 src/skk.h:39 src/skk.h:43
 msgid "Wide latin"
 msgstr "全形英文"
 
@@ -214,7 +215,7 @@ msgstr "全形拉丁日語"
 
 #. i18n: file: gui/adddictdialog.ui:103
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:21 rc.cpp:42
+#: rc.cpp:21
 #, kde-format
 msgid "localhost"
 msgstr "本機"
