@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-04 11:17-0800\n"
+"POT-Creation-Date: 2020-12-04 11:19-0800\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -104,7 +104,7 @@ msgstr "直接输入"
 #: rc.cpp:21
 #, kde-format
 msgid "Encoding:"
-msgstr ""
+msgstr "编码："
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)

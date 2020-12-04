@@ -3,17 +3,17 @@
 # This file is distributed under the same license as the fcitx5-skk package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2020
 # take100yen <take100yen@gmail.com>, 2020
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
+# csslayer <wengxt@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-04 11:17-0800\n"
+"POT-Creation-Date: 2020-12-04 11:19-0800\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: Takuro Onoue <kusanaginoturugi@gmail.com>, 2020\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -105,7 +105,7 @@ msgstr "直接入力"
 #: rc.cpp:21
 #, kde-format
 msgid "Encoding:"
-msgstr ""
+msgstr "エンコーディング:"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
