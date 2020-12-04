@@ -495,12 +495,14 @@ void SkkEngine::loadDictionary() {
                     SkkCdbDict *dict =
                         skk_cdb_dict_new(path.data(), encoding.data(), nullptr);
                     if (dict) {
+                        SKK_DEBUG() << "Adding cdb dict: " << path;
                         dictionaries_.emplace_back(SKK_DICT(dict));
                     }
                 } else {
                     SkkFileDict *dict = skk_file_dict_new(
                         path.data(), encoding.data(), nullptr);
                     if (dict) {
+                        SKK_DEBUG() << "Adding file dict: " << path;
                         dictionaries_.emplace_back(SKK_DICT(dict));
                     }
                 }
@@ -517,6 +519,7 @@ void SkkEngine::loadDictionary() {
                 SkkUserDict *userdict = skk_user_dict_new(
                     realpath.data(), encoding.data(), nullptr);
                 if (userdict) {
+                    SKK_DEBUG() << "Adding user dict: " << realpath;
                     dictionaries_.emplace_back(SKK_DICT(userdict));
                 }
             }
@@ -537,6 +540,8 @@ void SkkEngine::loadDictionary() {
             SkkSkkServ *dict =
                 skk_skk_serv_new(host.data(), iPort, encoding.data(), nullptr);
             if (dict) {
+                SKK_DEBUG() << "Adding server: " << host << ":" << iPort << " "
+                            << encoding;
                 dictionaries_.emplace_back(SKK_DICT(dict));
             }
         }

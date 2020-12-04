@@ -6,7 +6,9 @@
  */
 #include "dictwidget.h"
 #include <fcntl.h>
+#include <fcitx-utils/fs.h>
 #include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/stringutils.h>
 #include <fcitxqti18nhelper.h>
 #include "adddictdialog.h"
 #include "dictmodel.h"
@@ -17,20 +19,24 @@ SkkDictWidget::SkkDictWidget(QWidget *parent)
     : FcitxQtConfigUIWidget(parent),
       m_ui(std::make_unique<Ui::SkkDictWidget>()) {
     m_ui->setupUi(this);
-    m_dictModel = new DictModel(this);
+    m_dictModel = new SkkDictModel(this);
+    auto fcitxBasePath = stringutils::joinPath(
+        StandardPath::global().userDirectory(StandardPath::Type::PkgData),
+        "skk");
+    fs::makePath(fcitxBasePath);
 
     m_ui->dictionaryView->setModel(m_dictModel);
 
-    connect(m_ui->addDictButton, SIGNAL(clicked(bool)), this,
-            SLOT(addDictClicked()));
-    connect(m_ui->defaultDictButton, SIGNAL(clicked(bool)), this,
-            SLOT(defaultDictClicked()));
-    connect(m_ui->removeDictButton, SIGNAL(clicked(bool)), this,
-            SLOT(removeDictClicked()));
-    connect(m_ui->moveUpDictButton, SIGNAL(clicked(bool)), this,
-            SLOT(moveUpDictClicked()));
-    connect(m_ui->moveDownDictButton, SIGNAL(clicked(bool)), this,
-            SLOT(moveDownClicked()));
+    connect(m_ui->addDictButton, &QPushButton::clicked, this,
+            &SkkDictWidget::addDictClicked);
+    connect(m_ui->defaultDictButton, &QPushButton::clicked, this,
+            &SkkDictWidget::defaultDictClicked);
+    connect(m_ui->removeDictButton, &QPushButton::clicked, this,
+            &SkkDictWidget::removeDictClicked);
+    connect(m_ui->moveUpDictButton, &QPushButton::clicked, this,
+            &SkkDictWidget::moveUpDictClicked);
+    connect(m_ui->moveDownDictButton, &QPushButton::clicked, this,
+            &SkkDictWidget::moveDownClicked);
 
     load();
 }
@@ -46,6 +52,7 @@ void SkkDictWidget::load() {
 
 void SkkDictWidget::save() {
     m_dictModel->save();
+    saveSubConfig("fcitx://config/addon/skk/reload_dictionary");
     emit changed(false);
 }
 

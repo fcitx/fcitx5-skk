@@ -24,6 +24,7 @@ public:
 public Q_SLOTS:
     void browseClicked();
     void indexChanged(int);
+    void validate();
 
 private:
     std::unique_ptr<Ui::AddDictDialog> m_ui;

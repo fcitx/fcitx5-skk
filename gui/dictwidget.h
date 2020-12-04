@@ -14,8 +14,7 @@
 
 namespace fcitx {
 
-class RuleModel;
-class DictModel;
+class SkkDictModel;
 
 class SkkDictWidget : public FcitxQtConfigUIWidget {
     Q_OBJECT
@@ -36,8 +35,7 @@ private Q_SLOTS:
 
 private:
     std::unique_ptr<Ui::SkkDictWidget> m_ui;
-    DictModel *m_dictModel;
-    RuleModel *m_ruleModel;
+    SkkDictModel *m_dictModel;
 };
 
 } // namespace fcitx

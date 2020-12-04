@@ -17,13 +17,16 @@
 
 namespace fcitx {
 
-DictModel::DictModel(QObject *parent) : QAbstractListModel(parent) {
-    m_requiredKeys << "file"
-                   << "type"
-                   << "mode";
+SkkDictModel::SkkDictModel(QObject *parent) : QAbstractListModel(parent) {
+    m_knownKeys << "file"
+                << "host"
+                << "port"
+                << "type"
+                << "mode"
+                << "encoding";
 }
 
-void DictModel::defaults() {
+void SkkDictModel::defaults() {
     auto path =
         StandardPath::global().fcitxPath("pkgdatadir", "skk/dictionary_list");
     QFile f(path.data());
@@ -32,7 +35,7 @@ void DictModel::defaults() {
     }
 }
 
-void DictModel::load() {
+void SkkDictModel::load() {
     auto file = StandardPath::global().open(StandardPath::Type::PkgData,
                                             "skk/dictionary_list", O_RDONLY);
     if (file.fd() < 0) {
@@ -47,7 +50,7 @@ void DictModel::load() {
     f.close();
 }
 
-void DictModel::load(QFile &file) {
+void SkkDictModel::load(QFile &file) {
     beginResetModel();
     m_dicts.clear();
 
@@ -55,7 +58,8 @@ void DictModel::load(QFile &file) {
     while (!(bytes = file.readLine()).isEmpty()) {
         QString line = QString::fromUtf8(bytes).trimmed();
         QStringList items = line.split(",");
-        if (items.size() < m_requiredKeys.size()) {
+        // No matter which type, it should has at least 3 keys.
+        if (items.size() < 3) {
             continue;
         }
 
@@ -69,21 +73,21 @@ void DictModel::load(QFile &file) {
             QString key = item.section('=', 0, 0);
             QString value = item.section('=', 1, -1);
 
-            if (!m_requiredKeys.contains(key)) {
+            if (!m_knownKeys.contains(key)) {
                 continue;
             }
 
             dict[key] = value;
         }
 
-        if (!failed && m_requiredKeys.size() == dict.size()) {
+        if (!failed && 3 <= dict.size()) {
             m_dicts << dict;
         }
     }
     endResetModel();
 }
 
-bool DictModel::save() {
+bool SkkDictModel::save() {
     return StandardPath::global().safeSave(
         StandardPath::Type::PkgData, "skk/dictionary_list", [this](int fd) {
             QFile tempFile;
@@ -111,14 +115,14 @@ bool DictModel::save() {
         });
 }
 
-int DictModel::rowCount(const QModelIndex &parent) const {
+int SkkDictModel::rowCount(const QModelIndex &parent) const {
     if (parent.isValid()) {
         return 0;
     }
     return m_dicts.size();
 }
 
-bool DictModel::removeRows(int row, int count, const QModelIndex &parent) {
+bool SkkDictModel::removeRows(int row, int count, const QModelIndex &parent) {
     if (parent.isValid()) {
         return false;
     }
@@ -134,7 +138,7 @@ bool DictModel::removeRows(int row, int count, const QModelIndex &parent) {
     return true;
 }
 
-QVariant DictModel::data(const QModelIndex &index, int role) const {
+QVariant SkkDictModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid()) {
         return QVariant();
     }
@@ -155,7 +159,7 @@ QVariant DictModel::data(const QModelIndex &index, int role) const {
     return QVariant();
 }
 
-bool DictModel::moveUp(const QModelIndex &currentIndex) {
+bool SkkDictModel::moveUp(const QModelIndex &currentIndex) {
     if (currentIndex.row() > 0 && currentIndex.row() < m_dicts.size()) {
         beginResetModel();
         m_dicts.swapItemsAt(currentIndex.row() - 1, currentIndex.row());
@@ -165,7 +169,7 @@ bool DictModel::moveUp(const QModelIndex &currentIndex) {
     return false;
 }
 
-bool DictModel::moveDown(const QModelIndex &currentIndex) {
+bool SkkDictModel::moveDown(const QModelIndex &currentIndex) {
     if (currentIndex.row() >= 0 && currentIndex.row() + 1 < m_dicts.size()) {
         beginResetModel();
         m_dicts.swapItemsAt(currentIndex.row() + 1, currentIndex.row());
@@ -176,7 +180,7 @@ bool DictModel::moveDown(const QModelIndex &currentIndex) {
     return false;
 }
 
-void DictModel::add(const QMap<QString, QString> &dict) {
+void SkkDictModel::add(const QMap<QString, QString> &dict) {
     beginInsertRows(QModelIndex(), m_dicts.size(), m_dicts.size());
     m_dicts << dict;
     endInsertRows();

@@ -16,8 +16,10 @@
 
 namespace fcitx {
 
+enum DictType { DictType_System, DictType_User, DictType_Server };
+
 AddDictDialog::AddDictDialog(QWidget *parent)
-    : QDialog(parent), m_ui(new Ui::AddDictDialog) {
+    : QDialog(parent), m_ui(std::make_unique<Ui::AddDictDialog>()) {
     m_ui->setupUi(this);
     m_ui->typeComboBox->addItem(_("System"));
     m_ui->typeComboBox->addItem(_("User"));
@@ -25,10 +27,15 @@ AddDictDialog::AddDictDialog(QWidget *parent)
 
     indexChanged(0);
 
-    connect(m_ui->browseButton, SIGNAL(clicked(bool)), this,
-            SLOT(browseClicked()));
-    connect(m_ui->typeComboBox, SIGNAL(currentIndexChanged(int)), this,
-            SLOT(indexChanged(int)));
+    connect(m_ui->browseButton, &QPushButton::clicked, this,
+            &AddDictDialog::browseClicked);
+    connect(m_ui->typeComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged), this,
+            &AddDictDialog::indexChanged);
+    connect(m_ui->urlLineEdit, &QLineEdit::textChanged, this,
+            &AddDictDialog::validate);
+    connect(m_ui->hostLineEdit, &QLineEdit::textChanged, this,
+            &AddDictDialog::validate);
 }
 
 QMap<QString, QString> AddDictDialog::dictionary() {
@@ -37,7 +44,7 @@ QMap<QString, QString> AddDictDialog::dictionary() {
     idx = idx > 2 ? 0 : idx;
 
     QMap<QString, QString> dict;
-    if (idx == 2) {
+    if (idx == DictType_Server) {
         dict["type"] = "server";
         dict["host"] = m_ui->hostLineEdit->text();
         dict["port"] = QString("%1").arg(m_ui->portSpinBox->value());
@@ -48,12 +55,15 @@ QMap<QString, QString> AddDictDialog::dictionary() {
         dict["file"] = m_ui->urlLineEdit->text();
         dict["mode"] = type[idx];
     }
+    if (!m_ui->encodingEdit->text().isEmpty()) {
+        dict["encoding"] = m_ui->encodingEdit->text();
+    }
 
     return dict;
 }
 
 void AddDictDialog::indexChanged(int idx) {
-    bool isServer = idx == 2;
+    bool isServer = idx == DictType_Server;
     m_ui->pathLabel->setVisible(!isServer);
     m_ui->urlLineEdit->setVisible(!isServer);
     m_ui->browseButton->setVisible(!isServer);
@@ -61,11 +71,31 @@ void AddDictDialog::indexChanged(int idx) {
     m_ui->hostLineEdit->setVisible(isServer);
     m_ui->portLabel->setVisible(isServer);
     m_ui->portSpinBox->setVisible(isServer);
+    validate();
+}
+
+void AddDictDialog::validate() {
+    const auto index = m_ui->typeComboBox->currentIndex();
+    bool valid = true;
+    switch (index) {
+    case DictType_System:
+    case DictType_User:
+        if (m_ui->urlLineEdit->text().isEmpty()) {
+            valid = false;
+        }
+        break;
+    case DictType_Server:
+        if (m_ui->hostLineEdit->text().isEmpty()) {
+            valid = false;
+        }
+        break;
+    }
+    m_ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(valid);
 }
 
 void AddDictDialog::browseClicked() {
     QString path = m_ui->urlLineEdit->text();
-    if (m_ui->typeComboBox->currentIndex() == 0) {
+    if (m_ui->typeComboBox->currentIndex() == DictType_System) {
         QString dir;
         if (path.isEmpty()) {
             path = SKK_DEFAULT_PATH;
@@ -74,8 +104,10 @@ void AddDictDialog::browseClicked() {
         path = QFileDialog::getOpenFileName(this, _("Select Dictionary File"),
                                             info.path());
     } else {
-        auto fcitxBasePath =
-            StandardPath::global().userDirectory(StandardPath::Type::PkgData);
+        auto fcitxBasePath = stringutils::joinPath(
+            StandardPath::global().userDirectory(StandardPath::Type::PkgData),
+            "skk");
+        fs::makePath(fcitxBasePath);
         QString basePath =
             QDir::cleanPath(QString::fromStdString(fcitxBasePath));
         if (path.isEmpty()) {

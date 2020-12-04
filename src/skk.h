@@ -147,6 +147,12 @@ public:
         safeSaveAsIni(config_, "conf/skk.conf");
         reloadConfig();
     }
+    void setSubConfig(const std::string &path,
+                      const fcitx::RawConfig &) override {
+        if (path == "reload_dictionary") {
+            reloadConfig();
+        }
+    }
 
     SkkState *state(InputContext *ic) { return ic->propertyFor(&factory_); }
 

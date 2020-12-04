@@ -13,10 +13,10 @@
 
 namespace fcitx {
 
-class DictModel : public QAbstractListModel {
+class SkkDictModel : public QAbstractListModel {
     Q_OBJECT
 public:
-    explicit DictModel(QObject *parent = 0);
+    explicit SkkDictModel(QObject *parent = 0);
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index,
                   int role = Qt::DisplayRole) const override;
@@ -32,7 +32,7 @@ public:
     bool moveUp(const QModelIndex &currentIndex);
 
 private:
-    QSet<QString> m_requiredKeys;
+    QSet<QString> m_knownKeys;
     QList<QMap<QString, QString>> m_dicts;
 };
 
