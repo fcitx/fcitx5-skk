@@ -52,7 +52,6 @@ void SkkDictWidget::load() {
 
 void SkkDictWidget::save() {
     m_dictModel->save();
-    saveSubConfig("fcitx://config/addon/skk/reload_dictionary");
     emit changed(false);
 }
 

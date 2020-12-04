@@ -149,7 +149,7 @@ public:
     }
     void setSubConfig(const std::string &path,
                       const fcitx::RawConfig &) override {
-        if (path == "reload_dictionary") {
+        if (path == "dictionary_list") {
             reloadConfig();
         }
     }
