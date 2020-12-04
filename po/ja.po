@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-04 00:02+0100\n"
+"POT-Creation-Date: 2020-12-04 11:17-0800\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: Takuro Onoue <kusanaginoturugi@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -21,30 +21,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. i18n: file: gui/adddictdialog.ui:70
+#. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:15
+#: rc.cpp:12
 #, kde-format
 msgid "&Host:"
 msgstr "ホスト(&H):"
 
-#. i18n: file: gui/adddictdialog.ui:42
+#. i18n: file: gui/adddictdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:12
+#: rc.cpp:9
 #, kde-format
 msgid "&Path:"
 msgstr "パス(&P):"
 
-#. i18n: file: gui/adddictdialog.ui:80
+#. i18n: file: gui/adddictdialog.ui:90
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
 #: rc.cpp:18
 #, kde-format
 msgid "&Port:"
 msgstr "ポート(&P):"
 
-#. i18n: file: gui/adddictdialog.ui:22
+#. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:9
+#: rc.cpp:6
 #, kde-format
 msgid "&Type:"
 msgstr "形式(&T):"
@@ -79,7 +79,7 @@ msgstr "カーソルアップ"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:6
+#: rc.cpp:3
 #, kde-format
 msgid "Dialog"
 msgstr "ダイアログ"
@@ -88,7 +88,7 @@ msgstr "ダイアログ"
 msgid "Dictionary"
 msgstr "辞書"
 
-#: gui/dictwidget.cpp:38
+#: gui/dictwidget.cpp:44
 msgid "Dictionary Manager"
 msgstr "辞書マネージャー"
 
@@ -100,9 +100,16 @@ msgstr "数字キー (0,1,2,...)"
 msgid "Direct input"
 msgstr "直接入力"
 
+#. i18n: file: gui/adddictdialog.ui:126
+#. i18n: ectx: property (text), widget (QLabel, encodingLabel)
+#: rc.cpp:21
+#, kde-format
+msgid "Encoding:"
+msgstr ""
+
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:3
+#: rc.cpp:24
 #, kde-format
 msgid "Form"
 msgstr "フォーム"
@@ -171,11 +178,11 @@ msgstr "SKK"
 msgid "SKK Japanese input method"
 msgstr "SKK日本語インプットメソッド"
 
-#: gui/adddictdialog.cpp:74 gui/adddictdialog.cpp:87
+#: gui/adddictdialog.cpp:104 gui/adddictdialog.cpp:119
 msgid "Select Dictionary File"
 msgstr "辞書ファイルを選択"
 
-#: gui/adddictdialog.cpp:24
+#: gui/adddictdialog.cpp:26
 msgid "Server"
 msgstr "SKKサーバー"
 
@@ -191,11 +198,11 @@ msgstr "SKK"
 msgid "Skk Input Method For Fcitx"
 msgstr "Fcitx用のSKK入力メソッド"
 
-#: gui/adddictdialog.cpp:22
+#: gui/adddictdialog.cpp:24
 msgid "System"
 msgstr "システム"
 
-#: gui/adddictdialog.cpp:23
+#: gui/adddictdialog.cpp:25
 msgid "User"
 msgstr "ユーザー"
 
@@ -211,9 +218,9 @@ msgstr "全角英数"
 msgid "Wide latin Japanese"
 msgstr "全角英字と日本語"
 
-#. i18n: file: gui/adddictdialog.ui:103
+#. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:21
+#: rc.cpp:15
 #, kde-format
 msgid "localhost"
 msgstr "localhost"
