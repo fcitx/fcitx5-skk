@@ -6,14 +6,15 @@
 # take100yen <take100yen@gmail.com>, 2020
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
 # csslayer <wengxt@gmail.com>, 2020
+# あわしろいくや <ikunya@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-04 11:19-0800\n"
+"POT-Creation-Date: 2020-12-07 00:02+0100\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
+"Last-Translator: あわしろいくや <ikunya@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -23,28 +24,28 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:12
+#: rc.cpp:15
 #, kde-format
 msgid "&Host:"
 msgstr "ホスト(&H):"
 
 #. i18n: file: gui/adddictdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:9
+#: rc.cpp:12
 #, kde-format
 msgid "&Path:"
 msgstr "パス(&P):"
 
 #. i18n: file: gui/adddictdialog.ui:90
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:18
+#: rc.cpp:21
 #, kde-format
 msgid "&Port:"
 msgstr "ポート(&P):"
 
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:6
+#: rc.cpp:9
 #, kde-format
 msgid "&Type:"
 msgstr "形式(&T):"
@@ -79,7 +80,7 @@ msgstr "カーソルアップ"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:3
+#: rc.cpp:6
 #, kde-format
 msgid "Dialog"
 msgstr "ダイアログ"
@@ -102,14 +103,14 @@ msgstr "直接入力"
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
-#: rc.cpp:21
+#: rc.cpp:24
 #, kde-format
 msgid "Encoding:"
 msgstr "エンコーディング:"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:24
+#: rc.cpp:3
 #, kde-format
 msgid "Form"
 msgstr "フォーム"
@@ -124,7 +125,7 @@ msgstr "ひらがな"
 
 #: src/skk.h:36
 msgid "Horizontal"
-msgstr "水平"
+msgstr "横"
 
 #: src/skk.h:75
 msgid "Initial Input Mode"
@@ -208,7 +209,7 @@ msgstr "ユーザー"
 
 #: src/skk.h:36
 msgid "Vertical"
-msgstr "垂直"
+msgstr "縦"
 
 #: src/skk.cpp:68 src/skk.h:39 src/skk.h:43
 msgid "Wide latin"
@@ -220,7 +221,7 @@ msgstr "全角英字と日本語"
 
 #. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:15
+#: rc.cpp:18
 #, kde-format
 msgid "localhost"
 msgstr "localhost"
