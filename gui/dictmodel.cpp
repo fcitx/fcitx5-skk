@@ -10,6 +10,7 @@
 #include <QSet>
 #include <QStringList>
 #include <QTemporaryFile>
+#include <QtGlobal>
 #include <fcitx-utils/standardpath.h>
 
 #include <fcntl.h>
@@ -162,7 +163,11 @@ QVariant SkkDictModel::data(const QModelIndex &index, int role) const {
 bool SkkDictModel::moveUp(const QModelIndex &currentIndex) {
     if (currentIndex.row() > 0 && currentIndex.row() < m_dicts.size()) {
         beginResetModel();
+#if (QT_VERSION < QT_VERSION_CHECK(5,13,0))
+        m_dicts.swap(currentIndex.row() - 1, currentIndex.row());
+#else
         m_dicts.swapItemsAt(currentIndex.row() - 1, currentIndex.row());
+#endif
         endResetModel();
         return true;
     }
@@ -172,7 +177,11 @@ bool SkkDictModel::moveUp(const QModelIndex &currentIndex) {
 bool SkkDictModel::moveDown(const QModelIndex &currentIndex) {
     if (currentIndex.row() >= 0 && currentIndex.row() + 1 < m_dicts.size()) {
         beginResetModel();
+#if (QT_VERSION < QT_VERSION_CHECK(5,13,0))
+        m_dicts.swap(currentIndex.row() + 1, currentIndex.row());
+#else
         m_dicts.swapItemsAt(currentIndex.row() + 1, currentIndex.row());
+#endif
         endResetModel();
         return true;
     }
