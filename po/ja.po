@@ -4,17 +4,17 @@
 #
 # Translators:
 # take100yen <take100yen@gmail.com>, 2020
-# Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
 # csslayer <wengxt@gmail.com>, 2020
 # あわしろいくや <ikunya@gmail.com>, 2020
+# Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-07 00:02+0100\n"
+"POT-Creation-Date: 2020-12-25 20:27+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: あわしろいくや <ikunya@gmail.com>, 2020\n"
+"Last-Translator: Takuro Onoue <kusanaginoturugi@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -169,7 +169,7 @@ msgstr "確定時にリターンキーを押しても改行を挿入しない"
 
 #: src/skk.h:70
 msgid "Rule"
-msgstr "ルール"
+msgstr "入力方式"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
 msgid "SKK"
@@ -177,7 +177,7 @@ msgstr "SKK"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
 msgid "SKK Japanese input method"
-msgstr "SKK日本語インプットメソッド"
+msgstr "SKK 日本語インプットメソッド"
 
 #: gui/adddictdialog.cpp:104 gui/adddictdialog.cpp:119
 msgid "Select Dictionary File"
@@ -185,7 +185,7 @@ msgstr "辞書ファイルを選択"
 
 #: gui/adddictdialog.cpp:26
 msgid "Server"
-msgstr "SKKサーバー"
+msgstr "SKK サーバー"
 
 #: src/skk.h:85
 msgid "Show Annotation"
@@ -193,11 +193,11 @@ msgstr "注釈を表示"
 
 #: src/skk.conf.in:3 src/skk-addon.conf.in:3
 msgid "Skk"
-msgstr "SKK"
+msgstr "Skk"
 
 #: src/skk-addon.conf.in:4
 msgid "Skk Input Method For Fcitx"
-msgstr "Fcitx用のSKK入力メソッド"
+msgstr "Fcitx 用の SKK 入力メソッド"
 
 #: gui/adddictdialog.cpp:24
 msgid "System"
