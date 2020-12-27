@@ -83,7 +83,8 @@ public:
 
     std::string shortText(InputContext *ic) const override {
         if (auto status = inputModeStatus(engine_, ic)) {
-            return status->label;
+            return stringutils::concat(status->label, " - ",
+                                       _(status->description));
         }
         return "";
     }
@@ -108,7 +109,9 @@ class SkkModeSubAction : public SimpleAction {
 public:
     SkkModeSubAction(SkkEngine *engine, SkkInputMode mode)
         : engine_(engine), mode_(mode) {
-        setShortText(input_mode_status[mode].label);
+        setShortText(
+            stringutils::concat(input_mode_status[mode].label, " - ",
+                                _(input_mode_status[mode].description)));
         setLongText(_(input_mode_status[mode].description));
         setIcon(input_mode_status[mode].icon);
         setCheckable(true);
