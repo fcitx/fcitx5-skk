@@ -6,15 +6,16 @@
 # take100yen <take100yen@gmail.com>, 2020
 # csslayer <wengxt@gmail.com>, 2020
 # あわしろいくや <ikunya@gmail.com>, 2020
-# Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
+# Takuro Onoue <kusanaginoturugi@gmail.com>, 2021
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-25 20:27+0000\n"
+"POT-Creation-Date: 2021-01-06 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: Takuro Onoue <kusanaginoturugi@gmail.com>, 2020\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -177,7 +178,7 @@ msgstr "SKK"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
 msgid "SKK Japanese input method"
-msgstr "SKK 日本語インプットメソッド"
+msgstr "SKK 日本語入力メソッド"
 
 #: gui/adddictdialog.cpp:104 gui/adddictdialog.cpp:119
 msgid "Select Dictionary File"
@@ -217,7 +218,7 @@ msgstr "全角英数"
 
 #: src/skk.h:39
 msgid "Wide latin Japanese"
-msgstr "全角英字と日本語"
+msgstr "全角英数と日本語"
 
 #. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
