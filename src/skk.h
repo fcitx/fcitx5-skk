@@ -142,6 +142,7 @@ public:
 
     auto &factory() { return factory_; }
     auto &config() { return config_; }
+    auto instance() { return instance_; }
     void setConfig(const RawConfig &config) override {
         config_.load(config, true);
         safeSaveAsIni(config_, "conf/skk.conf");
@@ -213,6 +214,8 @@ private:
     InputContext *ic_;
     GObjectUniquePtr<SkkContext> context_;
     bool modeChanged_ = false;
+    SkkInputMode lastMode_ = SKK_INPUT_MODE_DEFAULT;
+    bool lastIsEmpty_ = true;
 };
 
 } // namespace fcitx

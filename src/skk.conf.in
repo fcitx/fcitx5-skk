@@ -3,5 +3,5 @@ Name=Skk
 Icon=fcitx-skk
 LangCode=ja
 Addon=skk
-Label=skk
+Label=SKK
 Configurable=True
