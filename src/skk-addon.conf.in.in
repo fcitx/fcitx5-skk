@@ -2,6 +2,7 @@
 Name=Skk
 Comment=Skk Input Method For Fcitx
 Category=InputMethod
+Version=@PROJECT_VERSION@
 Library=skk
 Type=SharedLibrary
 OnDemand=True
