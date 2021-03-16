@@ -394,6 +394,14 @@ std::string SkkEngine::subMode(const InputMethodEntry &, InputContext &ic) {
     return "";
 }
 
+std::string SkkEngine::subModeLabelImpl(const InputMethodEntry &,
+                                        InputContext &ic) {
+    if (auto status = inputModeStatus(this, &ic)) {
+        return _(status->label);
+    }
+    return "";
+}
+
 void SkkEngine::loadRule() {
     UniqueCPtr<SkkRuleMetadata, skk_rule_metadata_free> meta{
         skk_rule_find_rule(config_.rule->data())};

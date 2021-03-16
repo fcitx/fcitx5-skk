@@ -123,7 +123,7 @@ using GObjectUniquePtr = UniqueCPtr<T, g_object_unref>;
 
 class SkkState;
 
-class SkkEngine final : public InputMethodEngine {
+class SkkEngine final : public InputMethodEngineV2 {
 public:
     SkkEngine(Instance *instance);
     ~SkkEngine();
@@ -139,6 +139,9 @@ public:
                InputContextEvent &event) override;
     void save() override;
     std::string subMode(const InputMethodEntry &, InputContext &) override;
+
+    std::string subModeLabelImpl(const fcitx::InputMethodEntry &,
+                                 fcitx::InputContext &) override;
 
     auto &factory() { return factory_; }
     auto &config() { return config_; }

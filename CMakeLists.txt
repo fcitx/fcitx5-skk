@@ -9,7 +9,7 @@ include(ECMUninstallTarget)
 include(FeatureSummary)
 
 find_package(PkgConfig REQUIRED)
-find_package(Fcitx5Core REQUIRED)
+find_package(Fcitx5Core 5.0.6 REQUIRED)
 find_package(Gettext REQUIRED)
 pkg_check_modules(GObject2 IMPORTED_TARGET "gobject-2.0" REQUIRED)
 find_package(LibSKK REQUIRED)
