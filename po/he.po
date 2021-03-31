@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the fcitx5-skk package.
+#
+# Translators:
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2021
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fcitx5-skk\n"
+"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
+"POT-Creation-Date: 2021-03-31 20:24+0000\n"
+"PO-Revision-Date: 2020-05-22 22:25+0000\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
+"Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
+"1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#. i18n: file: gui/adddictdialog.ui:73
+#. i18n: ectx: property (text), widget (QLabel, hostLabel)
+#: rc.cpp:15
+#, kde-format
+msgid "&Host:"
+msgstr ""
+
+#. i18n: file: gui/adddictdialog.ui:45
+#. i18n: ectx: property (text), widget (QLabel, pathLabel)
+#: rc.cpp:12
+#, kde-format
+msgid "&Path:"
+msgstr ""
+
+#. i18n: file: gui/adddictdialog.ui:90
+#. i18n: ectx: property (text), widget (QLabel, portLabel)
+#: rc.cpp:21
+#, kde-format
+msgid "&Port:"
+msgstr ""
+
+#. i18n: file: gui/adddictdialog.ui:25
+#. i18n: ectx: property (text), widget (QLabel, typeLabel)
+#: rc.cpp:9
+#, kde-format
+msgid "&Type:"
+msgstr ""
+
+#: src/skk.h:32
+msgid "ABC (a,b,c,...)"
+msgstr "א״ב (א,ב,ג,...)"
+
+#: src/skk.h:88
+msgid "Candidate Key"
+msgstr ""
+
+#: src/skk.h:80
+msgid "Candidate Layout"
+msgstr ""
+
+#: src/skk.h:99
+msgid "Candidates Page Down"
+msgstr ""
+
+#: src/skk.h:93
+msgid "Candidates Page Up"
+msgstr ""
+
+#: src/skk.h:111
+msgid "Cursor Down"
+msgstr ""
+
+#: src/skk.h:105
+msgid "Cursor Up"
+msgstr ""
+
+#. i18n: file: gui/adddictdialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
+#: rc.cpp:6
+#, kde-format
+msgid "Dialog"
+msgstr ""
+
+#: src/skk.h:118
+msgid "Dictionary"
+msgstr ""
+
+#: gui/dictwidget.cpp:44
+msgid "Dictionary Manager"
+msgstr ""
+
+#: src/skk.h:31
+msgid "Digit (0,1,2,...)"
+msgstr ""
+
+#: src/skk.cpp:69
+msgid "Direct input"
+msgstr ""
+
+#. i18n: file: gui/adddictdialog.ui:126
+#. i18n: ectx: property (text), widget (QLabel, encodingLabel)
+#: rc.cpp:24
+#, kde-format
+msgid "Encoding:"
+msgstr ""
+
+#. i18n: file: gui/dictwidget.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
+#: rc.cpp:3
+#, kde-format
+msgid "Form"
+msgstr ""
+
+#: src/skk.cpp:66 src/skk.h:42
+msgid "Half width Katakana"
+msgstr ""
+
+#: src/skk.cpp:64 src/skk.h:41
+msgid "Hiragana"
+msgstr ""
+
+#: src/skk.h:36
+msgid "Horizontal"
+msgstr ""
+
+#: src/skk.h:75
+msgid "Initial Input Mode"
+msgstr ""
+
+#: src/skk.h:38
+msgid "Japanese"
+msgstr ""
+
+#: src/skk.cpp:65 src/skk.h:41
+msgid "Katakana"
+msgstr ""
+
+#: src/skk.cpp:67 src/skk.h:38 src/skk.h:42
+msgid "Latin"
+msgstr ""
+
+#: src/skk.h:35
+msgid "Not set"
+msgstr ""
+
+#: src/skk.h:116
+msgid "Number candidate of Triggers To Show Candidate Window"
+msgstr ""
+
+#: src/skk.h:77
+msgid "Page size"
+msgstr ""
+
+#: src/skk.h:72
+msgid "Punctuation Style"
+msgstr ""
+
+#: src/skk.h:33
+msgid "Qwerty Center Row (a,s,d,...)"
+msgstr ""
+
+#: src/skk.h:84
+msgid "Return-key does not insert new line on commit"
+msgstr ""
+
+#: src/skk.h:70
+msgid "Rule"
+msgstr ""
+
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
+msgid "SKK"
+msgstr ""
+
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
+msgid "SKK Japanese input method"
+msgstr ""
+
+#: gui/adddictdialog.cpp:104 gui/adddictdialog.cpp:119
+msgid "Select Dictionary File"
+msgstr ""
+
+#: gui/adddictdialog.cpp:26
+msgid "Server"
+msgstr ""
+
+#: src/skk.h:85
+msgid "Show Annotation"
+msgstr ""
+
+#: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
+msgid "Skk"
+msgstr ""
+
+#: src/skk-addon.conf.in.in:4
+msgid "Skk Input Method For Fcitx"
+msgstr ""
+
+#: gui/adddictdialog.cpp:24
+msgid "System"
+msgstr ""
+
+#: gui/adddictdialog.cpp:25
+msgid "User"
+msgstr ""
+
+#: src/skk.h:36
+msgid "Vertical"
+msgstr ""
+
+#: src/skk.cpp:68 src/skk.h:39 src/skk.h:43
+msgid "Wide latin"
+msgstr ""
+
+#: src/skk.h:39
+msgid "Wide latin Japanese"
+msgstr ""
+
+#. i18n: file: gui/adddictdialog.ui:83
+#. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
+#: rc.cpp:18
+#, kde-format
+msgid "localhost"
+msgstr ""
