@@ -774,11 +774,11 @@ gboolean SkkState::retrieve_surrounding_text_cb(GObject *, gchar **text,
                                                 guint *cursor_pos,
                                                 SkkState *skk) {
     InputContext *ic = skk->ic_;
-    if (!(ic->capabilityFlags().test(CapabilityFlag::SurroundingText)) ||
+    if (!ic->capabilityFlags().test(CapabilityFlag::SurroundingText) ||
         !ic->surroundingText().isValid())
         return false;
 
-    *text = g_strdup(ic->surroundingText().selectedText().c_str());
+    *text = g_strdup(ic->surroundingText().text().c_str());
     *cursor_pos = ic->surroundingText().cursor();
 
     return true;
