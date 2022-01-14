@@ -4,14 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
+# Ettore Atalan <atalanttore@googlemail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-04 11:17-0800\n"
+"POT-Creation-Date: 2022-01-14 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2022\n"
 "Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -21,28 +22,28 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:12
+#: rc.cpp:15
 #, kde-format
 msgid "&Host:"
 msgstr "&Host:"
 
 #. i18n: file: gui/adddictdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:9
+#: rc.cpp:12
 #, kde-format
 msgid "&Path:"
 msgstr "&Pfad:"
 
 #. i18n: file: gui/adddictdialog.ui:90
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:18
+#: rc.cpp:21
 #, kde-format
 msgid "&Port:"
 msgstr "&Port:"
 
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:6
+#: rc.cpp:9
 #, kde-format
 msgid "&Type:"
 msgstr "&Typ:"
@@ -77,14 +78,14 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:3
+#: rc.cpp:6
 #, kde-format
 msgid "Dialog"
-msgstr ""
+msgstr "Dialog"
 
 #: src/skk.h:118
 msgid "Dictionary"
-msgstr ""
+msgstr "Wörterbuch"
 
 #: gui/dictwidget.cpp:44
 msgid "Dictionary Manager"
@@ -100,14 +101,14 @@ msgstr "Direkte Eingabe"
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
-#: rc.cpp:21
+#: rc.cpp:24
 #, kde-format
 msgid "Encoding:"
 msgstr ""
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:24
+#: rc.cpp:3
 #, kde-format
 msgid "Form"
 msgstr ""
@@ -142,7 +143,7 @@ msgstr "Latin"
 
 #: src/skk.h:35
 msgid "Not set"
-msgstr ""
+msgstr "Nicht festgelegt"
 
 #: src/skk.h:116
 msgid "Number candidate of Triggers To Show Candidate Window"
@@ -166,7 +167,7 @@ msgstr "Return-Taste erzeugt keinen Zeilenwechsel"
 
 #: src/skk.h:70
 msgid "Rule"
-msgstr ""
+msgstr "Regel"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
 msgid "SKK"
@@ -188,11 +189,11 @@ msgstr "Server"
 msgid "Show Annotation"
 msgstr "Anmerkungen zeigen"
 
-#: src/skk.conf.in:3 src/skk-addon.conf.in:3
+#: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
 msgid "Skk"
 msgstr "Skk"
 
-#: src/skk-addon.conf.in:4
+#: src/skk-addon.conf.in.in:4
 msgid "Skk Input Method For Fcitx"
 msgstr "Skk Eingabemethode für Fcitx"
 
@@ -218,7 +219,7 @@ msgstr "Wide latin Japanisch"
 
 #. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:15
+#: rc.cpp:18
 #, kde-format
 msgid "localhost"
 msgstr ""
