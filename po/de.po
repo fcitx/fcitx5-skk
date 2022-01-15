@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-01-14 20:24+0000\n"
+"POT-Creation-Date: 2022-01-15 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2022\n"
 "Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
@@ -70,11 +70,11 @@ msgstr ""
 
 #: src/skk.h:111
 msgid "Cursor Down"
-msgstr ""
+msgstr "Cursor herunter"
 
 #: src/skk.h:105
 msgid "Cursor Up"
-msgstr ""
+msgstr "Cursor hoch"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
@@ -104,7 +104,7 @@ msgstr "Direkte Eingabe"
 #: rc.cpp:24
 #, kde-format
 msgid "Encoding:"
-msgstr ""
+msgstr "Kodierung:"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
