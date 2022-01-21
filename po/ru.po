@@ -4,14 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
+# Dmitry <dmitrydmitry761@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-04 11:17-0800\n"
+"POT-Creation-Date: 2022-01-21 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
+"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -23,28 +24,28 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:12
+#: rc.cpp:15
 #, kde-format
 msgid "&Host:"
 msgstr "&Хост:"
 
 #. i18n: file: gui/adddictdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:9
+#: rc.cpp:12
 #, kde-format
 msgid "&Path:"
 msgstr "&Путь:"
 
 #. i18n: file: gui/adddictdialog.ui:90
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:18
+#: rc.cpp:21
 #, kde-format
 msgid "&Port:"
 msgstr "&Порт:"
 
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:6
+#: rc.cpp:9
 #, kde-format
 msgid "&Type:"
 msgstr "&Тип:"
@@ -55,38 +56,38 @@ msgstr "ABC (a,b,c,...)"
 
 #: src/skk.h:88
 msgid "Candidate Key"
-msgstr ""
+msgstr "Ключ-кандидат"
 
 #: src/skk.h:80
 msgid "Candidate Layout"
-msgstr ""
+msgstr "Макет кандидата"
 
 #: src/skk.h:99
 msgid "Candidates Page Down"
-msgstr ""
+msgstr "Страница кандидатов вниз"
 
 #: src/skk.h:93
 msgid "Candidates Page Up"
-msgstr ""
+msgstr "Страница кандидатов вверх"
 
 #: src/skk.h:111
 msgid "Cursor Down"
-msgstr ""
+msgstr "Курсор вниз"
 
 #: src/skk.h:105
 msgid "Cursor Up"
-msgstr ""
+msgstr "Курсор вверх"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:3
+#: rc.cpp:6
 #, kde-format
 msgid "Dialog"
-msgstr ""
+msgstr "Диалог"
 
 #: src/skk.h:118
 msgid "Dictionary"
-msgstr ""
+msgstr "Словарь"
 
 #: gui/dictwidget.cpp:44
 msgid "Dictionary Manager"
@@ -102,17 +103,17 @@ msgstr "Прямой ввод"
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
-#: rc.cpp:21
+#: rc.cpp:24
 #, kde-format
 msgid "Encoding:"
-msgstr ""
+msgstr "Кодировка:"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
-#: rc.cpp:24
+#: rc.cpp:3
 #, kde-format
 msgid "Form"
-msgstr ""
+msgstr "Форма"
 
 #: src/skk.cpp:66 src/skk.h:42
 msgid "Half width Katakana"
@@ -144,7 +145,7 @@ msgstr "Латынь"
 
 #: src/skk.h:35
 msgid "Not set"
-msgstr ""
+msgstr "Не задано"
 
 #: src/skk.h:116
 msgid "Number candidate of Triggers To Show Candidate Window"
@@ -168,15 +169,15 @@ msgstr "Клавиша Enter не вставляет новую строку п�
 
 #: src/skk.h:70
 msgid "Rule"
-msgstr ""
+msgstr "Правило"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
 msgid "SKK"
-msgstr ""
+msgstr "SKK"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
 msgid "SKK Japanese input method"
-msgstr ""
+msgstr "Японский метод ввода SKK"
 
 #: gui/adddictdialog.cpp:104 gui/adddictdialog.cpp:119
 msgid "Select Dictionary File"
@@ -190,11 +191,11 @@ msgstr "Сервер"
 msgid "Show Annotation"
 msgstr "Показывать аннотацию"
 
-#: src/skk.conf.in:3 src/skk-addon.conf.in:3
+#: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
 msgid "Skk"
 msgstr "Skk"
 
-#: src/skk-addon.conf.in:4
+#: src/skk-addon.conf.in.in:4
 msgid "Skk Input Method For Fcitx"
 msgstr "Метод ввода Skk для Fcitx"
 
@@ -220,7 +221,7 @@ msgstr "Японский Wide latin"
 
 #. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:15
+#: rc.cpp:18
 #, kde-format
 msgid "localhost"
-msgstr ""
+msgstr "локальный хост"
