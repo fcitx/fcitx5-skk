@@ -22,7 +22,7 @@
      <item>
       <widget class="QToolButton" name="addDictButton">
        <property name="text">
-        <string/>
+        <string>Add</string>
        </property>
        <property name="icon">
         <iconset theme="list-add">
@@ -31,9 +31,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="removeDictButton">
+      <widget class="QToolButton" name="removeDictButton">
        <property name="text">
-        <string/>
+        <string>Remove</string>
        </property>
        <property name="icon">
         <iconset theme="list-remove">
@@ -42,9 +42,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="moveUpDictButton">
+      <widget class="QToolButton" name="moveUpDictButton">
        <property name="text">
-        <string/>
+        <string>Up</string>
        </property>
        <property name="icon">
         <iconset theme="go-up">
@@ -55,7 +55,7 @@
      <item>
       <widget class="QToolButton" name="moveDownDictButton">
        <property name="text">
-        <string/>
+        <string>Down</string>
        </property>
        <property name="icon">
         <iconset theme="go-down">
@@ -64,9 +64,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="defaultDictButton">
+      <widget class="QToolButton" name="defaultDictButton">
        <property name="text">
-        <string/>
+        <string>Revert</string>
        </property>
        <property name="icon">
         <iconset theme="document-revert">

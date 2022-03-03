@@ -8,6 +8,7 @@
 # あわしろいくや <ikunya@gmail.com>, 2020
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2021
 # UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021
+# KANASHIRO Akira <github_ml@rkarsnk.jp>, 2022
 #
 msgid ""
 msgstr ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2021-01-06 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021\n"
+"Last-Translator: KANASHIRO Akira <github_ml@rkarsnk.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +51,26 @@ msgstr "ポート(&P):"
 #, kde-format
 msgid "&Type:"
 msgstr "形式(&T):"
+
+#. i18n: file: gui/dictwidget.ui:25
+msgid "Add"
+msgstr "追加"
+
+#. i18n: file: gui/dictwidget.ui:36
+msgid "Remove"
+msgstr "削除"
+
+#. i18n: file: gui/dictwidget.ui:47
+msgid "Up"
+msgstr "上へ"
+
+#. i18n: file: gui/dictwidget.ui:58
+msgid "Down"
+msgstr "下へ"
+
+#. i18n: file: gui/dictwidget.ui:69
+msgid "Revert"
+msgstr "戻す"
 
 #: src/skk.h:32
 msgid "ABC (a,b,c,...)"
