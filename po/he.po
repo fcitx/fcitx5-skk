@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-03-31 20:24+0000\n"
+"POT-Creation-Date: 2022-03-03 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
@@ -20,30 +20,44 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
+#. i18n: file: gui/dictwidget.ui:31
+#. i18n: ectx: property (text), widget (QToolButton, addDictButton)
+#: rc.cpp:6
+#, kde-format
+msgid "&Add"
+msgstr ""
+
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:15
+#: rc.cpp:30
 #, kde-format
 msgid "&Host:"
 msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:12
+#: rc.cpp:27
 #, kde-format
 msgid "&Path:"
 msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:90
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:21
+#: rc.cpp:36
 #, kde-format
 msgid "&Port:"
 msgstr ""
 
+#. i18n: file: gui/dictwidget.ui:98
+#. i18n: ectx: property (text), widget (QToolButton, defaultDictButton)
+#: rc.cpp:18
+#, kde-format
+msgid "&Revert"
+msgstr ""
+
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:9
+#: rc.cpp:24
 #, kde-format
 msgid "&Type:"
 msgstr ""
@@ -78,7 +92,7 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:6
+#: rc.cpp:21
 #, kde-format
 msgid "Dialog"
 msgstr ""
@@ -101,7 +115,7 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
-#: rc.cpp:24
+#: rc.cpp:39
 #, kde-format
 msgid "Encoding:"
 msgstr ""
@@ -141,6 +155,20 @@ msgstr ""
 msgid "Latin"
 msgstr ""
 
+#. i18n: file: gui/dictwidget.ui:81
+#. i18n: ectx: property (text), widget (QToolButton, moveDownDictButton)
+#: rc.cpp:15
+#, kde-format
+msgid "Move &Down"
+msgstr ""
+
+#. i18n: file: gui/dictwidget.ui:64
+#. i18n: ectx: property (text), widget (QToolButton, moveUpDictButton)
+#: rc.cpp:12
+#, kde-format
+msgid "Move &Up"
+msgstr ""
+
 #: src/skk.h:35
 msgid "Not set"
 msgstr ""
@@ -159,6 +187,13 @@ msgstr ""
 
 #: src/skk.h:33
 msgid "Qwerty Center Row (a,s,d,...)"
+msgstr ""
+
+#. i18n: file: gui/dictwidget.ui:47
+#. i18n: ectx: property (text), widget (QToolButton, removeDictButton)
+#: rc.cpp:9
+#, kde-format
+msgid "R&emove"
 msgstr ""
 
 #: src/skk.h:84
@@ -219,7 +254,7 @@ msgstr ""
 
 #. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:18
+#: rc.cpp:33
 #, kde-format
 msgid "localhost"
 msgstr ""

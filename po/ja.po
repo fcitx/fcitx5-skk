@@ -8,15 +8,14 @@
 # あわしろいくや <ikunya@gmail.com>, 2020
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2021
 # UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021
-# KANASHIRO Akira <github_ml@rkarsnk.jp>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-01-06 20:24+0000\n"
+"POT-Creation-Date: 2022-03-03 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: KANASHIRO Akira <github_ml@rkarsnk.jp>, 2022\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -24,53 +23,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. i18n: file: gui/dictwidget.ui:31
+#. i18n: ectx: property (text), widget (QToolButton, addDictButton)
+#: rc.cpp:6
+#, kde-format
+msgid "&Add"
+msgstr ""
+
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:15
+#: rc.cpp:30
 #, kde-format
 msgid "&Host:"
 msgstr "ホスト(&H):"
 
 #. i18n: file: gui/adddictdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:12
+#: rc.cpp:27
 #, kde-format
 msgid "&Path:"
 msgstr "パス(&P):"
 
 #. i18n: file: gui/adddictdialog.ui:90
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:21
+#: rc.cpp:36
 #, kde-format
 msgid "&Port:"
 msgstr "ポート(&P):"
 
+#. i18n: file: gui/dictwidget.ui:98
+#. i18n: ectx: property (text), widget (QToolButton, defaultDictButton)
+#: rc.cpp:18
+#, kde-format
+msgid "&Revert"
+msgstr ""
+
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:9
+#: rc.cpp:24
 #, kde-format
 msgid "&Type:"
 msgstr "形式(&T):"
-
-#. i18n: file: gui/dictwidget.ui:25
-msgid "Add"
-msgstr "追加"
-
-#. i18n: file: gui/dictwidget.ui:36
-msgid "Remove"
-msgstr "削除"
-
-#. i18n: file: gui/dictwidget.ui:47
-msgid "Up"
-msgstr "上へ"
-
-#. i18n: file: gui/dictwidget.ui:58
-msgid "Down"
-msgstr "下へ"
-
-#. i18n: file: gui/dictwidget.ui:69
-msgid "Revert"
-msgstr "戻す"
 
 #: src/skk.h:32
 msgid "ABC (a,b,c,...)"
@@ -102,7 +95,7 @@ msgstr "カーソルアップ"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:6
+#: rc.cpp:21
 #, kde-format
 msgid "Dialog"
 msgstr "ダイアログ"
@@ -125,7 +118,7 @@ msgstr "直接入力"
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
-#: rc.cpp:24
+#: rc.cpp:39
 #, kde-format
 msgid "Encoding:"
 msgstr "エンコーディング:"
@@ -165,6 +158,20 @@ msgstr "カタカナ"
 msgid "Latin"
 msgstr "英数"
 
+#. i18n: file: gui/dictwidget.ui:81
+#. i18n: ectx: property (text), widget (QToolButton, moveDownDictButton)
+#: rc.cpp:15
+#, kde-format
+msgid "Move &Down"
+msgstr ""
+
+#. i18n: file: gui/dictwidget.ui:64
+#. i18n: ectx: property (text), widget (QToolButton, moveUpDictButton)
+#: rc.cpp:12
+#, kde-format
+msgid "Move &Up"
+msgstr ""
+
 #: src/skk.h:35
 msgid "Not set"
 msgstr "未設定"
@@ -184,6 +191,13 @@ msgstr "句読点スタイル"
 #: src/skk.h:33
 msgid "Qwerty Center Row (a,s,d,...)"
 msgstr "Qwertyキーボード中央行 (a,s,d,...)"
+
+#. i18n: file: gui/dictwidget.ui:47
+#. i18n: ectx: property (text), widget (QToolButton, removeDictButton)
+#: rc.cpp:9
+#, kde-format
+msgid "R&emove"
+msgstr ""
 
 #: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
@@ -213,11 +227,11 @@ msgstr "SKK サーバー"
 msgid "Show Annotation"
 msgstr "注釈を表示"
 
-#: src/skk.conf.in:3 src/skk-addon.conf.in:3
+#: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
 msgid "Skk"
 msgstr "Skk"
 
-#: src/skk-addon.conf.in:4
+#: src/skk-addon.conf.in.in:4
 msgid "Skk Input Method For Fcitx"
 msgstr "Fcitx 用の SKK 入力メソッド"
 
@@ -243,7 +257,7 @@ msgstr "全角英数と日本語"
 
 #. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:18
+#: rc.cpp:33
 #, kde-format
 msgid "localhost"
 msgstr "localhost"

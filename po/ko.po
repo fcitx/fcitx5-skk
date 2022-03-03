@@ -4,15 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
-# JungHee Lee <daemul72@gmail.com>, 2021
+# Junghee Lee <daemul72@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-08-30 20:24+0000\n"
+"POT-Creation-Date: 2022-03-03 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2021\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -20,30 +20,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. i18n: file: gui/dictwidget.ui:31
+#. i18n: ectx: property (text), widget (QToolButton, addDictButton)
+#: rc.cpp:6
+#, kde-format
+msgid "&Add"
+msgstr ""
+
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
-#: rc.cpp:15
+#: rc.cpp:30
 #, kde-format
 msgid "&Host:"
 msgstr "호스트(&H)"
 
 #. i18n: file: gui/adddictdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
-#: rc.cpp:12
+#: rc.cpp:27
 #, kde-format
 msgid "&Path:"
 msgstr "경로(&P)"
 
 #. i18n: file: gui/adddictdialog.ui:90
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
-#: rc.cpp:21
+#: rc.cpp:36
 #, kde-format
 msgid "&Port:"
 msgstr "포트(&P):"
 
+#. i18n: file: gui/dictwidget.ui:98
+#. i18n: ectx: property (text), widget (QToolButton, defaultDictButton)
+#: rc.cpp:18
+#, kde-format
+msgid "&Revert"
+msgstr ""
+
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
-#: rc.cpp:9
+#: rc.cpp:24
 #, kde-format
 msgid "&Type:"
 msgstr "형식(&T):"
@@ -78,7 +92,7 @@ msgstr "커서 위로"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
-#: rc.cpp:6
+#: rc.cpp:21
 #, kde-format
 msgid "Dialog"
 msgstr "대화창"
@@ -101,7 +115,7 @@ msgstr "직접 입력"
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
-#: rc.cpp:24
+#: rc.cpp:39
 #, kde-format
 msgid "Encoding:"
 msgstr "인코딩:"
@@ -141,6 +155,20 @@ msgstr "가타카나"
 msgid "Latin"
 msgstr "로마자"
 
+#. i18n: file: gui/dictwidget.ui:81
+#. i18n: ectx: property (text), widget (QToolButton, moveDownDictButton)
+#: rc.cpp:15
+#, kde-format
+msgid "Move &Down"
+msgstr ""
+
+#. i18n: file: gui/dictwidget.ui:64
+#. i18n: ectx: property (text), widget (QToolButton, moveUpDictButton)
+#: rc.cpp:12
+#, kde-format
+msgid "Move &Up"
+msgstr ""
+
 #: src/skk.h:35
 msgid "Not set"
 msgstr "지정되지 않음"
@@ -160,6 +188,13 @@ msgstr "문장부호 스타일"
 #: src/skk.h:33
 msgid "Qwerty Center Row (a,s,d,...)"
 msgstr "키보드 중간열 (a, s, d, ...)"
+
+#. i18n: file: gui/dictwidget.ui:47
+#. i18n: ectx: property (text), widget (QToolButton, removeDictButton)
+#: rc.cpp:9
+#, kde-format
+msgid "R&emove"
+msgstr ""
 
 #: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
@@ -219,7 +254,7 @@ msgstr "전각 로마자 일본어"
 
 #. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
-#: rc.cpp:18
+#: rc.cpp:33
 #, kde-format
 msgid "localhost"
 msgstr "localhost"
