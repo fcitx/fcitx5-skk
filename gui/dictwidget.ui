@@ -21,19 +21,30 @@
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="QToolButton" name="addDictButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string>Add</string>
+        <string>&amp;Add</string>
        </property>
        <property name="icon">
-        <iconset theme="list-add">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="list-add"/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="removeDictButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string>Remove</string>
+        <string>R&amp;emove</string>
        </property>
        <property name="icon">
         <iconset theme="list-remove">
@@ -43,8 +54,14 @@
      </item>
      <item>
       <widget class="QToolButton" name="moveUpDictButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string>Up</string>
+        <string>Move &amp;Up</string>
        </property>
        <property name="icon">
         <iconset theme="go-up">
@@ -54,8 +71,14 @@
      </item>
      <item>
       <widget class="QToolButton" name="moveDownDictButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string>Down</string>
+        <string>Move &amp;Down</string>
        </property>
        <property name="icon">
         <iconset theme="go-down">
@@ -65,8 +88,14 @@
      </item>
      <item>
       <widget class="QToolButton" name="defaultDictButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string>Revert</string>
+        <string>&amp;Revert</string>
        </property>
        <property name="icon">
         <iconset theme="document-revert">
