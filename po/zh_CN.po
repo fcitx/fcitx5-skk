@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the fcitx5-skk package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2020
+# csslayer <wengxt@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-03 20:24+0000\n"
+"POT-Creation-Date: 2022-03-09 05:18+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: rc.cpp:6
 #, kde-format
 msgid "&Add"
-msgstr ""
+msgstr "添加(&A)"
 
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
@@ -53,7 +53,7 @@ msgstr "端口(&P)："
 #: rc.cpp:18
 #, kde-format
 msgid "&Revert"
-msgstr ""
+msgstr "撤销(&R)"
 
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
@@ -160,14 +160,14 @@ msgstr "英文"
 #: rc.cpp:15
 #, kde-format
 msgid "Move &Down"
-msgstr ""
+msgstr "下移(&D)"
 
 #. i18n: file: gui/dictwidget.ui:64
 #. i18n: ectx: property (text), widget (QToolButton, moveUpDictButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Move &Up"
-msgstr ""
+msgstr "上移(&U)"
 
 #: src/skk.h:35
 msgid "Not set"
@@ -194,7 +194,7 @@ msgstr "Qwerty 键盘中心行 (a,s,d,...)"
 #: rc.cpp:9
 #, kde-format
 msgid "R&emove"
-msgstr ""
+msgstr "删除(&E)"
 
 #: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
