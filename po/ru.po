@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-03 20:24+0000\n"
+"POT-Creation-Date: 2022-03-11 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 #: rc.cpp:6
 #, kde-format
 msgid "&Add"
-msgstr ""
+msgstr "&Добавить"
 
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
@@ -55,7 +55,7 @@ msgstr "&Порт:"
 #: rc.cpp:18
 #, kde-format
 msgid "&Revert"
-msgstr ""
+msgstr "&Вернуться"
 
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
@@ -162,14 +162,14 @@ msgstr "Латынь"
 #: rc.cpp:15
 #, kde-format
 msgid "Move &Down"
-msgstr ""
+msgstr "Двигать &Вниз"
 
 #. i18n: file: gui/dictwidget.ui:64
 #. i18n: ectx: property (text), widget (QToolButton, moveUpDictButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Move &Up"
-msgstr ""
+msgstr "Двигать &Вверх"
 
 #: src/skk.h:35
 msgid "Not set"
@@ -196,7 +196,7 @@ msgstr "Центральный ряд Qwerty (a,s,d,...)"
 #: rc.cpp:9
 #, kde-format
 msgid "R&emove"
-msgstr ""
+msgstr "&Удалить"
 
 #: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
