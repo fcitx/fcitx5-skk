@@ -8,14 +8,15 @@
 # Walter Cheuk <wwycheuk@gmail.com>, 2020
 # bruh, 2020
 # Steve Nian, 2022
+# 菘菘 <rrt467778@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-03 20:24+0000\n"
+"POT-Creation-Date: 2022-03-19 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: Steve Nian, 2022\n"
+"Last-Translator: 菘菘 <rrt467778@gmail.com>, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -29,7 +30,7 @@ msgstr ""
 #: rc.cpp:6
 #, kde-format
 msgid "&Add"
-msgstr ""
+msgstr "&新增"
 
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
@@ -57,7 +58,7 @@ msgstr "連接埠(&P)："
 #: rc.cpp:18
 #, kde-format
 msgid "&Revert"
-msgstr ""
+msgstr "&撤銷"
 
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
@@ -164,14 +165,14 @@ msgstr "英文"
 #: rc.cpp:15
 #, kde-format
 msgid "Move &Down"
-msgstr ""
+msgstr "下移"
 
 #. i18n: file: gui/dictwidget.ui:64
 #. i18n: ectx: property (text), widget (QToolButton, moveUpDictButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Move &Up"
-msgstr ""
+msgstr "上移"
 
 #: src/skk.h:35
 msgid "Not set"
@@ -198,7 +199,7 @@ msgstr "Qwerty 中心列 (a,s,d,...)"
 #: rc.cpp:9
 #, kde-format
 msgid "R&emove"
-msgstr ""
+msgstr "刪除"
 
 #: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
