@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-04-09 20:24+0000\n"
+"POT-Creation-Date: 2022-04-10 20:25+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: rc.cpp:6
 #, kde-format
 msgid "&Add"
-msgstr ""
+msgstr "추가(&A)"
 
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
@@ -53,7 +53,7 @@ msgstr "포트(&P):"
 #: rc.cpp:18
 #, kde-format
 msgid "&Revert"
-msgstr ""
+msgstr "되돌리기(&R)"
 
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
@@ -129,7 +129,7 @@ msgstr "양식"
 
 #: src/skk.cpp:66 src/skk.h:42
 msgid "Half width Katakana"
-msgstr "반각 가타가나"
+msgstr "반각 가타카나"
 
 #: src/skk.cpp:64 src/skk.h:41
 msgid "Hiragana"
@@ -160,14 +160,14 @@ msgstr "로마자"
 #: rc.cpp:15
 #, kde-format
 msgid "Move &Down"
-msgstr ""
+msgstr "아래로 이동(&D)"
 
 #. i18n: file: gui/dictwidget.ui:64
 #. i18n: ectx: property (text), widget (QToolButton, moveUpDictButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Move &Up"
-msgstr ""
+msgstr "위로 이동(&U)"
 
 #: src/skk.h:35
 msgid "Not set"
@@ -175,7 +175,7 @@ msgstr "지정되지 않음"
 
 #: src/skk.h:116
 msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr "후보 창을 보이기 위한 후보의 수"
+msgstr "후보 단어 창의 표시를 트리거한 키 입력 수"
 
 #: src/skk.h:77
 msgid "Page size"
@@ -194,11 +194,11 @@ msgstr "키보드 중간열 (a, s, d, ...)"
 #: rc.cpp:9
 #, kde-format
 msgid "R&emove"
-msgstr ""
+msgstr "제거(&E)"
 
 #: src/skk.h:84
 msgid "Return-key does not insert new line on commit"
-msgstr "입력 완료 시 엔터키가 새 줄을 추가하지 않음"
+msgstr "Return 키는 입력완료 시 새 줄을 삽입하지 않습니다"
 
 #: src/skk.h:70
 msgid "Rule"
@@ -230,7 +230,7 @@ msgstr "Skk"
 
 #: src/skk-addon.conf.in.in:4
 msgid "Skk Input Method For Fcitx"
-msgstr "Fcitx를 위한 Skk 입력기"
+msgstr "Fcitx용 Skk 입력기"
 
 #: gui/adddictdialog.cpp:24
 msgid "System"
