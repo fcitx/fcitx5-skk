@@ -441,6 +441,7 @@ void SkkEngine::loadDictionary() {
     if (!fp) {
         return;
     }
+    file.release();
 
     UniqueCPtr<char> buf;
     size_t len = 0;
