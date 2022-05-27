@@ -381,9 +381,7 @@ void SkkEngine::reloadConfig() {
 void SkkEngine::reset(const InputMethodEntry &entry, InputContextEvent &event) {
     FCITX_UNUSED(entry);
     auto state = this->state(event.inputContext());
-    auto context = state->context();
-    skk_context_reset(context);
-    state->updateUI();
+    state->reset();
 }
 void SkkEngine::save() {}
 
@@ -574,6 +572,8 @@ SkkState::SkkState(SkkEngine *engine, InputContext *ic)
     lastMode_ = skk_context_get_input_mode(context);
     g_signal_connect(context, "notify::input-mode",
                      G_CALLBACK(SkkState::input_mode_changed_cb), this);
+    g_signal_connect(context, "notify::preedit",
+                     G_CALLBACK(SkkState::preedit_changed_cb), this);
     g_signal_connect(context, "retrieve_surrounding_text",
                      G_CALLBACK(retrieve_surrounding_text_cb), this);
     g_signal_connect(context, "delete_surrounding_text",
@@ -695,10 +695,12 @@ void SkkState::updateUI() {
 
     if (auto str = UniqueCPtr<char, g_free>{skk_context_poll_output(context)}) {
         if (str && str.get()[0]) {
-            ic_->commitString(str.get());
+          // Skk doesn't clear preedit after poll output, do this on our own.
+          preedit_ = Text();
+          ic_->commitString(str.get());
         }
     }
-    Text preedit = skkContextGetPreedit(context);
+    Text preedit = preedit_;
 
     // Skk almost filter every key, which makes it calls updateUI on release.
     // We add an additional check here for checking if the UI is empty or not.
@@ -766,9 +768,20 @@ void SkkState::updateInputMode() {
         modeChanged_ = true;
     }
 }
+void SkkState::updatePreedit() { preedit_ = skkContextGetPreedit(context()); }
+
+void SkkState::reset() {
+  skk_context_reset(context());
+  preedit_ = Text();
+  updateUI();
+}
 
 void SkkState::input_mode_changed_cb(GObject *, GParamSpec *, SkkState *skk) {
     skk->updateInputMode();
+}
+
+void SkkState::preedit_changed_cb(GObject *, GParamSpec *, SkkState *skk) {
+  skk->updatePreedit();
 }
 
 gboolean SkkState::retrieve_surrounding_text_cb(GObject *, gchar **text,

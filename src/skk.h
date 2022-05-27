@@ -199,14 +199,18 @@ public:
     void applyConfig();
     bool needCopy() const override { return true; }
     void copyTo(InputContextProperty *state) override;
+    void reset();
 
-private:
+  private:
     bool handleCandidate(KeyEvent &keyEvent);
     void updateInputMode();
+    void updatePreedit();
 
     // callbacks and their handlers
     static void input_mode_changed_cb(GObject *gobject, GParamSpec *pspec,
                                       SkkState *skk);
+    static void preedit_changed_cb(GObject *gobject, GParamSpec *pspec,
+                                   SkkState *skk);
     static gboolean retrieve_surrounding_text_cb(GObject *, gchar **text,
                                                  guint *cursor_pos,
                                                  SkkState *skk);
@@ -219,6 +223,7 @@ private:
     bool modeChanged_ = false;
     SkkInputMode lastMode_ = SKK_INPUT_MODE_DEFAULT;
     bool lastIsEmpty_ = true;
+    Text preedit_;
 };
 
 } // namespace fcitx
