@@ -201,7 +201,7 @@ public:
     void copyTo(InputContextProperty *state) override;
     void reset();
 
-  private:
+private:
     bool handleCandidate(KeyEvent &keyEvent);
     void updateInputMode();
     void updatePreedit();

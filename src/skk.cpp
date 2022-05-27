@@ -695,9 +695,9 @@ void SkkState::updateUI() {
 
     if (auto str = UniqueCPtr<char, g_free>{skk_context_poll_output(context)}) {
         if (str && str.get()[0]) {
-          // Skk doesn't clear preedit after poll output, do this on our own.
-          preedit_ = Text();
-          ic_->commitString(str.get());
+            // Skk doesn't clear preedit after poll output, do this on our own.
+            preedit_ = Text();
+            ic_->commitString(str.get());
         }
     }
     Text preedit = preedit_;
@@ -771,9 +771,9 @@ void SkkState::updateInputMode() {
 void SkkState::updatePreedit() { preedit_ = skkContextGetPreedit(context()); }
 
 void SkkState::reset() {
-  skk_context_reset(context());
-  preedit_ = Text();
-  updateUI();
+    skk_context_reset(context());
+    preedit_ = Text();
+    updateUI();
 }
 
 void SkkState::input_mode_changed_cb(GObject *, GParamSpec *, SkkState *skk) {
@@ -781,7 +781,7 @@ void SkkState::input_mode_changed_cb(GObject *, GParamSpec *, SkkState *skk) {
 }
 
 void SkkState::preedit_changed_cb(GObject *, GParamSpec *, SkkState *skk) {
-  skk->updatePreedit();
+    skk->updatePreedit();
 }
 
 gboolean SkkState::retrieve_surrounding_text_cb(GObject *, gchar **text,
