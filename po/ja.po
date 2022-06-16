@@ -8,14 +8,15 @@
 # あわしろいくや <ikunya@gmail.com>, 2020
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2021
 # UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022
+# rkarsnk, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-08 20:24+0000\n"
+"POT-Creation-Date: 2022-06-16 20:25+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
+"Last-Translator: rkarsnk, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -229,7 +230,7 @@ msgstr "注釈を表示"
 
 #: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
 msgid "Skk"
-msgstr "Skk"
+msgstr "SKK"
 
 #: src/skk-addon.conf.in.in:4
 msgid "Skk Input Method For Fcitx"
