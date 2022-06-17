@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-03 20:24+0000\n"
+"POT-Creation-Date: 2022-06-17 20:25+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
 "Language-Team: Turkish (https://www.transifex.com/fcitx/teams/12005/tr/)\n"
@@ -204,8 +204,13 @@ msgstr "Dönüş anahtarı, tamamlandığında yeni satır eklemez"
 msgid "Rule"
 msgstr "Kural"
 
-#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7 src/skk.conf.in:3
+#: src/skk-addon.conf.in.in:3
 msgid "SKK"
+msgstr ""
+
+#: src/skk-addon.conf.in.in:4
+msgid "SKK Input Method For Fcitx"
 msgstr ""
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
@@ -223,14 +228,6 @@ msgstr "Sunucu"
 #: src/skk.h:85
 msgid "Show Annotation"
 msgstr "Açıklamayı Göster"
-
-#: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
-msgid "Skk"
-msgstr "Skk"
-
-#: src/skk-addon.conf.in.in:4
-msgid "Skk Input Method For Fcitx"
-msgstr "Fcitx için Skk Giriş Yöntemi"
 
 #: gui/adddictdialog.cpp:24
 msgid "System"

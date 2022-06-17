@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-09 05:18+0000\n"
+"POT-Creation-Date: 2022-06-17 20:25+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -204,9 +204,14 @@ msgstr "回车提交时不插入新行"
 msgid "Rule"
 msgstr "规则"
 
-#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7 src/skk.conf.in:3
+#: src/skk-addon.conf.in.in:3
 msgid "SKK"
 msgstr "SKK"
+
+#: src/skk-addon.conf.in.in:4
+msgid "SKK Input Method For Fcitx"
+msgstr ""
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
 msgid "SKK Japanese input method"
@@ -223,14 +228,6 @@ msgstr "服务器"
 #: src/skk.h:85
 msgid "Show Annotation"
 msgstr "显示注释"
-
-#: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
-msgid "Skk"
-msgstr "Skk"
-
-#: src/skk-addon.conf.in.in:4
-msgid "Skk Input Method For Fcitx"
-msgstr "Fcitx 的 Skk 日语输入法"
 
 #: gui/adddictdialog.cpp:24
 msgid "System"

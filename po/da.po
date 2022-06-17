@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-03 20:24+0000\n"
+"POT-Creation-Date: 2022-06-17 20:25+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: scootergrisen, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -203,9 +203,14 @@ msgstr "Returtast indsætter ikke linjeskift ved udfør"
 msgid "Rule"
 msgstr "Regel"
 
-#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7 src/skk.conf.in:3
+#: src/skk-addon.conf.in.in:3
 msgid "SKK"
 msgstr "SKK"
+
+#: src/skk-addon.conf.in.in:4
+msgid "SKK Input Method For Fcitx"
+msgstr ""
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
 msgid "SKK Japanese input method"
@@ -222,14 +227,6 @@ msgstr "Server"
 #: src/skk.h:85
 msgid "Show Annotation"
 msgstr "Vis annotering"
-
-#: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
-msgid "Skk"
-msgstr "Skk"
-
-#: src/skk-addon.conf.in.in:4
-msgid "Skk Input Method For Fcitx"
-msgstr "Skk-inputmetode til Fcitx"
 
 #: gui/adddictdialog.cpp:24
 msgid "System"

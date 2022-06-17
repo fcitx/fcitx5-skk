@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-03 20:24+0000\n"
+"POT-Creation-Date: 2022-06-17 20:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,8 +199,13 @@ msgstr ""
 msgid "Rule"
 msgstr ""
 
-#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7 src/skk.conf.in:3
+#: src/skk-addon.conf.in.in:3
 msgid "SKK"
+msgstr ""
+
+#: src/skk-addon.conf.in.in:4
+msgid "SKK Input Method For Fcitx"
 msgstr ""
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
@@ -217,14 +222,6 @@ msgstr ""
 
 #: src/skk.h:85
 msgid "Show Annotation"
-msgstr ""
-
-#: src/skk.conf.in:3 src/skk-addon.conf.in.in:3
-msgid "Skk"
-msgstr ""
-
-#: src/skk-addon.conf.in.in:4
-msgid "Skk Input Method For Fcitx"
 msgstr ""
 
 #: gui/adddictdialog.cpp:24
