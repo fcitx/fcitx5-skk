@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-17 20:25+0000\n"
+"POT-Creation-Date: 2022-06-20 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -211,7 +211,7 @@ msgstr "SKK"
 
 #: src/skk-addon.conf.in.in:4
 msgid "SKK Input Method For Fcitx"
-msgstr ""
+msgstr "Fcitx용 SKK 입력기"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
 msgid "SKK Japanese input method"
