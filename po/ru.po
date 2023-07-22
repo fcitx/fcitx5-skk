@@ -4,16 +4,16 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
-# Dmitry <dmitrydmitry761@gmail.com>, 2022
+# Dmitry <dmitrydmitry761@gmail.com>, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-10-23 20:24+0000\n"
+"POT-Creation-Date: 2023-07-22 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
-"Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
+"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
+"Language-Team: Russian (https://app.transifex.com/fcitx/teams/12005/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -131,7 +131,7 @@ msgstr "Форма"
 
 #: src/skk.cpp:66 src/skk.h:42
 msgid "Half width Katakana"
-msgstr "Полуширинная катакана"
+msgstr "Полуширинная Катакана"
 
 #: src/skk.cpp:64 src/skk.h:41
 msgid "Hiragana"
