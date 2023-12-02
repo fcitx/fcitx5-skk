@@ -1,9 +1,10 @@
-cmake_minimum_required(VERSION 3.4.0)
+cmake_minimum_required(VERSION 3.6.0)
 project(fcitx5-skk VERSION 5.1.0)
 
 find_package(ECM 1.0.0 REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH}) 
 option(ENABLE_QT "Enable Qt for GUI configuration" On)
+option(USE_QT6 "Build against Qt6" Off)
 
 include(ECMUninstallTarget)
 include(FeatureSummary)
@@ -21,9 +22,15 @@ set(SKK_DEFAULT_PATH "/usr/share/skk/SKK-JISYO.L" CACHE STRING "Default path of 
 include(GNUInstallDirs)
 
 if (ENABLE_QT)
-find_package(Qt5 5.7 REQUIRED COMPONENTS Core Gui Widgets)
-find_package(Fcitx5Qt5WidgetsAddons REQUIRED)
-endif ()
+if (USE_QT6)
+    set(QT_MAJOR_VERSION 6)
+    find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+else()
+    set(QT_MAJOR_VERSION 5)
+    find_package(Qt5 5.7 REQUIRED COMPONENTS Core Gui Widgets)
+endif()
+find_package(Fcitx5Qt${QT_MAJOR_VERSION}WidgetsAddons REQUIRED)
+endif()
 
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
   "${CMAKE_CURRENT_BINARY_DIR}/config.h"
