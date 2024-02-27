@@ -4,7 +4,7 @@ project(fcitx5-skk VERSION 5.1.1)
 find_package(ECM 1.0.0 REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH}) 
 option(ENABLE_QT "Enable Qt for GUI configuration" On)
-option(USE_QT6 "Build against Qt6" Off)
+option(USE_QT6 "Build against Qt6" On)
 
 include(ECMUninstallTarget)
 include(FeatureSummary)
