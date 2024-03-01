@@ -714,10 +714,8 @@ void SkkState::updateUI() {
     // Ensure we are not composing any text.
     if (modeChanged_ && newIsEmpty) {
         inputPanel.reset();
-        engine_->instance()->showInputMethodInformation(ic_);
-
-        inputPanel.setClientPreedit(preedit);
         ic_->updatePreedit();
+        engine_->instance()->showInputMethodInformation(ic_);
         return;
     }
 
