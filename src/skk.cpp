@@ -714,6 +714,7 @@ void SkkState::updateUI() {
     // Ensure we are not composing any text.
     if (modeChanged_ && newIsEmpty) {
         inputPanel.reset();
+        ic_->updatePreedit();
         engine_->instance()->showInputMethodInformation(ic_);
         return;
     }
