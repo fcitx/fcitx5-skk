@@ -715,6 +715,9 @@ void SkkState::updateUI() {
     if (modeChanged_ && newIsEmpty) {
         inputPanel.reset();
         engine_->instance()->showInputMethodInformation(ic_);
+
+        inputPanel.setClientPreedit(preedit);
+        ic_->updatePreedit();
         return;
     }
 
