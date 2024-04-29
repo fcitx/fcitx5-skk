@@ -1,6 +1,6 @@
 [InputMethod]
 Name=SKK
-Icon=fcitx-skk
+Icon=fcitx_skk
 LangCode=ja
 Addon=skk
 Label=SKK
