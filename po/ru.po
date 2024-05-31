@@ -4,15 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
-# Dmitry <dmitrydmitry761@gmail.com>, 2023
+# Dmitry <dmitrydmitry761@gmail.com>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-07-22 20:24+0000\n"
+"POT-Creation-Date: 2024-05-31 20:25+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
+"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2024\n"
 "Language-Team: Russian (https://app.transifex.com/fcitx/teams/12005/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr "ABC (a,b,c,...)"
 
 #: src/skk.h:88
 msgid "Candidate Key"
-msgstr "Ключ-кандидат"
+msgstr "Ключевое слово-кандидат"
 
 #: src/skk.h:80
 msgid "Candidate Layout"
@@ -78,11 +78,11 @@ msgstr "Расположение слов-кандидатов"
 
 #: src/skk.h:99
 msgid "Candidates Page Down"
-msgstr "Страница кандидатов вниз"
+msgstr "Слово-кандидат на следующей странице"
 
 #: src/skk.h:93
 msgid "Candidates Page Up"
-msgstr "Страница кандидатов вверх"
+msgstr "Слово-кандидат на предыдущей странице"
 
 #: src/skk.h:111
 msgid "Cursor Down"
@@ -177,7 +177,8 @@ msgstr "Не задано"
 
 #: src/skk.h:116
 msgid "Number candidate of Triggers To Show Candidate Window"
-msgstr "Число переключений кандидатов для отображения окна кандидатов"
+msgstr ""
+"Количество нажатий клавиш, которые запускают отображение окна слова-кандидата"
 
 #: src/skk.h:77
 msgid "Page size"
