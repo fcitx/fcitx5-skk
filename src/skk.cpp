@@ -501,18 +501,25 @@ void SkkEngine::loadDictionary() {
                 continue;
             }
             if (mode == 1) {
-                if (stringutils::endsWith(path, ".cdb")) {
-                    SkkCdbDict *dict =
-                        skk_cdb_dict_new(path.data(), encoding.data(), nullptr);
+                constexpr char xdgDataDirs[] = "$XDG_DATA_DIRS/";
+                constexpr auto len = sizeof(xdgDataDirs) - 1;
+                std::string realpath = path;
+                if (stringutils::startsWith(path, xdgDataDirs)) {
+                    realpath = StandardPath::global().locate(
+                        StandardPath::Type::Data, path.substr(len));
+                }
+                if (stringutils::endsWith(realpath, ".cdb")) {
+                    SkkCdbDict *dict = skk_cdb_dict_new(
+                        realpath.data(), encoding.data(), nullptr);
                     if (dict) {
-                        SKK_DEBUG() << "Adding cdb dict: " << path;
+                        SKK_DEBUG() << "Adding cdb dict: " << realpath;
                         dictionaries_.emplace_back(SKK_DICT(dict));
                     }
                 } else {
                     SkkFileDict *dict = skk_file_dict_new(
-                        path.data(), encoding.data(), nullptr);
+                        realpath.data(), encoding.data(), nullptr);
                     if (dict) {
-                        SKK_DEBUG() << "Adding file dict: " << path;
+                        SKK_DEBUG() << "Adding file dict: " << realpath;
                         dictionaries_.emplace_back(SKK_DICT(dict));
                     }
                 }
