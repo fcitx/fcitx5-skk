@@ -529,7 +529,7 @@ void SkkEngine::loadDictionary() {
                     path = stringutils::joinPath(
                         StandardPath::global().userDirectory(
                             StandardPath::Type::PkgData),
-                        std::string(partialpath));
+                        partialpath);
                 }
                 SkkUserDict *userdict =
                     skk_user_dict_new(path.data(), encoding.data(), nullptr);
