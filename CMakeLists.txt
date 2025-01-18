@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.6.0)
 project(fcitx5-skk VERSION 5.1.5)
 
+set(REQUIRED_FCITX_VERSION 5.1.12)
 find_package(ECM 1.0.0 REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH}) 
 option(ENABLE_QT "Enable Qt for GUI configuration" On)
@@ -10,7 +11,7 @@ include(ECMUninstallTarget)
 include(FeatureSummary)
 
 find_package(PkgConfig REQUIRED)
-find_package(Fcitx5Core 5.0.6 REQUIRED)
+find_package(Fcitx5Core ${REQUIRED_FCITX_VERSION} REQUIRED)
 find_package(Gettext REQUIRED)
 pkg_check_modules(GObject2 IMPORTED_TARGET "gobject-2.0" REQUIRED)
 find_package(LibSKK REQUIRED)
