@@ -749,6 +749,10 @@ void SkkState::updateUI() {
         inputPanel.reset();
         ic_->updatePreedit();
         engine_->instance()->showInputMethodInformation(ic_);
+        if (!lastIsEmpty) {
+            // Preedit was cleared.
+            ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
+        }
         return;
     }
 
