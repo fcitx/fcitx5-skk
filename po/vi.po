@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-03-22 20:24+0000\n"
+"POT-Creation-Date: 2025-04-22 20:25+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
@@ -45,7 +45,7 @@ msgstr ""
 #: rc.cpp:36
 #, kde-format
 msgid "&Port:"
-msgstr ""
+msgstr "Cổng:"
 
 #. i18n: file: gui/dictwidget.ui:98
 #. i18n: ectx: property (text), widget (QToolButton, defaultDictButton)
@@ -83,7 +83,7 @@ msgstr ""
 
 #: src/skk.h:123
 msgid "Cursor Down"
-msgstr ""
+msgstr "Con Trỏ Xuống"
 
 #: src/skk.h:117
 msgid "Cursor Up"
@@ -102,7 +102,7 @@ msgstr ""
 
 #: gui/dictwidget.cpp:44
 msgid "Dictionary Manager"
-msgstr ""
+msgstr "Trình Quản Lý Từ Điển"
 
 #: src/skk.h:43
 msgid "Digit (0,1,2,...)"
@@ -110,7 +110,7 @@ msgstr ""
 
 #: src/skk.cpp:103
 msgid "Direct input"
-msgstr ""
+msgstr "Nhập trực tiếp"
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
@@ -124,7 +124,7 @@ msgstr ""
 #: rc.cpp:3
 #, kde-format
 msgid "Form"
-msgstr ""
+msgstr "Mẫu"
 
 #: src/skk.cpp:100 src/skk.h:54
 msgid "Half width Katakana"
@@ -136,15 +136,15 @@ msgstr ""
 
 #: src/skk.h:48
 msgid "Horizontal"
-msgstr ""
+msgstr "Nằm ngang"
 
 #: src/skk.h:87
 msgid "Initial Input Mode"
-msgstr ""
+msgstr "Kiểu Gõ Ban Đầu"
 
 #: src/skk.h:50
 msgid "Japanese"
-msgstr ""
+msgstr "Tiếng Nhật"
 
 #: src/skk.cpp:99 src/skk.h:53
 msgid "Katakana"
@@ -178,7 +178,7 @@ msgstr ""
 
 #: src/skk.h:89
 msgid "Page size"
-msgstr ""
+msgstr "Kích cỡ trang"
 
 #: src/skk.h:84
 msgid "Punctuation Style"
@@ -201,7 +201,7 @@ msgstr ""
 
 #: src/skk.h:82
 msgid "Rule"
-msgstr ""
+msgstr "Quy tắc"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7 src/skk.conf.in:2
 #: src/skk-addon.conf.in.in:2
@@ -218,11 +218,11 @@ msgstr "Kiểu gõ tiếng Nhật SKK"
 
 #: gui/adddictdialog.cpp:104 gui/adddictdialog.cpp:119
 msgid "Select Dictionary File"
-msgstr ""
+msgstr "Chọn Tệp Từ Điển"
 
 #: gui/adddictdialog.cpp:26
 msgid "Server"
-msgstr ""
+msgstr "Máy chủ"
 
 #: src/skk.h:97
 msgid "Show Annotation"
@@ -230,15 +230,15 @@ msgstr ""
 
 #: gui/adddictdialog.cpp:24
 msgid "System"
-msgstr ""
+msgstr "Hệ thống"
 
 #: gui/adddictdialog.cpp:25
 msgid "User"
-msgstr ""
+msgstr "Người dùng"
 
 #: src/skk.h:48
 msgid "Vertical"
-msgstr ""
+msgstr "Thẳng đứng"
 
 #: src/skk.cpp:102 src/skk.h:51 src/skk.h:55
 msgid "Wide latin"
