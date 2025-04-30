@@ -534,6 +534,12 @@ void SkkEngine::loadDictionary() {
                 continue;
             }
             if (mode == 1) {
+                std::string_view partialpath = path;
+                if (stringutils::consumePrefix(partialpath,
+                                               "$XDG_DATA_DIRS/")) {
+                    path = StandardPath::global().locate(
+                        StandardPath::Type::Data, std::string(partialpath));
+                }
                 if (stringutils::endsWith(path, ".cdb")) {
                     SkkCdbDict *dict =
                         skk_cdb_dict_new(path.data(), encoding.data(), nullptr);
@@ -550,19 +556,18 @@ void SkkEngine::loadDictionary() {
                     }
                 }
             } else {
-                constexpr char configDir[] = "$FCITX_CONFIG_DIR/";
-                constexpr auto len = sizeof(configDir) - 1;
-                std::string realpath = path;
-                if (stringutils::startsWith(path, configDir)) {
-                    realpath = stringutils::joinPath(
+                std::string_view partialpath = path;
+                if (stringutils::consumePrefix(partialpath,
+                                               "$FCITX_CONFIG_DIR/")) {
+                    path = stringutils::joinPath(
                         StandardPath::global().userDirectory(
                             StandardPath::Type::PkgData),
-                        path.substr(len));
+                        partialpath);
                 }
-                SkkUserDict *userdict = skk_user_dict_new(
-                    realpath.data(), encoding.data(), nullptr);
+                SkkUserDict *userdict =
+                    skk_user_dict_new(path.data(), encoding.data(), nullptr);
                 if (userdict) {
-                    SKK_DEBUG() << "Adding user dict: " << realpath;
+                    SKK_DEBUG() << "Adding user dict: " << path;
                     dictionaries_.emplace_back(SKK_DICT(userdict));
                 }
             }
