@@ -8,20 +8,32 @@
 #define _FCITX_SKK_SKK_H_
 
 #include <memory>
-
+#include <string>
+#include <vector>
 #include <fcitx-config/configuration.h>
+#include <fcitx-config/enum.h>
 #include <fcitx-config/iniparser.h>
+#include <fcitx-config/option.h>
+#include <fcitx-config/rawconfig.h>
 #include <fcitx-utils/capabilityflags.h>
 #include <fcitx-utils/i18n.h>
+#include <fcitx-utils/key.h>
+#include <fcitx-utils/keysym.h>
+#include <fcitx-utils/misc.h>
 #include <fcitx/action.h>
 #include <fcitx/addonfactory.h>
+#include <fcitx/addoninstance.h>
 #include <fcitx/addonmanager.h>
 #include <fcitx/candidatelist.h>
+#include <fcitx/event.h>
 #include <fcitx/inputcontextmanager.h>
 #include <fcitx/inputcontextproperty.h>
 #include <fcitx/inputmethodengine.h>
 #include <fcitx/instance.h>
 #include <fcitx/menu.h>
+#include <fcitx/text.h>
+#include <glib-object.h>
+#include <glib.h>
 #include <libskk/libskk.h>
 
 namespace fcitx {
@@ -46,14 +58,14 @@ static_assert(SkkInputModeI18NAnnotation::enumLength <= SKK_INPUT_MODE_LAST);
 
 struct NotEmpty {
     bool check(const std::string &value) const { return !value.empty(); }
-    void dumpDescription(RawConfig &) const {}
+    void dumpDescription(RawConfig & /*unused*/) const {}
 };
 
 struct RuleAnnotation : public EnumAnnotation {
     void dumpDescription(RawConfig &config) const {
         EnumAnnotation::dumpDescription(config);
         int length;
-        auto rules = skk_rule_list(&length);
+        auto *rules = skk_rule_list(&length);
         for (int i = 0; i < length; i++) {
             config.setValueByPath("Enum/" + std::to_string(i), rules[i].name);
             config.setValueByPath("EnumI18n/" + std::to_string(i),
@@ -138,10 +150,11 @@ public:
     void reset(const InputMethodEntry &entry,
                InputContextEvent &event) override;
     void save() override;
-    std::string subMode(const InputMethodEntry &, InputContext &) override;
+    std::string subMode(const InputMethodEntry & /*entry*/,
+                        InputContext & /*inputContext*/) override;
 
-    std::string subModeLabelImpl(const fcitx::InputMethodEntry &,
-                                 fcitx::InputContext &) override;
+    std::string subModeLabelImpl(const fcitx::InputMethodEntry & /*unused*/,
+                                 fcitx::InputContext & /*unused*/) override;
 
     auto &factory() { return factory_; }
     auto &config() { return config_; }
@@ -152,7 +165,7 @@ public:
         reloadConfig();
     }
     void setSubConfig(const std::string &path,
-                      const fcitx::RawConfig &) override {
+                      const fcitx::RawConfig & /*unused*/) override {
         if (path == "dictionary_list") {
             reloadConfig();
         }
@@ -198,7 +211,7 @@ public:
     SkkContext *context() { return context_.get(); }
     void applyConfig();
     bool needCopy() const override { return true; }
-    void copyTo(InputContextProperty *state) override;
+    void copyTo(InputContextProperty *property) override;
     void reset();
 
 private:

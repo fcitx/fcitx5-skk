@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the fcitx5-skk package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2020
+# hoanghuy309 <hoanghuy309@gmail.com>, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-17 20:23+0000\n"
+"POT-Creation-Date: 2025-04-22 20:25+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
-"Language-Team: Vietnamese (https://www.transifex.com/fcitx/teams/12005/vi/)\n"
+"Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
+"Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,7 +45,7 @@ msgstr ""
 #: rc.cpp:36
 #, kde-format
 msgid "&Port:"
-msgstr ""
+msgstr "Cổng:"
 
 #. i18n: file: gui/dictwidget.ui:98
 #. i18n: ectx: property (text), widget (QToolButton, defaultDictButton)
@@ -61,31 +61,31 @@ msgstr ""
 msgid "&Type:"
 msgstr ""
 
-#: src/skk.h:32
+#: src/skk.h:44
 msgid "ABC (a,b,c,...)"
 msgstr ""
 
-#: src/skk.h:88
+#: src/skk.h:100
 msgid "Candidate Key"
 msgstr ""
 
-#: src/skk.h:80
+#: src/skk.h:92
 msgid "Candidate Layout"
 msgstr ""
 
-#: src/skk.h:99
+#: src/skk.h:111
 msgid "Candidates Page Down"
 msgstr ""
 
-#: src/skk.h:93
+#: src/skk.h:105
 msgid "Candidates Page Up"
 msgstr ""
 
-#: src/skk.h:111
+#: src/skk.h:123
 msgid "Cursor Down"
-msgstr ""
+msgstr "Con Trỏ Xuống"
 
-#: src/skk.h:105
+#: src/skk.h:117
 msgid "Cursor Up"
 msgstr ""
 
@@ -96,21 +96,21 @@ msgstr ""
 msgid "Dialog"
 msgstr ""
 
-#: src/skk.h:118
+#: src/skk.h:130
 msgid "Dictionary"
 msgstr ""
 
 #: gui/dictwidget.cpp:44
 msgid "Dictionary Manager"
-msgstr ""
+msgstr "Trình Quản Lý Từ Điển"
 
-#: src/skk.h:31
+#: src/skk.h:43
 msgid "Digit (0,1,2,...)"
 msgstr ""
 
-#: src/skk.cpp:69
+#: src/skk.cpp:103
 msgid "Direct input"
-msgstr ""
+msgstr "Nhập trực tiếp"
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
@@ -124,33 +124,33 @@ msgstr ""
 #: rc.cpp:3
 #, kde-format
 msgid "Form"
-msgstr ""
+msgstr "Mẫu"
 
-#: src/skk.cpp:66 src/skk.h:42
+#: src/skk.cpp:100 src/skk.h:54
 msgid "Half width Katakana"
 msgstr ""
 
-#: src/skk.cpp:64 src/skk.h:41
+#: src/skk.cpp:98 src/skk.h:53
 msgid "Hiragana"
 msgstr ""
 
-#: src/skk.h:36
+#: src/skk.h:48
 msgid "Horizontal"
-msgstr ""
+msgstr "Nằm ngang"
 
-#: src/skk.h:75
+#: src/skk.h:87
 msgid "Initial Input Mode"
-msgstr ""
+msgstr "Kiểu Gõ Ban Đầu"
 
-#: src/skk.h:38
+#: src/skk.h:50
 msgid "Japanese"
-msgstr ""
+msgstr "Tiếng Nhật"
 
-#: src/skk.cpp:65 src/skk.h:41
+#: src/skk.cpp:99 src/skk.h:53
 msgid "Katakana"
 msgstr ""
 
-#: src/skk.cpp:67 src/skk.h:38 src/skk.h:42
+#: src/skk.cpp:101 src/skk.h:50 src/skk.h:54
 msgid "Latin"
 msgstr ""
 
@@ -168,23 +168,23 @@ msgstr ""
 msgid "Move &Up"
 msgstr ""
 
-#: src/skk.h:35
+#: src/skk.h:47
 msgid "Not set"
 msgstr ""
 
-#: src/skk.h:116
+#: src/skk.h:128
 msgid "Number candidate of Triggers To Show Candidate Window"
 msgstr ""
 
-#: src/skk.h:77
+#: src/skk.h:89
 msgid "Page size"
-msgstr ""
+msgstr "Kích cỡ trang"
 
-#: src/skk.h:72
+#: src/skk.h:84
 msgid "Punctuation Style"
 msgstr ""
 
-#: src/skk.h:33
+#: src/skk.h:45
 msgid "Qwerty Center Row (a,s,d,...)"
 msgstr ""
 
@@ -195,57 +195,56 @@ msgstr ""
 msgid "R&emove"
 msgstr ""
 
-#: src/skk.h:84
+#: src/skk.h:96
 msgid "Return-key does not insert new line on commit"
 msgstr ""
 
-#: src/skk.h:70
+#: src/skk.h:82
 msgid "Rule"
-msgstr ""
+msgstr "Quy tắc"
 
-#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7 src/skk.conf.in:3
-#: src/skk-addon.conf.in.in:3
+#: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7 src/skk.conf.in:2
+#: src/skk-addon.conf.in.in:2
 msgid "SKK"
 msgstr ""
 
-#: src/skk-addon.conf.in.in:4
-#, fuzzy
+#: src/skk-addon.conf.in.in:3
 msgid "SKK Input Method For Fcitx"
-msgstr "Bộ nhập liệu Skk cho Fcitx"
+msgstr ""
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:8
 msgid "SKK Japanese input method"
-msgstr ""
+msgstr "Kiểu gõ tiếng Nhật SKK"
 
 #: gui/adddictdialog.cpp:104 gui/adddictdialog.cpp:119
 msgid "Select Dictionary File"
-msgstr ""
+msgstr "Chọn Tệp Từ Điển"
 
 #: gui/adddictdialog.cpp:26
 msgid "Server"
-msgstr ""
+msgstr "Máy chủ"
 
-#: src/skk.h:85
+#: src/skk.h:97
 msgid "Show Annotation"
 msgstr ""
 
 #: gui/adddictdialog.cpp:24
 msgid "System"
-msgstr ""
+msgstr "Hệ thống"
 
 #: gui/adddictdialog.cpp:25
 msgid "User"
-msgstr ""
+msgstr "Người dùng"
 
-#: src/skk.h:36
+#: src/skk.h:48
 msgid "Vertical"
-msgstr ""
+msgstr "Thẳng đứng"
 
-#: src/skk.cpp:68 src/skk.h:39 src/skk.h:43
+#: src/skk.cpp:102 src/skk.h:51 src/skk.h:55
 msgid "Wide latin"
 msgstr ""
 
-#: src/skk.h:39
+#: src/skk.h:51
 msgid "Wide latin Japanese"
 msgstr ""
 
@@ -255,6 +254,3 @@ msgstr ""
 #, kde-format
 msgid "localhost"
 msgstr ""
-
-#~ msgid "Skk"
-#~ msgstr "Skk"

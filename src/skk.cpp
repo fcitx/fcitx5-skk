@@ -6,20 +6,55 @@
  */
 #include "skk.h"
 #include <fcntl.h>
-#include <stddef.h>
+#include <algorithm>
+#include <array>
+#include <cstddef>
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
+#include <istream>
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <utility>
+#include <vector>
 #include <fcitx-config/iniparser.h>
+#include <fcitx-utils/capabilityflags.h>
+#include <fcitx-utils/fdstreambuf.h>
+#include <fcitx-utils/i18n.h>
+#include <fcitx-utils/key.h>
+#include <fcitx-utils/keysym.h>
 #include <fcitx-utils/log.h>
+#include <fcitx-utils/macros.h>
+#include <fcitx-utils/misc.h>
+#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/stringutils.h>
+#include <fcitx-utils/textformatflags.h>
 #include <fcitx-utils/utf8.h>
+#include <fcitx/action.h>
+#include <fcitx/addoninstance.h>
+#include <fcitx/candidatelist.h>
+#include <fcitx/event.h>
+#include <fcitx/inputcontextproperty.h>
+#include <fcitx/inputmethodentry.h>
 #include <fcitx/inputpanel.h>
+#include <fcitx/instance.h>
+#include <fcitx/menu.h>
+#include <fcitx/statusarea.h>
+#include <fcitx/text.h>
+#include <fcitx/userinterface.h>
 #include <fcitx/userinterfacemanager.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <libskk/libskk.h>
 
-FCITX_DEFINE_LOG_CATEGORY(skk_logcategory, "skk");
-
-#define SKK_DEBUG() FCITX_LOGC(skk_logcategory, Debug)
+#define SKK_DEBUG() FCITX_LOGC(::fcitx::skk_logcategory, Debug)
 
 namespace fcitx {
 
 namespace {
+
+FCITX_DEFINE_LOG_CATEGORY(skk_logcategory, "skk");
 
 Text skkContextGetPreedit(SkkContext *context) {
     Text preedit;
@@ -27,7 +62,8 @@ Text skkContextGetPreedit(SkkContext *context) {
     const gchar *preeditString = skk_context_get_preedit(context);
     size_t len = strlen(preeditString);
     if (len > 0) {
-        guint offset, nchars;
+        guint offset;
+        guint nchars;
         skk_context_get_preedit_underline(context, &offset, &nchars);
 
         if (nchars > 0) {
@@ -54,8 +90,6 @@ Text skkContextGetPreedit(SkkContext *context) {
     return preedit;
 }
 
-} // namespace
-
 struct {
     const char *icon;
     const char *label;
@@ -70,32 +104,34 @@ struct {
 };
 
 auto inputModeStatus(SkkEngine *engine, InputContext *ic) {
-    auto state = engine->state(ic);
+    auto *state = engine->state(ic);
     auto mode = skk_context_get_input_mode(state->context());
     return (mode >= 0 && mode < FCITX_ARRAY_SIZE(input_mode_status))
                ? &input_mode_status[mode]
                : nullptr;
 }
 
+} // namespace
+
 class SkkModeAction : public Action {
 public:
     SkkModeAction(SkkEngine *engine) : engine_(engine) {}
 
     std::string shortText(InputContext *ic) const override {
-        if (auto status = inputModeStatus(engine_, ic)) {
+        if (auto *status = inputModeStatus(engine_, ic)) {
             return stringutils::concat(status->label, " - ",
                                        _(status->description));
         }
         return "";
     }
     std::string longText(InputContext *ic) const override {
-        if (auto status = inputModeStatus(engine_, ic)) {
+        if (auto *status = inputModeStatus(engine_, ic)) {
             return _(status->description);
         }
         return "";
     }
     std::string icon(InputContext *ic) const override {
-        if (auto status = inputModeStatus(engine_, ic)) {
+        if (auto *status = inputModeStatus(engine_, ic)) {
             return status->icon;
         }
         return "";
@@ -117,11 +153,11 @@ public:
         setCheckable(true);
     }
     bool isChecked(InputContext *ic) const override {
-        auto state = engine_->state(ic);
+        auto *state = engine_->state(ic);
         return mode_ == skk_context_get_input_mode(state->context());
     }
     void activate(InputContext *ic) override {
-        auto state = engine_->state(ic);
+        auto *state = engine_->state(ic);
         skk_context_set_input_mode(state->context(), mode_);
     }
 
@@ -133,13 +169,13 @@ private:
 class SkkCandidateWord : public CandidateWord {
 public:
     SkkCandidateWord(SkkEngine *engine, Text text, int idx)
-        : CandidateWord(), engine_(engine), idx_(idx) {
+        : engine_(engine), idx_(idx) {
         setText(std::move(text));
     }
 
     void select(InputContext *inputContext) const override {
-        auto state = engine_->state(inputContext);
-        auto context = state->context();
+        auto *state = engine_->state(inputContext);
+        auto *context = state->context();
         SkkCandidateList *skkCandidates = skk_context_get_candidates(context);
         if (skk_candidate_list_select_at(
                 skkCandidates,
@@ -161,8 +197,8 @@ public:
         : engine_(engine), ic_(ic) {
         setPageable(this);
         setCursorMovable(this);
-        auto skkstate = engine_->state(ic_);
-        auto context = skkstate->context();
+        auto *skkstate = engine_->state(ic_);
+        auto *context = skkstate->context();
         SkkCandidateList *skkCandidates = skk_context_get_candidates(context);
         gint size = skk_candidate_list_get_size(skkCandidates);
         gint cursor_pos = skk_candidate_list_get_cursor_pos(skkCandidates);
@@ -176,7 +212,7 @@ public:
         // 24~26 3nd page
         int currentPage = (cursor_pos - page_start) / page_size;
         int totalPage = (size - page_start + page_size - 1) / page_size;
-        int pageFirst = currentPage * page_size + page_start;
+        int pageFirst = (currentPage * page_size) + page_start;
         int pageLast = std::min(size, static_cast<int>(pageFirst + page_size));
 
         for (int i = pageFirst; i < pageLast; i++) {
@@ -185,7 +221,7 @@ public:
             Text text;
             text.append(skk_candidate_get_text(skkCandidate.get()));
             if (*engine->config().showAnnotation) {
-                auto annotation =
+                const auto *annotation =
                     skk_candidate_get_annotation(skkCandidate.get());
                 // Make sure annotation is not null, empty, or equal to "?".
                 // ? seems to be a special debug purpose value.
@@ -224,15 +260,15 @@ public:
 
     bool hasNext() const override { return hasNext_; }
 
-    void prev() override { return paging(true); }
+    void prev() override { paging(true); }
 
-    void next() override { return paging(false); }
+    void next() override { paging(false); }
 
     bool usedNextBefore() const override { return true; }
 
-    void prevCandidate() override { return moveCursor(true); }
+    void prevCandidate() override { moveCursor(true); }
 
-    void nextCandidate() override { return moveCursor(false); }
+    void nextCandidate() override { moveCursor(false); }
 
     const Text &label(int idx) const override { return labels_[idx]; }
 
@@ -250,8 +286,8 @@ public:
 
 private:
     void paging(bool prev) {
-        auto skkstate = engine_->state(ic_);
-        auto context = skkstate->context();
+        auto *skkstate = engine_->state(ic_);
+        auto *context = skkstate->context();
         SkkCandidateList *skkCandidates = skk_context_get_candidates(context);
         if (skk_candidate_list_get_page_visible(skkCandidates)) {
             if (prev) {
@@ -263,8 +299,8 @@ private:
         }
     }
     void moveCursor(bool prev) {
-        auto skkstate = engine_->state(ic_);
-        auto context = skkstate->context();
+        auto *skkstate = engine_->state(ic_);
+        auto *context = skkstate->context();
         SkkCandidateList *skkCandidates = skk_context_get_candidates(context);
         if (skk_candidate_list_get_page_visible(skkCandidates)) {
             if (prev) {
@@ -290,7 +326,7 @@ private:
 
 SkkEngine::SkkEngine(Instance *instance)
     : instance_{instance}, factory_([this](InputContext &ic) {
-          auto newState = new SkkState(this, &ic);
+          auto *newState = new SkkState(this, &ic);
           newState->applyConfig();
           return newState;
       }) {
@@ -327,7 +363,7 @@ SkkEngine::SkkEngine(Instance *instance)
 
     instance_->inputContextManager().registerProperty("skkState", &factory_);
     instance_->inputContextManager().foreach([this](InputContext *ic) {
-        auto state = this->state(ic);
+        auto *state = this->state(ic);
         skk_context_set_input_mode(state->context(), *config_.inputMode);
         ic->updateProperty(&factory_);
         return true;
@@ -345,8 +381,8 @@ void SkkEngine::activate(const InputMethodEntry &entry,
 void SkkEngine::deactivate(const InputMethodEntry &entry,
                            InputContextEvent &event) {
     if (event.type() == EventType::InputContextSwitchInputMethod) {
-        auto skkstate = this->state(event.inputContext());
-        auto context = skkstate->context();
+        auto *skkstate = this->state(event.inputContext());
+        auto *context = skkstate->context();
         auto text = skkContextGetPreedit(context);
         auto str = text.toString();
         if (!str.empty()) {
@@ -359,8 +395,8 @@ void SkkEngine::deactivate(const InputMethodEntry &entry,
 void SkkEngine::keyEvent(const InputMethodEntry &entry, KeyEvent &keyEvent) {
     FCITX_UNUSED(entry);
 
-    auto ic = keyEvent.inputContext();
-    auto state = ic->propertyFor(&factory_);
+    auto *ic = keyEvent.inputContext();
+    auto *state = ic->propertyFor(&factory_);
     state->keyEvent(keyEvent);
 }
 
@@ -372,7 +408,7 @@ void SkkEngine::reloadConfig() {
 
     if (factory_.registered()) {
         instance_->inputContextManager().foreach([this](InputContext *ic) {
-            auto state = this->state(ic);
+            auto *state = this->state(ic);
             state->applyConfig();
             return true;
         });
@@ -380,21 +416,22 @@ void SkkEngine::reloadConfig() {
 }
 void SkkEngine::reset(const InputMethodEntry &entry, InputContextEvent &event) {
     FCITX_UNUSED(entry);
-    auto state = this->state(event.inputContext());
+    auto *state = this->state(event.inputContext());
     state->reset();
 }
 void SkkEngine::save() {}
 
-std::string SkkEngine::subMode(const InputMethodEntry &, InputContext &ic) {
-    if (auto status = inputModeStatus(this, &ic)) {
+std::string SkkEngine::subMode(const InputMethodEntry & /*entry*/,
+                               InputContext &ic) {
+    if (auto *status = inputModeStatus(this, &ic)) {
         return _(status->description);
     }
     return "";
 }
 
-std::string SkkEngine::subModeLabelImpl(const InputMethodEntry &,
+std::string SkkEngine::subModeLabelImpl(const InputMethodEntry & /*unused*/,
                                         InputContext &ic) {
-    if (auto status = inputModeStatus(this, &ic)) {
+    if (auto *status = inputModeStatus(this, &ic)) {
         return _(status->label);
     }
     return "";
@@ -424,28 +461,23 @@ void SkkEngine::loadRule() {
     userRule_ = std::move(rule);
 }
 
-typedef enum _FcitxSkkDictType {
-    FSDT_Invalid,
-    FSDT_File,
-    FSTD_Server
-} FcitxSkkDictType;
+enum class FcitxSkkDictType { FSDT_Invalid, FSDT_File, FSTD_Server };
 
 void SkkEngine::loadDictionary() {
     dictionaries_.clear();
     auto file = StandardPath::global().open(StandardPath::Type::PkgData,
                                             "skk/dictionary_list", O_RDONLY);
 
-    UniqueFilePtr fp(fdopen(file.fd(), "rb"));
-    if (!fp) {
+    if (!file.isValid()) {
         return;
     }
-    file.release();
 
-    UniqueCPtr<char> buf;
-    size_t len = 0;
+    IFDStreamBuf buf(file.fd());
+    std::istream in(&buf);
+    std::string line;
 
-    while (getline(buf, &len, fp.get()) != -1) {
-        const auto trimmed = stringutils::trim(buf.get());
+    while (std::getline(in, line)) {
+        const auto trimmed = stringutils::trimView(line);
         const auto tokens = stringutils::split(trimmed, ",");
 
         if (tokens.size() < 3) {
@@ -454,13 +486,13 @@ void SkkEngine::loadDictionary() {
 
         SKK_DEBUG() << "Load dictionary: " << trimmed;
 
-        FcitxSkkDictType type = FSDT_Invalid;
+        FcitxSkkDictType type = FcitxSkkDictType::FSDT_Invalid;
         int mode = 0;
         std::string path;
         std::string host;
         std::string port;
         std::string encoding;
-        for (auto &token : tokens) {
+        for (const auto &token : tokens) {
             auto equal = token.find('=');
             if (equal == std::string::npos) {
                 continue;
@@ -471,9 +503,9 @@ void SkkEngine::loadDictionary() {
 
             if (key == "type") {
                 if (value == "file") {
-                    type = FSDT_File;
+                    type = FcitxSkkDictType::FSDT_File;
                 } else if (value == "server") {
-                    type = FSTD_Server;
+                    type = FcitxSkkDictType::FSTD_Server;
                 }
             } else if (key == "file") {
                 path = value;
@@ -494,9 +526,10 @@ void SkkEngine::loadDictionary() {
 
         encoding = !encoding.empty() ? encoding : "EUC-JP";
 
-        if (type == FSDT_Invalid) {
+        if (type == FcitxSkkDictType::FSDT_Invalid) {
             continue;
-        } else if (type == FSDT_File) {
+        }
+        if (type == FcitxSkkDictType::FSDT_File) {
             if (path.empty() || mode == 0) {
                 continue;
             }
@@ -538,7 +571,7 @@ void SkkEngine::loadDictionary() {
                     dictionaries_.emplace_back(SKK_DICT(userdict));
                 }
             }
-        } else if (type == FSTD_Server) {
+        } else if (type == FcitxSkkDictType::FSTD_Server) {
             host = !host.empty() ? host : "localhost";
             port = !port.empty() ? port : "1178";
 
@@ -631,7 +664,7 @@ void SkkState::keyEvent(KeyEvent &keyEvent) {
 
 bool SkkState::handleCandidate(KeyEvent &keyEvent) {
     auto &config = engine_->config();
-    auto context = context_.get();
+    auto *context = context_.get();
     SkkCandidateList *skkCandidates = skk_context_get_candidates(context);
     if (!skk_candidate_list_get_page_visible(skkCandidates) ||
         keyEvent.isRelease()) {
@@ -689,7 +722,7 @@ bool SkkState::handleCandidate(KeyEvent &keyEvent) {
 
 void SkkState::updateUI() {
     auto &inputPanel = ic_->inputPanel();
-    auto context = context_.get();
+    auto *context = context_.get();
 
     SkkCandidateList *skkCandidates = skk_context_get_candidates(context);
 
@@ -755,13 +788,13 @@ void SkkState::applyConfig() {
 
     std::vector<SkkDict *> dicts;
     dicts.reserve(engine_->dictionaries().size());
-    for (auto &dict : engine_->dictionaries()) {
+    for (const auto &dict : engine_->dictionaries()) {
         dicts.push_back(dict.get());
     }
     skk_context_set_dictionaries(context(), dicts.data(), dicts.size());
 }
 void SkkState::copyTo(InputContextProperty *property) {
-    auto otherState = static_cast<SkkState *>(property);
+    auto *otherState = static_cast<SkkState *>(property);
     skk_context_set_input_mode(otherState->context(),
                                skk_context_get_input_mode(context()));
 }
@@ -782,21 +815,24 @@ void SkkState::reset() {
     updateUI();
 }
 
-void SkkState::input_mode_changed_cb(GObject *, GParamSpec *, SkkState *skk) {
+void SkkState::input_mode_changed_cb(GObject * /*unused*/,
+                                     GParamSpec * /*unused*/, SkkState *skk) {
     skk->updateInputMode();
 }
 
-void SkkState::preedit_changed_cb(GObject *, GParamSpec *, SkkState *skk) {
+void SkkState::preedit_changed_cb(GObject * /*unused*/, GParamSpec * /*unused*/,
+                                  SkkState *skk) {
     skk->updatePreedit();
 }
 
-gboolean SkkState::retrieve_surrounding_text_cb(GObject *, gchar **text,
-                                                guint *cursor_pos,
+gboolean SkkState::retrieve_surrounding_text_cb(GObject * /*unused*/,
+                                                gchar **text, guint *cursor_pos,
                                                 SkkState *skk) {
     InputContext *ic = skk->ic_;
     if (!ic->capabilityFlags().test(CapabilityFlag::SurroundingText) ||
-        !ic->surroundingText().isValid())
+        !ic->surroundingText().isValid()) {
         return false;
+    }
 
     *text = g_strdup(ic->surroundingText().text().c_str());
     *cursor_pos = ic->surroundingText().cursor();
@@ -804,14 +840,15 @@ gboolean SkkState::retrieve_surrounding_text_cb(GObject *, gchar **text,
     return true;
 }
 
-gboolean SkkState::delete_surrounding_text_cb(GObject *, gint offset,
+gboolean SkkState::delete_surrounding_text_cb(GObject * /*unused*/, gint offset,
                                               guint nchars, SkkState *skk) {
     InputContext *ic = skk->ic_;
-    if (!(ic->capabilityFlags().test(CapabilityFlag::SurroundingText)))
+    if (!(ic->capabilityFlags().test(CapabilityFlag::SurroundingText))) {
         return false;
+    }
     ic->deleteSurroundingText(offset, nchars);
     return true;
 }
 } // namespace fcitx
 
-FCITX_ADDON_FACTORY(fcitx::SkkAddonFactory)
+FCITX_ADDON_FACTORY_V2(skk, fcitx::SkkAddonFactory)
