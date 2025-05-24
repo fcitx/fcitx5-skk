@@ -6,11 +6,24 @@
  */
 
 #include "adddictdialog.h"
+#include <memory>
+#include <QComboBox>
 #include <QDebug>
+#include <QDialogButtonBox>
+#include <QDir>
 #include <QFileDialog>
-#include <fcitx-utils/standardpath.h>
+#include <QFileInfo>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QWidget>
+#include <fcitx-utils/fs.h>
+#include <fcitx-utils/i18n.h>
+#include <fcitx-utils/standardpaths.h>
 #include <fcitxqti18nhelper.h>
 #include "config.h"
+#include "ui_adddictdialog.h"
 
 #define FCITX_CONFIG_DIR "$FCITX_CONFIG_DIR"
 
@@ -104,9 +117,9 @@ void AddDictDialog::browseClicked() {
         path = QFileDialog::getOpenFileName(this, _("Select Dictionary File"),
                                             info.path());
     } else {
-        auto fcitxBasePath = stringutils::joinPath(
-            StandardPath::global().userDirectory(StandardPath::Type::PkgData),
-            "skk");
+        auto fcitxBasePath =
+            StandardPaths::global().userDirectory(StandardPathsType::PkgData) /
+            "skk";
         fs::makePath(fcitxBasePath);
         QString basePath =
             QDir::cleanPath(QString::fromStdString(fcitxBasePath));

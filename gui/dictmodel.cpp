@@ -5,16 +5,18 @@
  *
  */
 
+#include "dictmodel.h"
+#include <QAbstractListModel>
+#include <QByteArray>
 #include <QDebug>
 #include <QFile>
+#include <QObject>
 #include <QSet>
 #include <QStringList>
 #include <QTemporaryFile>
+#include <Qt>
 #include <QtGlobal>
-#include <fcitx-utils/standardpath.h>
-
-#include <fcntl.h>
-#include "dictmodel.h"
+#include <fcitx-utils/standardpaths.h>
 
 namespace fcitx {
 
@@ -28,17 +30,16 @@ SkkDictModel::SkkDictModel(QObject *parent) : QAbstractListModel(parent) {
 }
 
 void SkkDictModel::defaults() {
-    auto path =
-        StandardPath::global().fcitxPath("pkgdatadir", "skk/dictionary_list");
-    QFile f(path.data());
+    auto path = StandardPaths::fcitxPath("pkgdatadir", "skk/dictionary_list");
+    QFile f(path);
     if (f.open(QIODevice::ReadOnly)) {
         load(f);
     }
 }
 
 void SkkDictModel::load() {
-    auto file = StandardPath::global().open(StandardPath::Type::PkgData,
-                                            "skk/dictionary_list", O_RDONLY);
+    auto file = StandardPaths::global().open(StandardPathsType::PkgData,
+                                             "skk/dictionary_list");
     if (file.fd() < 0) {
         return;
     }
@@ -66,7 +67,7 @@ void SkkDictModel::load(QFile &file) {
 
         bool failed = false;
         QMap<QString, QString> dict;
-        Q_FOREACH (const QString &item, items) {
+        for (const QString &item : items) {
             if (!item.contains('=')) {
                 failed = true;
                 break;
@@ -89,18 +90,18 @@ void SkkDictModel::load(QFile &file) {
 }
 
 bool SkkDictModel::save() {
-    return StandardPath::global().safeSave(
-        StandardPath::Type::PkgData, "skk/dictionary_list", [this](int fd) {
+    return StandardPaths::global().safeSave(
+        StandardPathsType::PkgData, "skk/dictionary_list", [this](int fd) {
             QFile tempFile;
             if (!tempFile.open(fd, QIODevice::WriteOnly)) {
                 return false;
             }
 
-            typedef QMap<QString, QString> DictType;
+            using DictType = QMap<QString, QString>;
 
-            Q_FOREACH (const DictType &dict, m_dicts) {
+            for (const DictType &dict : m_dicts) {
                 bool first = true;
-                Q_FOREACH (const QString &key, dict.keys()) {
+                for (const QString &key : dict.keys()) {
                     if (first) {
                         first = false;
                     } else {
@@ -141,11 +142,11 @@ bool SkkDictModel::removeRows(int row, int count, const QModelIndex &parent) {
 
 QVariant SkkDictModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid()) {
-        return QVariant();
+        return {};
     }
 
     if (index.row() >= m_dicts.size() || index.column() != 0) {
-        return QVariant();
+        return {};
     }
 
     switch (role) {
@@ -156,18 +157,16 @@ QVariant SkkDictModel::data(const QModelIndex &index, int role) const {
             return QString("%1:%2").arg(m_dicts[index.row()]["host"],
                                         m_dicts[index.row()]["port"]);
         }
+    default:
+        break;
     }
-    return QVariant();
+    return {};
 }
 
 bool SkkDictModel::moveUp(const QModelIndex &currentIndex) {
     if (currentIndex.row() > 0 && currentIndex.row() < m_dicts.size()) {
         beginResetModel();
-#if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
-        m_dicts.swap(currentIndex.row() - 1, currentIndex.row());
-#else
         m_dicts.swapItemsAt(currentIndex.row() - 1, currentIndex.row());
-#endif
         endResetModel();
         return true;
     }
@@ -177,11 +176,7 @@ bool SkkDictModel::moveUp(const QModelIndex &currentIndex) {
 bool SkkDictModel::moveDown(const QModelIndex &currentIndex) {
     if (currentIndex.row() >= 0 && currentIndex.row() + 1 < m_dicts.size()) {
         beginResetModel();
-#if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
-        m_dicts.swap(currentIndex.row() + 1, currentIndex.row());
-#else
         m_dicts.swapItemsAt(currentIndex.row() + 1, currentIndex.row());
-#endif
         endResetModel();
         return true;
     }

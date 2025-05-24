@@ -16,6 +16,7 @@
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <string_view>
 #include <utility>
 #include <vector>
 #include <fcitx-config/iniparser.h>
@@ -27,7 +28,7 @@
 #include <fcitx-utils/log.h>
 #include <fcitx-utils/macros.h>
 #include <fcitx-utils/misc.h>
-#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/standardpaths.h>
 #include <fcitx-utils/stringutils.h>
 #include <fcitx-utils/textformatflags.h>
 #include <fcitx-utils/utf8.h>
@@ -465,8 +466,8 @@ enum class FcitxSkkDictType { FSDT_Invalid, FSDT_File, FSTD_Server };
 
 void SkkEngine::loadDictionary() {
     dictionaries_.clear();
-    auto file = StandardPath::global().open(StandardPath::Type::PkgData,
-                                            "skk/dictionary_list", O_RDONLY);
+    auto file = StandardPaths::global().open(StandardPathsType::PkgData,
+                                             "skk/dictionary_list");
 
     if (!file.isValid()) {
         return;
@@ -537,8 +538,8 @@ void SkkEngine::loadDictionary() {
                 std::string_view partialpath = path;
                 if (stringutils::consumePrefix(partialpath,
                                                "$XDG_DATA_DIRS/")) {
-                    path = StandardPath::global().locate(
-                        StandardPath::Type::Data, std::string(partialpath));
+                    path = StandardPaths::global().locate(
+                        StandardPathsType::Data, partialpath);
                 }
                 if (stringutils::endsWith(path, ".cdb")) {
                     SkkCdbDict *dict =
@@ -559,10 +560,9 @@ void SkkEngine::loadDictionary() {
                 std::string_view partialpath = path;
                 if (stringutils::consumePrefix(partialpath,
                                                "$FCITX_CONFIG_DIR/")) {
-                    path = stringutils::joinPath(
-                        StandardPath::global().userDirectory(
-                            StandardPath::Type::PkgData),
-                        partialpath);
+                    path = StandardPaths::global().userDirectory(
+                               StandardPathsType::PkgData) /
+                           partialpath;
                 }
                 SkkUserDict *userdict =
                     skk_user_dict_new(path.data(), encoding.data(), nullptr);
