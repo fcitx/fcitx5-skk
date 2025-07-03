@@ -36,6 +36,7 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
   IMMEDIATE @ONLY)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-skk\" -D_GNU_SOURCE)
+add_definitions(-DQT_NO_KEYWORDS)
 fcitx5_add_i18n_definition()
 
 
