@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-09-11 20:24+0000\n"
+"POT-Creation-Date: 2025-09-12 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: Popolon_Github, 2025\n"
 "Language-Team: French (https://app.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -25,153 +25,153 @@ msgstr ""
 #: rc.cpp:6
 #, kde-format
 msgid "&Add"
-msgstr ""
+msgstr "&Ajouter"
 
 #. i18n: file: gui/adddictdialog.ui:73
 #. i18n: ectx: property (text), widget (QLabel, hostLabel)
 #: rc.cpp:30
 #, kde-format
 msgid "&Host:"
-msgstr ""
+msgstr "&Hôte"
 
 #. i18n: file: gui/adddictdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, pathLabel)
 #: rc.cpp:27
 #, kde-format
 msgid "&Path:"
-msgstr ""
+msgstr "&Chemin :"
 
 #. i18n: file: gui/adddictdialog.ui:90
 #. i18n: ectx: property (text), widget (QLabel, portLabel)
 #: rc.cpp:36
 #, kde-format
 msgid "&Port:"
-msgstr ""
+msgstr "&Port :"
 
 #. i18n: file: gui/dictwidget.ui:98
 #. i18n: ectx: property (text), widget (QToolButton, defaultDictButton)
 #: rc.cpp:18
 #, kde-format
 msgid "&Revert"
-msgstr ""
+msgstr "&Annuler"
 
 #. i18n: file: gui/adddictdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, typeLabel)
 #: rc.cpp:24
 #, kde-format
 msgid "&Type:"
-msgstr ""
+msgstr "&Type :"
 
 #: src/skk.h:44
 msgid "ABC (a,b,c,...)"
-msgstr ""
+msgstr "ABC (a,b,c,...)"
 
 #: src/skk.h:100
 msgid "Candidate Key"
-msgstr ""
+msgstr "Touche de la proposition"
 
 #: src/skk.h:92
 msgid "Candidate Layout"
-msgstr ""
+msgstr "Mise en page des propositions"
 
 #: src/skk.h:111
 msgid "Candidates Page Down"
-msgstr ""
+msgstr "Page des propositions bas"
 
 #: src/skk.h:105
 msgid "Candidates Page Up"
-msgstr ""
+msgstr "Page des propositions haut"
 
 #: src/skk.h:123
 msgid "Cursor Down"
-msgstr ""
+msgstr "Curseur bas"
 
 #: src/skk.h:117
 msgid "Cursor Up"
-msgstr ""
+msgstr "Curseur haut"
 
 #. i18n: file: gui/adddictdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddDictDialog)
 #: rc.cpp:21
 #, kde-format
 msgid "Dialog"
-msgstr ""
+msgstr "Dialogue"
 
 #: src/skk.h:130
 msgid "Dictionary"
-msgstr ""
+msgstr "Dictionnaire"
 
 #: gui/dictwidget.cpp:53
 msgid "Dictionary Manager"
-msgstr ""
+msgstr "Gestionnaire de dictionnaire"
 
 #: src/skk.h:43
 msgid "Digit (0,1,2,...)"
-msgstr ""
+msgstr "Chiffre (0,1,2,...)"
 
 #: src/skk.cpp:104
 msgid "Direct input"
-msgstr ""
+msgstr "Saisie directe"
 
 #. i18n: file: gui/adddictdialog.ui:126
 #. i18n: ectx: property (text), widget (QLabel, encodingLabel)
 #: rc.cpp:39
 #, kde-format
 msgid "Encoding:"
-msgstr ""
+msgstr "Encodage :"
 
 #. i18n: file: gui/dictwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, SkkDictWidget)
 #: rc.cpp:3
 #, kde-format
 msgid "Form"
-msgstr ""
+msgstr "Formulaire"
 
 #: src/skk.cpp:101 src/skk.h:54
 msgid "Half width Katakana"
-msgstr ""
+msgstr "Katakana demi-largeur"
 
 #: src/skk.cpp:99 src/skk.h:53
 msgid "Hiragana"
-msgstr ""
+msgstr "Hiragana"
 
 #: src/skk.h:48
 msgid "Horizontal"
-msgstr ""
+msgstr "Horizontal"
 
 #: src/skk.h:87
 msgid "Initial Input Mode"
-msgstr ""
+msgstr "Mode de méthode de saisie"
 
 #: src/skk.h:50
 msgid "Japanese"
-msgstr ""
+msgstr "Japonais"
 
 #: src/skk.cpp:100 src/skk.h:53
 msgid "Katakana"
-msgstr ""
+msgstr "Katakana"
 
 #: src/skk.cpp:102 src/skk.h:50 src/skk.h:54
 msgid "Latin"
-msgstr ""
+msgstr "Latin"
 
 #. i18n: file: gui/dictwidget.ui:81
 #. i18n: ectx: property (text), widget (QToolButton, moveDownDictButton)
 #: rc.cpp:15
 #, kde-format
 msgid "Move &Down"
-msgstr ""
+msgstr "Déplacer vers le &bas"
 
 #. i18n: file: gui/dictwidget.ui:64
 #. i18n: ectx: property (text), widget (QToolButton, moveUpDictButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Move &Up"
-msgstr ""
+msgstr "Déplacer vers le &haut"
 
 #: src/skk.h:47
 msgid "Not set"
-msgstr ""
+msgstr "Non définit"
 
 #: src/skk.h:128
 msgid "Number candidate of Triggers To Show Candidate Window"
@@ -179,11 +179,11 @@ msgstr ""
 
 #: src/skk.h:89
 msgid "Page size"
-msgstr ""
+msgstr "Taille de page"
 
 #: src/skk.h:84
 msgid "Punctuation Style"
-msgstr ""
+msgstr "Style de ponctuation"
 
 #: src/skk.h:45
 msgid "Qwerty Center Row (a,s,d,...)"
@@ -194,20 +194,20 @@ msgstr ""
 #: rc.cpp:9
 #, kde-format
 msgid "R&emove"
-msgstr ""
+msgstr "S&upprime"
 
 #: src/skk.h:96
 msgid "Return-key does not insert new line on commit"
-msgstr ""
+msgstr "La touche Entrée n’insert pas une nouvelle ligne lors de la validation"
 
 #: src/skk.h:82
 msgid "Rule"
-msgstr ""
+msgstr "Règle"
 
 #: org.fcitx.Fcitx5.Addon.Skk.metainfo.xml.in:7 src/skk.conf.in:2
 #: src/skk-addon.conf.in.in:2
 msgid "SKK"
-msgstr ""
+msgstr "SKK"
 
 #: src/skk-addon.conf.in.in:3
 msgid "SKK Input Method For Fcitx"
@@ -219,35 +219,35 @@ msgstr "Méthode de saisie du japonais SKK"
 
 #: gui/adddictdialog.cpp:117 gui/adddictdialog.cpp:132
 msgid "Select Dictionary File"
-msgstr ""
+msgstr "Sélectionner le fichier de dictionnaire"
 
 #: gui/adddictdialog.cpp:39
 msgid "Server"
-msgstr ""
+msgstr "Serveur"
 
 #: src/skk.h:97
 msgid "Show Annotation"
-msgstr ""
+msgstr "Afficher l'annotation"
 
 #: gui/adddictdialog.cpp:37
 msgid "System"
-msgstr ""
+msgstr "Système"
 
 #: gui/adddictdialog.cpp:38
 msgid "User"
-msgstr ""
+msgstr "Utilisateur"
 
 #: src/skk.h:48
 msgid "Vertical"
-msgstr ""
+msgstr "Vertical"
 
 #: src/skk.cpp:103 src/skk.h:51 src/skk.h:55
 msgid "Wide latin"
-msgstr ""
+msgstr "Latin large"
 
 #: src/skk.h:51
 msgid "Wide latin Japanese"
-msgstr ""
+msgstr "Japonais latin large"
 
 #. i18n: file: gui/adddictdialog.ui:83
 #. i18n: ectx: property (text), widget (QLineEdit, hostLineEdit)
