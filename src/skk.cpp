@@ -534,13 +534,20 @@ void SkkEngine::loadDictionary() {
             if (path.empty() || mode == 0) {
                 continue;
             }
+
+            std::string_view partialpath = path;
+            if (stringutils::consumePrefix(partialpath,
+                                           "$FCITX_CONFIG_DIR/")) {
+                path = StandardPaths::global().userDirectory(
+                           StandardPathsType::PkgData) /
+                       partialpath;
+            } else if (stringutils::consumePrefix(partialpath,
+                                           "$XDG_DATA_DIRS/")) {
+                path = StandardPaths::global().locate(
+                    StandardPathsType::Data, partialpath);
+            }
+
             if (mode == 1) {
-                std::string_view partialpath = path;
-                if (stringutils::consumePrefix(partialpath,
-                                               "$XDG_DATA_DIRS/")) {
-                    path = StandardPaths::global().locate(
-                        StandardPathsType::Data, partialpath);
-                }
                 if (stringutils::endsWith(path, ".cdb")) {
                     SkkCdbDict *dict =
                         skk_cdb_dict_new(path.data(), encoding.data(), nullptr);
@@ -557,13 +564,6 @@ void SkkEngine::loadDictionary() {
                     }
                 }
             } else {
-                std::string_view partialpath = path;
-                if (stringutils::consumePrefix(partialpath,
-                                               "$FCITX_CONFIG_DIR/")) {
-                    path = StandardPaths::global().userDirectory(
-                               StandardPathsType::PkgData) /
-                           partialpath;
-                }
                 SkkUserDict *userdict =
                     skk_user_dict_new(path.data(), encoding.data(), nullptr);
                 if (userdict) {
