@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the fcitx5-skk package.
 #
 # Translators:
-# hoanghuy309 <hoanghuy309@gmail.com>, 2025
+# Huy Võ <hoanghuy309@gmail.com>, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-22 20:25+0000\n"
+"POT-Creation-Date: 2025-11-02 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
-"Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
+"Last-Translator: Huy Võ <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Dictionary"
 msgstr ""
 
-#: gui/dictwidget.cpp:44
+#: gui/dictwidget.cpp:53
 msgid "Dictionary Manager"
 msgstr "Trình Quản Lý Từ Điển"
 
@@ -108,7 +108,7 @@ msgstr "Trình Quản Lý Từ Điển"
 msgid "Digit (0,1,2,...)"
 msgstr ""
 
-#: src/skk.cpp:103
+#: src/skk.cpp:104
 msgid "Direct input"
 msgstr "Nhập trực tiếp"
 
@@ -126,11 +126,11 @@ msgstr ""
 msgid "Form"
 msgstr "Mẫu"
 
-#: src/skk.cpp:100 src/skk.h:54
+#: src/skk.cpp:101 src/skk.h:54
 msgid "Half width Katakana"
 msgstr ""
 
-#: src/skk.cpp:98 src/skk.h:53
+#: src/skk.cpp:99 src/skk.h:53
 msgid "Hiragana"
 msgstr ""
 
@@ -146,11 +146,11 @@ msgstr "Kiểu Gõ Ban Đầu"
 msgid "Japanese"
 msgstr "Tiếng Nhật"
 
-#: src/skk.cpp:99 src/skk.h:53
+#: src/skk.cpp:100 src/skk.h:53
 msgid "Katakana"
 msgstr ""
 
-#: src/skk.cpp:101 src/skk.h:50 src/skk.h:54
+#: src/skk.cpp:102 src/skk.h:50 src/skk.h:54
 msgid "Latin"
 msgstr ""
 
@@ -216,23 +216,23 @@ msgstr ""
 msgid "SKK Japanese input method"
 msgstr "Kiểu gõ tiếng Nhật SKK"
 
-#: gui/adddictdialog.cpp:104 gui/adddictdialog.cpp:119
+#: gui/adddictdialog.cpp:117 gui/adddictdialog.cpp:132
 msgid "Select Dictionary File"
 msgstr "Chọn Tệp Từ Điển"
 
-#: gui/adddictdialog.cpp:26
+#: gui/adddictdialog.cpp:39
 msgid "Server"
 msgstr "Máy chủ"
 
 #: src/skk.h:97
 msgid "Show Annotation"
-msgstr ""
+msgstr "Hiển Thị Chú Thích"
 
-#: gui/adddictdialog.cpp:24
+#: gui/adddictdialog.cpp:37
 msgid "System"
 msgstr "Hệ thống"
 
-#: gui/adddictdialog.cpp:25
+#: gui/adddictdialog.cpp:38
 msgid "User"
 msgstr "Người dùng"
 
@@ -240,7 +240,7 @@ msgstr "Người dùng"
 msgid "Vertical"
 msgstr "Thẳng đứng"
 
-#: src/skk.cpp:102 src/skk.h:51 src/skk.h:55
+#: src/skk.cpp:103 src/skk.h:51 src/skk.h:55
 msgid "Wide latin"
 msgstr ""
 
