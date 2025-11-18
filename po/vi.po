@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-skk\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-11-02 20:24+0000\n"
+"POT-Creation-Date: 2025-11-18 20:24+0000\n"
 "PO-Revision-Date: 2020-05-22 22:25+0000\n"
 "Last-Translator: Huy Võ <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
@@ -186,7 +186,7 @@ msgstr ""
 
 #: src/skk.h:45
 msgid "Qwerty Center Row (a,s,d,...)"
-msgstr ""
+msgstr "Hàng Giữa Qwerty (a,s,d,...)"
 
 #. i18n: file: gui/dictwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, removeDictButton)
