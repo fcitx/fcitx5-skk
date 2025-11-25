@@ -65,12 +65,15 @@ void SkkDictWidget::save() {
 }
 
 void SkkDictWidget::addDictClicked() {
-    AddDictDialog dialog;
-    int result = dialog.exec();
-    if (result == QDialog::Accepted) {
-        m_dictModel->add(dialog.dictionary());
+    AddDictDialog *dialog = new AddDictDialog(this);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+
+    connect(dialog, &QDialog::accepted, this, [this, dialog]() {
+        m_dictModel->add(dialog->dictionary());
         Q_EMIT changed(true);
-    }
+    });
+
+    dialog->open();
 }
 
 void SkkDictWidget::defaultDictClicked() {
