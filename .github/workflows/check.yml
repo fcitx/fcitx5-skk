@@ -62,7 +62,6 @@ jobs:
       - name: Build and Install fcitx5-qt
         uses: fcitx/github-actions@cmake
         with:
-          repository: fcitx/fcitx5-qt
           path: fcitx5-qt
           cmake-option: >-
             -DENABLE_QT4=Off -DENABLE_QT5=Off -DENABLE_QT6=On
