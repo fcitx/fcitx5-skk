@@ -1,6 +1,6 @@
 #ifndef ___CONFIG_H___
 #define ___CONFIG_H___
 
-#define SKK_DEFAULT_PATH "@SKK_DEFAULT_PATH@"
+#define SKK_PATH "@SKK_PATH@"
 
 #endif /* __CONFIG_H__ */
