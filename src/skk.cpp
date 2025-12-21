@@ -536,15 +536,14 @@ void SkkEngine::loadDictionary() {
             }
 
             std::string_view partialpath = path;
-            if (stringutils::consumePrefix(partialpath,
-                                           "$FCITX_CONFIG_DIR/")) {
+            if (stringutils::consumePrefix(partialpath, "$FCITX_CONFIG_DIR/")) {
                 path = StandardPaths::global().userDirectory(
                            StandardPathsType::PkgData) /
                        partialpath;
             } else if (stringutils::consumePrefix(partialpath,
-                                           "$XDG_DATA_DIRS/")) {
-                path = StandardPaths::global().locate(
-                    StandardPathsType::Data, partialpath);
+                                                  "$XDG_DATA_DIRS/")) {
+                path = StandardPaths::global().locate(StandardPathsType::Data,
+                                                      partialpath);
             }
 
             if (mode == 1) {
