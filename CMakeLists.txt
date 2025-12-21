@@ -21,9 +21,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
 
-set(SKK_PATH "/usr/share/skk/" CACHE STRING "Default path of SKK directory that has SKK-JISYO.L, could start with \$XDG_DATA_DIRS/")
-if("${SKK_DEFAULT_PATH}" MATCHES "SKK-JISYO.L$")
-  message(FATAL_ERROR "SKK_DEFAULT_PATH is superseded by SKK_PATH")
+set(SKK_PATH "/usr/share/skk" CACHE STRING "Default path of SKK directory that contains SKK-JISYO.L, could start with \"\$XDG_DATA_DIRS\"")
+if(NOT ("${SKK_DEFAULT_PATH}" STREQUAL ""))
+    message(FATAL_ERROR "SKK_DEFAULT_PATH option is removed and replaced with SKK_PATH, they have different meaning (file vs directory). Please adjust the config option accordingly.")
 endif()
 
 include(GNUInstallDirs)

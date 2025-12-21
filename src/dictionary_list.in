@@ -1,2 +1,2 @@
 type=file,file=$FCITX_CONFIG_DIR/skk/user.dict,mode=readwrite
-type=file,file=@SKK_PATH@SKK-JISYO.L,mode=readonly
+type=file,file=@SKK_PATH@/SKK-JISYO.L,mode=readonly
