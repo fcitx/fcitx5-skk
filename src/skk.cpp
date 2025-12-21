@@ -673,7 +673,8 @@ bool SkkState::handleCandidate(KeyEvent &keyEvent) {
         skk_candidate_list_cursor_up(skkCandidates);
         keyEvent.filterAndAccept();
     } else if (keyEvent.key().checkKeyList(*config.cursorDownKey)) {
-        skk_candidate_list_cursor_down(skkCandidates);
+        if (!skk_candidate_list_cursor_down(skkCandidates))
+          return false;
         keyEvent.filterAndAccept();
     } else if (keyEvent.key().checkKeyList(*config.prevPageKey)) {
         skk_candidate_list_page_up(skkCandidates);
