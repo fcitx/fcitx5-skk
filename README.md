@@ -30,9 +30,9 @@ Please install this packages before build this Program.
  - extra-cmake-modules
  - gettext
 
-You can specify the skk dictionary path by -DSKK_DEFAULT_PATH=path_you_want
+You can specify the skk dictionary path by -DSKK_PATH=path_you_want
 
-By default it's /usr/share/skk/SKK-JISYO.L
+By default it's /usr/share/skk/
 
 ## Installation 
 

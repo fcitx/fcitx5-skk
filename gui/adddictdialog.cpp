@@ -111,7 +111,7 @@ void AddDictDialog::browseClicked() {
     if (m_ui->typeComboBox->currentIndex() == DictType_System) {
         QString dir;
         if (path.isEmpty()) {
-            path = SKK_DEFAULT_PATH;
+            path = SKK_PATH "SKK-JISYO.L";
         }
         QFileInfo info(path);
         path = QFileDialog::getOpenFileName(this, _("Select Dictionary File"),
