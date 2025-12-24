@@ -547,7 +547,7 @@ void SkkEngine::loadDictionary() {
             }
 
             if (mode == 1) {
-                if (stringutils::endsWith(path, ".cdb")) {
+                if (path.ends_with(".cdb")) {
                     SkkCdbDict *dict =
                         skk_cdb_dict_new(path.data(), encoding.data(), nullptr);
                     if (dict) {
