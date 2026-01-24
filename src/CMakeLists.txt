@@ -7,6 +7,7 @@ target_link_libraries(skk
     Fcitx5::Core
     Fcitx5::Config
     PkgConfig::GObject2
+    PkgConfig::Gee
     LibSKK::LibSKK
 )
 set_target_properties(skk PROPERTIES PREFIX "")
