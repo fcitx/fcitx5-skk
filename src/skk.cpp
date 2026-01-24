@@ -733,12 +733,10 @@ void SkkState::updateUI() {
 
     if (auto str = UniqueCPtr<char, g_free>{skk_context_poll_output(context)}) {
         if (str && str.get()[0]) {
-            // Skk doesn't clear preedit after poll output, do this on our own.
-            preedit_ = Text();
             ic_->commitString(str.get());
         }
     }
-    Text preedit = preedit_;
+    Text preedit = skkContextGetPreedit(context);
 
     // Skk almost filter every key, which makes it calls updateUI on release.
     // We add an additional check here for checking if the UI is empty or not.
