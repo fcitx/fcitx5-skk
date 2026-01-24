@@ -22,7 +22,6 @@ target_link_libraries(fcitx5-skk-config
   Qt${QT_MAJOR_VERSION}::Widgets
   Fcitx5Qt${QT_MAJOR_VERSION}::WidgetsAddons
   Fcitx5::Utils
-  PkgConfig::GObject2
   LibSKK::LibSKK
   )
 
