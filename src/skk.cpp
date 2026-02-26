@@ -169,9 +169,10 @@ private:
 
 class SkkCandidateWord : public CandidateWord {
 public:
-    SkkCandidateWord(SkkEngine *engine, Text text, int idx)
+    SkkCandidateWord(SkkEngine *engine, Text text, Text comment, int idx)
         : engine_(engine), idx_(idx) {
         setText(std::move(text));
+        setComment(std::move(comment));
     }
 
     void select(InputContext *inputContext) const override {
@@ -221,6 +222,7 @@ public:
                 skk_candidate_list_get(skkCandidates, i)};
             Text text;
             text.append(skk_candidate_get_text(skkCandidate.get()));
+            Text comment;
             if (*engine->config().showAnnotation) {
                 const auto *annotation =
                     skk_candidate_get_annotation(skkCandidate.get());
@@ -228,8 +230,8 @@ public:
                 // ? seems to be a special debug purpose value.
                 if (annotation && annotation[0] &&
                     g_strcmp0(annotation, "?") != 0) {
-                    text.append(stringutils::concat(
-                        " [", skk_candidate_get_annotation(skkCandidate.get()),
+                    comment.append(stringutils::concat(
+                        "[", skk_candidate_get_annotation(skkCandidate.get()),
                         "]"));
                 }
             }
@@ -250,7 +252,7 @@ public:
 
             labels_.emplace_back(stringutils::concat(label, ". "));
             words_.emplace_back(std::make_unique<SkkCandidateWord>(
-                engine, text, i - page_start));
+                engine, std::move(text), std::move(comment), i - page_start));
         }
 
         hasPrev_ = currentPage != 0;
