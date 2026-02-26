@@ -733,12 +733,9 @@ void SkkState::updateUI() {
 
     if (auto str = UniqueCPtr<char, g_free>{skk_context_poll_output(context)}) {
         if (str && str.get()[0]) {
-            // Skk doesn't clear preedit after poll output, do this on our own.
-            preedit_ = Text();
             ic_->commitString(str.get());
         }
     }
-    Text preedit = preedit_;
 
     // Skk almost filter every key, which makes it calls updateUI on release.
     // We add an additional check here for checking if the UI is empty or not.
@@ -746,7 +743,7 @@ void SkkState::updateUI() {
     // ignore the UI update. This makes the input method info not disappear
     // immediately up key release.
     bool lastIsEmpty = lastIsEmpty_;
-    bool newIsEmpty = preedit.empty() && !candidateList;
+    bool newIsEmpty = preedit_.empty() && !candidateList;
     lastIsEmpty_ = newIsEmpty;
 
     // Ensure we are not composing any text.
@@ -768,10 +765,10 @@ void SkkState::updateUI() {
     }
 
     if (ic_->capabilityFlags().test(CapabilityFlag::Preedit)) {
-        inputPanel.setClientPreedit(preedit);
+        inputPanel.setClientPreedit(preedit_);
         ic_->updatePreedit();
     } else {
-        inputPanel.setPreedit(preedit);
+        inputPanel.setPreedit(preedit_);
     }
 
     ic_->updateUserInterface(UserInterfaceComponent::InputPanel);

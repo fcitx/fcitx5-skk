@@ -12,7 +12,7 @@ include(FeatureSummary)
 find_package(PkgConfig REQUIRED)
 find_package(Fcitx5Core ${REQUIRED_FCITX_VERSION} REQUIRED)
 find_package(Gettext REQUIRED)
-find_package(LibSKK REQUIRED)
+find_package(LibSKK 1.1.0 REQUIRED)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
