@@ -11,6 +11,7 @@ include(FeatureSummary)
 
 find_package(PkgConfig REQUIRED)
 find_package(Fcitx5Core ${REQUIRED_FCITX_VERSION} REQUIRED)
+find_package(Fcitx5ModuleClipboard REQUIRED)
 find_package(Gettext REQUIRED)
 find_package(LibSKK 1.1.0 REQUIRED)
 

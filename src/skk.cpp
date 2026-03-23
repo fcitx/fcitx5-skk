@@ -617,6 +617,8 @@ SkkState::SkkState(SkkEngine *engine, InputContext *ic)
                      G_CALLBACK(retrieve_surrounding_text_cb), this);
     g_signal_connect(context, "delete_surrounding_text",
                      G_CALLBACK(delete_surrounding_text_cb), this);
+    g_signal_connect(context, "request_selection_text",
+                     G_CALLBACK(request_selection_text_cb), this);
     updateInputMode();
 
     const char *AUTO_START_HENKAN_KEYWORDS[] = {
@@ -849,6 +851,16 @@ gboolean SkkState::delete_surrounding_text_cb(GObject * /*unused*/, gint offset,
     ic->deleteSurroundingText(offset, nchars);
     return true;
 }
+
+void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
+    SkkContext *context = skk->context();
+    InputContext *ic = skk->ic_;
+    SkkEngine *engine = skk->engine_;
+
+    std::string text = engine->clipboard()->call<IClipboard::clipboard>(ic);
+    skk_context_set_selection_text(context, text.c_str());
+}
+
 } // namespace fcitx
 
 FCITX_ADDON_FACTORY_V2(skk, fcitx::SkkAddonFactory)
