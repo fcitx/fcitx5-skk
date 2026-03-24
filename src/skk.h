@@ -10,7 +10,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include <clipboard_public.h>
 #include <fcitx-config/configuration.h>
 #include <fcitx-config/enum.h>
 #include <fcitx-config/iniparser.h>

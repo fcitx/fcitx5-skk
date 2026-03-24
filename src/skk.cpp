@@ -4,7 +4,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  */
+#include "clipboard_public.h"
 #include "skk.h"
+#include "utils.h"
 #include <fcntl.h>
 #include <algorithm>
 #include <array>
@@ -48,6 +50,8 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <libskk/libskk.h>
+#include <sys/types.h>
+#include <stdlib.h>
 
 #define SKK_DEBUG() FCITX_LOGC(::fcitx::skk_logcategory, Debug)
 
@@ -853,11 +857,46 @@ gboolean SkkState::delete_surrounding_text_cb(GObject * /*unused*/, gint offset,
 }
 
 void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
-    SkkContext *context = skk->context();
-    InputContext *ic = skk->ic_;
-    SkkEngine *engine = skk->engine_;
+    auto *context = skk->context();
+    auto *ic = skk->ic_;
+    auto *engine = skk->engine_;
+    auto *clipboard = engine->clipboard();
+    std::string text;
 
-    std::string text = engine->clipboard()->call<IClipboard::clipboard>(ic);
+    if (ic->capabilityFlags().test(fcitx::CapabilityFlag::SurroundingText) &&
+                ic->surroundingText().isValid()) {
+
+        const std::string surrounding_text(ic->surroundingText().text());
+        uint cursor_pos = ic->surroundingText().cursor();
+        uint anchor_pos = ic->surroundingText().anchor();
+        int32_t relative_selected_length = 0;
+
+        if (cursor_pos == anchor_pos) {
+            if (clipboard) {
+                auto primary_text =
+                    clipboard->call<fcitx::IClipboard::primary>(ic);
+                uint new_anchor_pos = 0;
+                if (util::surrounding_get_anchor_pos_from_selection(
+                            surrounding_text, primary_text, cursor_pos,
+                            &new_anchor_pos)) {
+                    anchor_pos = new_anchor_pos;
+                }
+            }
+        }
+
+        if (util::surrounding_get_safe_delta(cursor_pos, anchor_pos,
+                                             &relative_selected_length)) {
+            const uint32_t selection_start = std::min(cursor_pos, anchor_pos);
+            const uint32_t selection_length = abs(relative_selected_length);
+            text = util::utf8_string_substr(surrounding_text,
+                                            selection_start, selection_length);
+        }
+    }
+
+    if (text.empty() && clipboard) {
+            text = clipboard->call<fcitx::IClipboard::clipboard>(ic);
+    }
+
     skk_context_set_selection_text(context, text.c_str());
 }
 

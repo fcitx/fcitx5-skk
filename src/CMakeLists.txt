@@ -1,6 +1,7 @@
 
 set(SKK_SOURCES
     skk.cpp
+    utils.cpp
 )
 add_fcitx5_addon(skk ${SKK_SOURCES})
 target_link_libraries(skk
