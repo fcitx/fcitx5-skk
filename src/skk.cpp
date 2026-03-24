@@ -866,11 +866,17 @@ void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
     if (ic->capabilityFlags().test(fcitx::CapabilityFlag::SurroundingText) &&
                 ic->surroundingText().isValid()) {
 
-        const std::string surrounding_text(ic->surroundingText().text());
+        std::string surrounding_text(ic->surroundingText().text());
         uint cursor_pos = ic->surroundingText().cursor();
         uint anchor_pos = ic->surroundingText().anchor();
         int32_t relative_selected_length = 0;
+        int32_t preedit_length = g_utf8_strlen(skk_context_get_preedit(context), -1);
 
+        if (preedit_length) {
+            cursor_pos -= preedit_length;
+            anchor_pos -= preedit_length;
+            surrounding_text.erase(preedit_length);
+        }
         if (cursor_pos == anchor_pos) {
             if (clipboard) {
                 auto primary_text =
@@ -883,6 +889,7 @@ void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
                 }
             }
         }
+
 
         if (util::surrounding_get_safe_delta(cursor_pos, anchor_pos,
                                              &relative_selected_length)) {
