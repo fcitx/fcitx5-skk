@@ -50,8 +50,8 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <libskk/libskk.h>
-#include <sys/types.h>
 #include <stdlib.h>
+#include <sys/types.h>
 
 #define SKK_DEBUG() FCITX_LOGC(::fcitx::skk_logcategory, Debug)
 
@@ -889,7 +889,6 @@ void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
                 }
             }
         }
-
 
         if (util::surrounding_get_safe_delta(cursor_pos, anchor_pos,
                                              &relative_selected_length)) {
