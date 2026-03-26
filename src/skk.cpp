@@ -867,21 +867,28 @@ void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
                 ic->surroundingText().isValid()) {
 
         std::string surrounding_text(ic->surroundingText().text());
-        uint cursor_pos = ic->surroundingText().cursor();
-        uint anchor_pos = ic->surroundingText().anchor();
+        uint32_t cursor_pos = ic->surroundingText().cursor();
+        uint32_t anchor_pos = ic->surroundingText().anchor();
         int32_t relative_selected_length = 0;
-        int32_t preedit_length = g_utf8_strlen(skk_context_get_preedit(context), -1);
+        const uint32_t preedit_length =
+                g_utf8_strlen(skk_context_get_preedit(context), -1);
 
         if (preedit_length) {
+            const uint32_t end = utf8::length(surrounding_text);
+            const std::string tail = util::utf8_string_substr(surrounding_text,
+                                                              cursor_pos, end);
             cursor_pos -= preedit_length;
             anchor_pos -= preedit_length;
-            surrounding_text.erase(preedit_length);
+            const std::string head = util::utf8_string_substr(surrounding_text,
+                                                              0, cursor_pos);
+            surrounding_text = head + tail;
         }
+
         if (cursor_pos == anchor_pos) {
             if (clipboard) {
-                auto primary_text =
-                    clipboard->call<fcitx::IClipboard::primary>(ic);
-                uint new_anchor_pos = 0;
+                std::string primary_text =
+                        clipboard->call<fcitx::IClipboard::primary>(ic);
+                uint32_t new_anchor_pos = 0;
                 if (util::surrounding_get_anchor_pos_from_selection(
                             surrounding_text, primary_text, cursor_pos,
                             &new_anchor_pos)) {
