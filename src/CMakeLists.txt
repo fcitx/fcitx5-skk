@@ -1,11 +1,13 @@
 
 set(SKK_SOURCES
     skk.cpp
+    utils.cpp
 )
 add_fcitx5_addon(skk ${SKK_SOURCES})
 target_link_libraries(skk
     Fcitx5::Core
     Fcitx5::Config
+    Fcitx5::Module::Clipboard
     LibSKK::LibSKK
 )
 set_target_properties(skk PROPERTIES PREFIX "")

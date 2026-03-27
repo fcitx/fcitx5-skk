@@ -4,7 +4,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
  */
+#include "clipboard_public.h"
 #include "skk.h"
+#include "utils.h"
 #include <fcntl.h>
 #include <algorithm>
 #include <array>
@@ -48,6 +50,8 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <libskk/libskk.h>
+#include <stdlib.h>
+#include <sys/types.h>
 
 #define SKK_DEBUG() FCITX_LOGC(::fcitx::skk_logcategory, Debug)
 
@@ -617,6 +621,8 @@ SkkState::SkkState(SkkEngine *engine, InputContext *ic)
                      G_CALLBACK(retrieve_surrounding_text_cb), this);
     g_signal_connect(context, "delete_surrounding_text",
                      G_CALLBACK(delete_surrounding_text_cb), this);
+    g_signal_connect(context, "request_selection_text",
+                     G_CALLBACK(request_selection_text_cb), this);
     updateInputMode();
 
     const char *AUTO_START_HENKAN_KEYWORDS[] = {
@@ -849,6 +855,68 @@ gboolean SkkState::delete_surrounding_text_cb(GObject * /*unused*/, gint offset,
     ic->deleteSurroundingText(offset, nchars);
     return true;
 }
+
+void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
+    auto *context = skk->context();
+    auto *ic = skk->ic_;
+    auto *engine = skk->engine_;
+    auto *clipboard = engine->clipboard();
+    std::string text;
+
+    if (ic->capabilityFlags().test(fcitx::CapabilityFlag::SurroundingText) &&
+                ic->surroundingText().isValid()) {
+        std::string surrounding_text(ic->surroundingText().text());
+        uint32_t cursor_pos = ic->surroundingText().cursor();
+        uint32_t anchor_pos = ic->surroundingText().anchor();
+        int32_t relative_selected_length = 0;
+        const std::string preedit_text =
+                std::string(skk_context_get_preedit(context));
+        const uint32_t preedit_length = utf8::length(preedit_text);
+
+        if (preedit_length) {
+            const uint32_t end = utf8::length(surrounding_text);
+            const std::string tail = util::utf8_string_substr(surrounding_text,
+                                                              cursor_pos, end);
+            std::string head = util::utf8_string_substr(surrounding_text,
+                                                        0, cursor_pos);
+
+            if (head.ends_with(preedit_text)) {
+                cursor_pos -= preedit_length;
+                anchor_pos -= preedit_length;
+                head = util::utf8_string_substr(head, 0, cursor_pos);
+            }
+            surrounding_text = head + tail;
+        }
+
+        if (cursor_pos == anchor_pos) {
+            if (clipboard) {
+                std::string primary_text =
+                        clipboard->call<fcitx::IClipboard::primary>(ic);
+                uint32_t new_anchor_pos = 0;
+                if (util::surrounding_get_anchor_pos_from_selection(
+                            surrounding_text, primary_text, cursor_pos,
+                            &new_anchor_pos)) {
+                    anchor_pos = new_anchor_pos;
+                }
+            }
+        }
+
+        if (util::surrounding_get_safe_delta(cursor_pos, anchor_pos,
+                                             &relative_selected_length)) {
+            const uint32_t selection_start = std::min(cursor_pos, anchor_pos);
+            const uint32_t selection_length = abs(relative_selected_length);
+            text = util::utf8_string_substr(surrounding_text, selection_start,
+                                            selection_length);
+        }
+    }
+
+    if (text.empty() && clipboard) {
+        text = clipboard->call<fcitx::IClipboard::clipboard>(ic);
+    }
+
+    skk_context_set_selection_text(context, text.c_str());
+}
+
 } // namespace fcitx
 
 FCITX_ADDON_FACTORY_V2(skk, fcitx::SkkAddonFactory)

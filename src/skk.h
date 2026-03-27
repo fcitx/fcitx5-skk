@@ -177,6 +177,8 @@ public:
     auto modeAction() { return modeAction_.get(); }
     auto userRule() { return userRule_.get(); }
 
+    FCITX_ADDON_DEPENDENCY_LOADER(clipboard, instance_->addonManager());
+
 private:
     void loadRule();
     void loadDictionary();
@@ -229,6 +231,7 @@ private:
                                                  SkkState *skk);
     static gboolean delete_surrounding_text_cb(GObject *, gint offset,
                                                guint nchars, SkkState *skk);
+    static void request_selection_text_cb(GObject *, SkkState *skk);
 
     SkkEngine *engine_;
     InputContext *ic_;
