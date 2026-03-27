@@ -865,22 +865,26 @@ void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
 
     if (ic->capabilityFlags().test(fcitx::CapabilityFlag::SurroundingText) &&
                 ic->surroundingText().isValid()) {
-
         std::string surrounding_text(ic->surroundingText().text());
         uint32_t cursor_pos = ic->surroundingText().cursor();
         uint32_t anchor_pos = ic->surroundingText().anchor();
         int32_t relative_selected_length = 0;
-        const uint32_t preedit_length =
-                g_utf8_strlen(skk_context_get_preedit(context), -1);
+        const std::string preedit_text =
+                std::string(skk_context_get_preedit(context));
+        const uint32_t preedit_length = utf8::length(preedit_text);
 
         if (preedit_length) {
             const uint32_t end = utf8::length(surrounding_text);
             const std::string tail = util::utf8_string_substr(surrounding_text,
                                                               cursor_pos, end);
-            cursor_pos -= preedit_length;
-            anchor_pos -= preedit_length;
-            const std::string head = util::utf8_string_substr(surrounding_text,
-                                                              0, cursor_pos);
+            std::string head = util::utf8_string_substr(surrounding_text,
+                                                        0, cursor_pos);
+
+            if (head.ends_with(preedit_text)) {
+                cursor_pos -= preedit_length;
+                anchor_pos -= preedit_length;
+                head = util::utf8_string_substr(head, 0, cursor_pos);
+            }
             surrounding_text = head + tail;
         }
 
@@ -901,13 +905,13 @@ void SkkState::request_selection_text_cb(GObject * /*unused*/, SkkState *skk) {
                                              &relative_selected_length)) {
             const uint32_t selection_start = std::min(cursor_pos, anchor_pos);
             const uint32_t selection_length = abs(relative_selected_length);
-            text = util::utf8_string_substr(surrounding_text,
-                                            selection_start, selection_length);
+            text = util::utf8_string_substr(surrounding_text, selection_start,
+                                            selection_length);
         }
     }
 
     if (text.empty() && clipboard) {
-            text = clipboard->call<fcitx::IClipboard::clipboard>(ic);
+        text = clipboard->call<fcitx::IClipboard::clipboard>(ic);
     }
 
     skk_context_set_selection_text(context, text.c_str());
