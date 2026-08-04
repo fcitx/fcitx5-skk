@@ -176,11 +176,13 @@ public:
     const auto &dictionaries() { return dictionaries_; }
     auto modeAction() { return modeAction_.get(); }
     auto userRule() { return userRule_.get(); }
+    bool constructed() const { return constructed_; }
 
 private:
     void loadRule();
     void loadDictionary();
 
+    bool constructed_ = false;
     Instance *instance_;
     FactoryFor<SkkState> factory_;
     SkkConfig config_;
@@ -208,6 +210,7 @@ public:
 
     void keyEvent(KeyEvent &keyEvent);
     void updateUI();
+    void doUpdateUI();
     SkkContext *context() { return context_.get(); }
     void applyConfig();
     bool needCopy() const override { return true; }
@@ -219,6 +222,22 @@ private:
     void updateInputMode();
     void updatePreedit();
 
+    struct KeyEventScope {
+        KeyEventScope(SkkState &self) : self_(self) {
+            self_.inKeyEventScope_ = true;
+            self_.pendingUpdateUI_ = false;
+        }
+        ~KeyEventScope() {
+            self_.inKeyEventScope_ = false;
+            if (self_.pendingUpdateUI_) {
+                self_.doUpdateUI();
+            }
+        }
+
+    private:
+        SkkState &self_;
+    };
+
     // callbacks and their handlers
     static void input_mode_changed_cb(GObject *gobject, GParamSpec *pspec,
                                       SkkState *skk);
@@ -229,14 +248,18 @@ private:
                                                  SkkState *skk);
     static gboolean delete_surrounding_text_cb(GObject *, gint offset,
                                                guint nchars, SkkState *skk);
+    static void candidates_populated(GObject * /*unused*/, SkkState *skk);
+    static void candidates_cursor_pos_changed(GObject * /*unused*/,
+                                              GParamSpec * /*unused*/,
+                                              SkkState *skk);
+    static void candidates_selected(GObject * /*unused*/,
+                                    SkkCandidate * /*unused*/, SkkState *skk);
 
     SkkEngine *engine_;
     InputContext *ic_;
     GObjectUniquePtr<SkkContext> context_;
-    bool modeChanged_ = false;
-    SkkInputMode lastMode_ = SKK_INPUT_MODE_DEFAULT;
-    bool lastIsEmpty_ = true;
-    Text preedit_;
+    bool inKeyEventScope_ = false;
+    bool pendingUpdateUI_ = false;
 };
 
 } // namespace fcitx
