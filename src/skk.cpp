@@ -179,11 +179,9 @@ public:
         auto *state = engine_->state(inputContext);
         auto *context = state->context();
         SkkCandidateList *skkCandidates = skk_context_get_candidates(context);
-        if (skk_candidate_list_select_at(
-                skkCandidates,
-                idx_ % skk_candidate_list_get_page_size(skkCandidates))) {
-            state->updateUI();
-        }
+        skk_candidate_list_select_at(
+            skkCandidates,
+            idx_ % skk_candidate_list_get_page_size(skkCandidates));
     }
 
 private:
@@ -371,6 +369,8 @@ SkkEngine::SkkEngine(Instance *instance)
         ic->updateProperty(&factory_);
         return true;
     });
+
+    constructed_ = true;
 }
 
 void SkkEngine::activate(const InputMethodEntry &entry,
@@ -608,17 +608,6 @@ SkkState::SkkState(SkkEngine *engine, InputContext *ic)
     skk_context_set_period_style(context, *engine_->config().punctuationStyle);
     skk_context_set_input_mode(context, *engine_->config().inputMode);
 
-    lastMode_ = skk_context_get_input_mode(context);
-    g_signal_connect(context, "notify::input-mode",
-                     G_CALLBACK(SkkState::input_mode_changed_cb), this);
-    g_signal_connect(context, "notify::preedit",
-                     G_CALLBACK(SkkState::preedit_changed_cb), this);
-    g_signal_connect(context, "retrieve_surrounding_text",
-                     G_CALLBACK(retrieve_surrounding_text_cb), this);
-    g_signal_connect(context, "delete_surrounding_text",
-                     G_CALLBACK(delete_surrounding_text_cb), this);
-    updateInputMode();
-
     const char *AUTO_START_HENKAN_KEYWORDS[] = {
         "を", "、", "。", "．", "，", "？", "」", "！", "；", "：",
         ")",  ";",  ":",  "）", "”",  "】", "』", "》", "〉", "｝",
@@ -627,13 +616,31 @@ SkkState::SkkState(SkkEngine *engine, InputContext *ic)
     skk_context_set_auto_start_henkan_keywords(
         context, const_cast<gchar **>(AUTO_START_HENKAN_KEYWORDS),
         G_N_ELEMENTS(AUTO_START_HENKAN_KEYWORDS));
+
+    g_signal_connect(context, "notify::input-mode",
+                     G_CALLBACK(SkkState::input_mode_changed_cb), this);
+    g_signal_connect(context, "notify::preedit",
+                     G_CALLBACK(SkkState::preedit_changed_cb), this);
+    g_signal_connect(context, "retrieve_surrounding_text",
+                     G_CALLBACK(retrieve_surrounding_text_cb), this);
+    g_signal_connect(context, "delete_surrounding_text",
+                     G_CALLBACK(delete_surrounding_text_cb), this);
+    g_signal_connect(skk_context_get_candidates(context), "populated",
+                     G_CALLBACK(SkkState::candidates_populated), this);
+    g_signal_connect(skk_context_get_candidates(context), "notify::cursor-pos",
+                     G_CALLBACK(SkkState::candidates_cursor_pos_changed), this);
+    g_signal_connect(skk_context_get_candidates(context), "selected",
+                     G_CALLBACK(SkkState::candidates_selected), this);
 }
 
 SkkState::~SkkState() {
+    g_signal_handlers_disconnect_by_data(
+        skk_context_get_candidates(context_.get()), this);
     g_signal_handlers_disconnect_by_data(context_.get(), this);
 }
 
 void SkkState::keyEvent(KeyEvent &keyEvent) {
+    KeyEventScope keyEventScope(*this);
     if (handleCandidate(keyEvent)) {
         return;
     }
@@ -652,14 +659,15 @@ void SkkState::keyEvent(KeyEvent &keyEvent) {
         return;
     }
 
-    modeChanged_ = false;
     if (skk_context_process_key_event(context_.get(), key.get())) {
         keyEvent.filterAndAccept();
     }
 
-    updateUI();
-    if (modeChanged_) {
-        ic_->updateProperty(&engine_->factory());
+    if (auto str =
+            UniqueCPtr<char, g_free>{skk_context_poll_output(context_.get())}) {
+        if (str && str.get()[0]) {
+            ic_->commitString(str.get());
+        }
     }
 }
 
@@ -675,8 +683,9 @@ bool SkkState::handleCandidate(KeyEvent &keyEvent) {
         skk_candidate_list_cursor_up(skkCandidates);
         keyEvent.filterAndAccept();
     } else if (keyEvent.key().checkKeyList(*config.cursorDownKey)) {
-        if (!skk_candidate_list_cursor_down(skkCandidates))
+        if (!skk_candidate_list_cursor_down(skkCandidates)) {
             return false;
+        }
         keyEvent.filterAndAccept();
     } else if (keyEvent.key().checkKeyList(*config.prevPageKey)) {
         skk_candidate_list_page_up(skkCandidates);
@@ -716,13 +725,19 @@ bool SkkState::handleCandidate(KeyEvent &keyEvent) {
         }
     }
 
-    if (keyEvent.filtered()) {
-        updateUI();
-    }
     return keyEvent.filtered();
 }
 
 void SkkState::updateUI() {
+    if (inKeyEventScope_) {
+        pendingUpdateUI_ = true;
+        return;
+    }
+    doUpdateUI();
+}
+
+void SkkState::doUpdateUI() {
+    pendingUpdateUI_ = false;
     auto &inputPanel = ic_->inputPanel();
     auto *context = context_.get();
 
@@ -733,44 +748,17 @@ void SkkState::updateUI() {
         candidateList = std::make_unique<SkkFcitxCandidateList>(engine_, ic_);
     }
 
-    if (auto str = UniqueCPtr<char, g_free>{skk_context_poll_output(context)}) {
-        if (str && str.get()[0]) {
-            ic_->commitString(str.get());
-        }
-    }
-
-    // Skk almost filter every key, which makes it calls updateUI on release.
-    // We add an additional check here for checking if the UI is empty or not.
-    // If previous state is empty and the current state is also empty, we'll
-    // ignore the UI update. This makes the input method info not disappear
-    // immediately up key release.
-    bool lastIsEmpty = lastIsEmpty_;
-    bool newIsEmpty = preedit_.empty() && !candidateList;
-    lastIsEmpty_ = newIsEmpty;
-
-    // Ensure we are not composing any text.
-    if (modeChanged_ && newIsEmpty) {
-        inputPanel.reset();
-        ic_->updatePreedit();
-        engine_->instance()->showInputMethodInformation(ic_);
-        ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
-        return;
-    }
-
-    if (lastIsEmpty && newIsEmpty) {
-        return;
-    }
-
     inputPanel.reset();
     if (candidateList) {
         inputPanel.setCandidateList(std::move(candidateList));
     }
 
+    auto preedit = skkContextGetPreedit(context);
     if (ic_->capabilityFlags().test(CapabilityFlag::Preedit)) {
-        inputPanel.setClientPreedit(preedit_);
+        inputPanel.setClientPreedit(preedit);
         ic_->updatePreedit();
     } else {
-        inputPanel.setPreedit(preedit_);
+        inputPanel.setPreedit(preedit);
     }
 
     ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
@@ -800,18 +788,17 @@ void SkkState::copyTo(InputContextProperty *property) {
 }
 
 void SkkState::updateInputMode() {
-    engine_->modeAction()->update(ic_);
-    auto newMode = skk_context_get_input_mode(context());
-    if (lastMode_ != newMode) {
-        lastMode_ = newMode;
-        modeChanged_ = true;
+    if (!engine_->constructed()) {
+        return;
     }
+    engine_->modeAction()->update(ic_);
+    engine_->instance()->showInputMethodInformation(ic_);
+    ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
 }
-void SkkState::updatePreedit() { preedit_ = skkContextGetPreedit(context()); }
+void SkkState::updatePreedit() { updateUI(); }
 
 void SkkState::reset() {
     skk_context_reset(context());
-    preedit_ = Text();
     updateUI();
 }
 
@@ -849,6 +836,22 @@ gboolean SkkState::delete_surrounding_text_cb(GObject * /*unused*/, gint offset,
     ic->deleteSurroundingText(offset, nchars);
     return true;
 }
+
+void SkkState::candidates_populated(GObject * /*unused*/, SkkState *skk) {
+    skk->updateUI();
+}
+
+void SkkState::candidates_cursor_pos_changed(GObject * /*unused*/,
+                                             GParamSpec * /*unused*/,
+                                             SkkState *skk) {
+    skk->updateUI();
+}
+
+void SkkState::candidates_selected(GObject * /*unused*/,
+                                   SkkCandidate * /*unused*/, SkkState *skk) {
+    skk->updateUI();
+}
+
 } // namespace fcitx
 
 FCITX_ADDON_FACTORY_V2(skk, fcitx::SkkAddonFactory)

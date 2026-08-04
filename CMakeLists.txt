@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.6.0)
+cmake_minimum_required(VERSION 3.13)
 project(fcitx5-skk VERSION 5.1.10)
 
-set(REQUIRED_FCITX_VERSION 5.1.13)
+set(REQUIRED_FCITX_VERSION 5.1.22)
 find_package(ECM 1.0.0 REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH}) 
 option(ENABLE_QT "Enable Qt for GUI configuration" On)
