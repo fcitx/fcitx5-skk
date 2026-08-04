@@ -634,6 +634,8 @@ SkkState::SkkState(SkkEngine *engine, InputContext *ic)
 }
 
 SkkState::~SkkState() {
+    g_signal_handlers_disconnect_by_data(
+        skk_context_get_candidates(context_.get()), this);
     g_signal_handlers_disconnect_by_data(context_.get(), this);
 }
 
