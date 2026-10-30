@@ -783,12 +783,16 @@ void SkkState::applyConfig() {
 }
 void SkkState::copyTo(InputContextProperty *property) {
     auto *otherState = static_cast<SkkState *>(property);
+    // The context is still being registered; updating the UI here would touch
+    // properties (e.g. "inputState") that may not exist yet.
+    otherState->copying_ = true;
     skk_context_set_input_mode(otherState->context(),
                                skk_context_get_input_mode(context()));
+    otherState->copying_ = false;
 }
 
 void SkkState::updateInputMode() {
-    if (!engine_->constructed()) {
+    if (!engine_->constructed() || copying_) {
         return;
     }
     engine_->modeAction()->update(ic_);

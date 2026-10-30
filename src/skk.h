@@ -260,6 +260,7 @@ private:
     GObjectUniquePtr<SkkContext> context_;
     bool inKeyEventScope_ = false;
     bool pendingUpdateUI_ = false;
+    bool copying_ = false;
 };
 
 } // namespace fcitx
