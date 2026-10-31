@@ -792,8 +792,9 @@ void SkkState::updateInputMode() {
         return;
     }
     engine_->modeAction()->update(ic_);
-    engine_->instance()->showInputMethodInformation(ic_);
-    ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
+    if (ic_->hasFocus()) {
+        engine_->instance()->showInputMethodInformation(ic_);
+    }
 }
 void SkkState::updatePreedit() { updateUI(); }
 
