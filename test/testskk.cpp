@@ -79,7 +79,7 @@ void testShareStateAll(Instance *instance) {
         FCITX_ASSERT(ic2 != ic1);
         FCITX_ASSERT(!ic2->hasFocus());
         FCITX_ASSERT(latinAction->isChecked(ic2));
-        // FCITX_ASSERT(ic2->inputPanel().overlayMessage().empty());
+        FCITX_ASSERT(ic2->inputPanel().overlayMessage().empty());
 
         // A focused IC should still show the information when the mode
         // changes.
@@ -88,7 +88,7 @@ void testShareStateAll(Instance *instance) {
         ic2->inputPanel().reset();
         katakanaAction->activate(ic2);
         FCITX_ASSERT(katakanaAction->isChecked(ic2));
-        // FCITX_ASSERT(!ic2->inputPanel().overlayMessage().empty());
+        FCITX_ASSERT(!ic2->inputPanel().overlayMessage().empty());
 
         instance->exit();
     });
